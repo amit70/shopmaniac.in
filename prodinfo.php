@@ -1951,23 +1951,14 @@ while($row1=mysql_fetch_array($rev1))
 	echo "</tr>";
 	echo "<tr style=\"height:10%\">";
 	echo "<td style=\"position:absolute; left:0%; top:12%;  font-family:'Comic Sans MS', cursive; color:#555555;\">";s
-	if($rate1=="Worst")
- echo "<img src=\"prodimg/star1.jpg\" />";
- if($rate1=="Not Bad")
- echo "<img src=\"prodimg/star2.jpg\" />";
- if($rate1=="Not Mediocre")
- echo "<img src=\"prodimg/star3.jpg\" />";
- if($rate1=="Not Pretty Good")
- echo "<img src=\"prodimg/star4.jpg\" />";
- if($rate1=="Not Excellent")
- echo "<img src=\"prodimg/star5.jpg\" />";
 	echo "</td>";
 	echo "<td style=\"position:absolute; left:25%; top:12%; width:65%;  font-family:'Comic Sans MS', cursive; color:#555555;\"><hr /></td>";
 	echo "</tr>";
 	echo "<tr>";
 	echo "<td style=\"position:absolute; left:26%; top:25%;  font-family:'Comic Sans MS', cursive; color:#555555;\">$desc1</td>";
+	
 	echo "</tr>";
-	echo "</table>";
+	echo "</table>";  
 	echo "</div>";
 	
 	$i=$i+1;
