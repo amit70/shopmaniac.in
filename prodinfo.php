@@ -1170,7 +1170,7 @@ position:relative;
 	top:-355px;
 	border-style:solid;
 	border-width:thin;
-	border-color:#fafafa;
+	border-color:#000;
 	
 	
 }
@@ -1720,6 +1720,7 @@ else
 
 <div id="apDiv401">
 <?php
+$flag=0;
 $id=$_POST['pid1'];
 $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
@@ -1730,6 +1731,8 @@ $qry=mysql_query("select * from products where pid=$id");
 		$name= $row['pname'];
 		$size= $row['size'];
 		$price= $row['price'];
+		$price1=$row['discprice'];
+		$discount=$row['discountpercent'];
 		$info=$row['info'];
 		$img1=$row['img1'];
 		$img2=$row['img2'];
@@ -1738,6 +1741,10 @@ $qry=mysql_query("select * from products where pid=$id");
 		$img5=$row['img5'];
 		$brand=$row['brand'];
 		$dept=$row['dept'];
+	}
+	if($price==$price1)
+	{
+		$flag=1;
 	}
 	echo "<div style=\"position:absolute;left:85%;width:15%;height:100%;border-color:#666;border-width:thin; border-left-style:solid;\">";
 	echo "<img src=\"prodimg/$img1\" id=\"img1\" style=\"position:relative;width:90%; height:16%; left:2%;top:2%\" onmouseover=\"image('prodimg/$img1','img1')\" onmouseout=\"nbrdr('img1')\">";
@@ -1764,8 +1771,15 @@ echo "<input type=\"hidden\" name=\"name1\" value=\"$name\" />";
 
 echo "<center><font face=\"'Comic Sans MS', cursive\" size=\"+2.7\" color=\"#333333\"><b>$name</b></font></center>";
 echo "<center><img src=\"Logo/Nike.jpg\" width=70% height=30%/></center>";
+if($flag==1)
+{
+echo "<center><font face=\"Comic Sans MS, cursive\" size=\"+2\" color=\"#990000\"><b>Rs.$price</b></font></center><br><br>";	
+}
+else
+{
+echo "<style=\"position:absolute; left:50%; top:10%;\"><font face=\"Comic Sans MS, cursive\" size=\"+2\" color=\"#990000\"><b>Rs.$price</b></font><br><br>";
 
-echo "<center><font face=\"Comic Sans MS, cursive\" size=\"+2\" color=\"#990000\"><b>Rs.$price</b></font></center><br><br>";
+}
 echo "<center><font face=\"'Comic Sans MS', cursive	\" size=\"4\" color=\"#333333\">Select your Size:</font></center>";
 echo "<center><select name=\"size\" id=\"size\" style=\"width:50%; \">";
 
