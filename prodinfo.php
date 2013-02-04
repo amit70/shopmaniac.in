@@ -1805,11 +1805,11 @@ echo "<input type=\"hidden\" name=\"prodid\" value=\"$id\" />";
 <?php
 if($_SESSION['uname']=="")
 {
-echo "<a href=\"#\" onclick=\"logtr()\" onmouseover=\"this.style.color='#DF7000'\" onmouseout=\"this.style.color='#555555'\" style=\"position:absolute; left:37%; top:105%; text-decoration:none; color:#555555;\"><b>Rate This Item</b></a>";
+echo "<a href=\"#\" onclick=\"logtr()\" onmouseover=\"this.style.color='#DF7000'\" onmouseout=\"this.style.color='#555555'\" style=\"position:absolute; left:20%; top:105%; text-decoration:none; color:#555555;\"><b>Comment This Product</b></a>";
 }
 else
 {
-echo "<a href=\"#\" onclick=\"review()\" onmouseover=\"this.style.color='#DF7000'\" onmouseout=\"this.style.color='#555555'\" style=\"position:absolute; left:37%; top:105%; text-decoration:none; color:#555555;\"><b>Rate This Item</b></a>";
+echo "<a href=\"#\" onclick=\"review()\" onmouseover=\"this.style.color='#DF7000'\" onmouseout=\"this.style.color='#555555'\" style=\"position:absolute; left:20%; top:105%; text-decoration:none; color:#555555;\"><b>Comment This Product</b></a>";
 	
 }
 ?>
@@ -1946,23 +1946,43 @@ while($row1=mysql_fetch_array($rev1))
 	echo "<div style=\" width:100%;height:75%; background-color:#f6f6f6; position:absolute; top:".$t."%; left:".$l."%; \">";
     echo "<table border=\"0\" style=\"position:absolute; left:2%; top:4%; width:96%; height:270px;\">";
 	echo "<tr style=\"height:10%\">";
-	echo "<td style=\"position:absolute; left:2%; top:2%;  font-family:'Comic Sans MS', cursive; color:#555555; font-size:110%;\"><b>$name1</b></td>";
+	echo "<td style=\"position:absolute; left:4%; top:2%;  font-family:'Comic Sans MS', cursive; color:#555555; font-size:110%;\"><b>$name1</b></td>";
 	echo "<td style=\"position:absolute; left:26%; top:2%;  font-family:'Comic Sans MS', cursive; color:#555555;\">$title1</td>";
 	echo "</tr>";
 	echo "<tr style=\"height:10%\">";
-	echo "<td style=\"position:absolute; left:0%; top:12%;  font-family:'Comic Sans MS', cursive; color:#555555;\">";s
-	echo "</td>";
+	echo "<td style=\"position:absolute; left:0%; top:12%;  font-family:'Comic Sans MS', cursive; color:#555555;\">";
+	if($rate1=="Worst")
+	{
+	 echo "<img src=\"prodimg/star1.jpg\" width=60% height=8%>";
+	}
+	elseif($rate1=="Not Bad")
+	{
+	 echo "<img src=\"prodimg/star2.jpg\" width=60% height=8%>";
+	}
+	elseif($rate1=="Mediocre")
+	{
+	 echo "<img src=\"prodimg/star3.jpg\" width=60% height=8%>";
+	}
+	elseif($rate1=="Pretty Good")
+	{
+	 echo "<img src=\"prodimg/star4.jpg\" width=60% height=8%>";
+	}
+	if($rate1=="Excellent")
+	{
+	 echo "<img src=\"prodimg/star5.jpg\" width=60% height=8%>";
+	}
+
+    echo "</td>";
 	echo "<td style=\"position:absolute; left:25%; top:12%; width:65%;  font-family:'Comic Sans MS', cursive; color:#555555;\"><hr /></td>";
 	echo "</tr>";
 	echo "<tr>";
 	echo "<td style=\"position:absolute; left:26%; top:25%;  font-family:'Comic Sans MS', cursive; color:#555555;\">$desc1</td>";
-	
 	echo "</tr>";
-	echo "</table>";  
+	echo "</table>";
 	echo "</div>";
 	
 	$i=$i+1;
-	
+
 }
 	}
 	
