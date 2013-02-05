@@ -1170,7 +1170,7 @@ position:relative;
 	top:-355px;
 	border-style:solid;
 	border-width:thin;
-	border-color:#000;
+	border-color:#FDFDFD;
 	
 	
 }
@@ -1767,32 +1767,35 @@ echo "<form method=\"post\" action=\"http://localhost/shopmaniac/trolley.php\" i
 echo "<input type=\"hidden\" name=\"prodid\" value=\"$id\" />";
 echo "<input type=\"hidden\" name=\"cost\" value=\"$price\" />";
 echo "<input type=\"hidden\" name=\"name1\" value=\"$name\" />";
+echo "<input type=\"hidden\" name=\"cost1\" value=\"$price1\" />";
+echo "<input type=\"hidden\" name=\"disc\" value=\"$discount\" />";
 
 
 echo "<center><font face=\"'Comic Sans MS', cursive\" size=\"+2.7\" color=\"#333333\"><b>$name</b></font></center>";
-echo "<center><img src=\"Logo/Nike.jpg\" width=70% height=30%/></center>";
+echo "<img src=\"Logo/Nike.jpg\" width=70% height=30% style=\"position:absolute; left:15%; top:19%;\"/>";
 if($flag==1)
 {
-echo "<center><font face=\"Comic Sans MS, cursive\" size=\"+2\" color=\"#990000\"><b>Rs.$price</b></font></center><br><br>";	
+	echo "<p style=\"position:absolute;left:28%; top:43%;  \"><font face=\"Comic Sans MS, cursive\" size=\"+2\" color=\"#990000\"><b>Rs.$price</b></font></p>";	
 }
 else
 {
-echo "<style=\"position:absolute; left:50%; top:10%;\"><font face=\"Comic Sans MS, cursive\" size=\"+2\" color=\"#990000\"><b>Rs.$price</b></font><br><br>";
-
+echo "<p style=\"position:absolute;left:5%; top:43%;  text-decoration:line-through;\"><font face=\"Comic Sans MS, cursive\" size=\"+2\" color=\"#990000\"><b>Rs.$price</b></font></p>";	
+echo "<p style=\"position:absolute;left:50%; top:43%;\"><font face=\"Comic Sans MS, cursive\" size=\"+2\" color=\"#990000\"><b>Rs.$price1</b></font></p>";
+echo "<p style=\"position:absolute; left:30%; top:52%;color:#979797;\">($discount)</p>";
 }
-echo "<center><font face=\"'Comic Sans MS', cursive	\" size=\"4\" color=\"#333333\">Select your Size:</font></center>";
-echo "<center><select name=\"size\" id=\"size\" style=\"width:50%; \">";
+echo "<p style=\"position:absolute;left:15%; top:62%;\"><font face=\"'Comic Sans MS', cursive	\" size=\"4\" color=\"#333333\">Select your Size:</font>";
+echo "<p style=\"position:absolute;left:29%; top:71%; width:50%;\"><select name=\"size\" id=\"size\">";
 
 $qry1=mysql_query("select size from products where pname='$name'");
 while($row1 = mysql_fetch_array($qry1))
 {
 	echo "<option style:\"align:center\">".$row1['size']."</option>";
 }
-echo "</select></center><br><br>";
+echo "</select>";
 echo "</form> ";
 if($_SESSION['uname']=="")
 {
-	echo "<center><a href=\"#\"><img src=\"prodimg/Buy1.png\" width=\"44%\" height=\"14%\" onclick=\"logtr()\" onmousedown=\"this.src='prodimg/Buy2.png'\" onmouseup=\"this.src='prodimg/Buy1.png'\"></a></center>";
+	echo "<p style=\"position:absolute;left:32%; top:83%;\"><a href=\"#\"><img src=\"prodimg/Buy1.png\" width=\"52%\" height=\"16%\" onclick=\"logtr()\" onmousedown=\"this.src='prodimg/Buy2.png'\" onmouseup=\"this.src='prodimg/Buy1.png'\"></a></center>";
 }
 else
 {
@@ -1803,8 +1806,8 @@ echo "<center><a href=\"#\"><img src=\"prodimg/Buy1.png\" width=\"44%\" height=\
 
 </div>
 
-<div id="apDiv35">
-<img src="prodimg/Picture1.png" width="110%" height="30%" style="position:absolute; top:0%; left:0%;"/>
+<div id="apDiv35" >
+<img src="prodimg/Picture1.png" width="110%" height="30%" style="position:absolute; top:0%; left:0%; "/>
 <img src="prodimg/Picture2.png" width="111%" height="30%" style="position:absolute; top:25%; left:-2%;"/>
 <img src="prodimg/Picture4.png" width="110%" height="30%" style="position:absolute; top:50%; left:0%;"/>
 <img src="prodimg/Picture3.png" width="116%" height="30%" style="position:absolute; top:75%; left:-10%;"/>
