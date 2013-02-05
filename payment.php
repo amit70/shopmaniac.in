@@ -411,7 +411,7 @@ $temp=(int)$arr[$i];
 		$id=$row['pid'];
 		$pname= $row['pname'];
 		$size= $row['size'];
-		$price= $row['price'];
+		$price= $row['discprice'];
 		$img1=$row['img1'];
 		$brand=$row['brand'];
 	}
@@ -561,7 +561,7 @@ echo "$email";
  <tr>
   <th height="40" width="80"><font color="#666666" face="Comic Sans MS, cursive">Total</font></th>
 
-  <th height="40" width="80"><font color="#666666" face="Comic Sans MS, cursive">Discount</font></th>
+  <th height="40" width="80"><font color="#666666" face="Comic Sans MS, cursive">MyPoints Discount</font></th>
       <th height="40" width="80"><font color="#666666" face="Comic Sans MS, cursive">Total</font></th>
 
   <th height="40" width="80"><font color="#666666" face="Comic Sans MS, cursive">Credit</font></th>
