@@ -42,10 +42,10 @@ $mypoints=0;
 		$id=$rowaaa['pid'];
 		$pname= $rowaaa['pname'];
 		$size= $rowaaa['size'];
-		$price= $rowaaa['price'];
+		$price1= $rowaaa['discprice'];
 		$image=$rowaaa['img1'];
 	}
-	$qry="INSERT INTO `orders` VALUES ($id, '$pname', '$size', $price, '".$_SESSION['uname']."', '$add',$contact,'$email','$image',NULL,0,'$name',$final1,'$period','$trolley1')";
+	$qry="INSERT INTO `orders` VALUES ($id, '$pname', '$size', $price1, '".$_SESSION['uname']."', '$add',$contact,'$email','$image',NULL,0,'$name',$final1,'$period','$trolley1')";
 	
 	$qry123="insert into track values(NULL,'WIll Be Delivered in 24 hours','".$_SESSION['uname']."')";
 	$result=mysql_query($qry);
