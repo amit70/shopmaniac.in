@@ -14,6 +14,8 @@ session_start();
 $id="$_POST[prodid]";
 $size="$_POST[size]";
 $cost="$_POST[cost]";
+$cost1="$_POST[cost1]";
+$discount="$_POST[disc]";
 $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
 $qry=mysql_query("select * from User where username='".$_SESSION['uname']."'");
