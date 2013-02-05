@@ -1455,7 +1455,7 @@ echo "<p style=\"position:absolute; left:38%; top:79%; color:#555; font-family:'
 echo "<a href=\"#\"><img src=\"prodimg/remove.png\" width=\"48%\" height=\"35%\" style=\"position:absolute; left:18%; top:74%; \" onclick=\"removeaaa('remove1".$i."')\" onmousedown=\"this.src='prodimg/remove.png'\" onmouseup=\"this.src='prodimg/remove.png'\"></a>";
  
 echo "</div>";
-$tot+=$price;
+$tot+=$price1;
 $w=$w+23.2;
 
 
