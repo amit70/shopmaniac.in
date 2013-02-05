@@ -1401,6 +1401,7 @@ $w=0;
 $h=2;
 $a=0;
 $q=0;
+$flag=0;
 for($i=0;$i<$no-1;$i++)
 {
 	//$j++;
@@ -1408,13 +1409,13 @@ for($i=0;$i<$no-1;$i++)
 	{
 		$h=2;
 	}
-	else if($i%5==0)
+	else if($i%4==0)
 	{
-		$h=$h+73;
+		$h=$h+86;
 		$w=0;
 		$q=$q+1;
 	}
-	echo "<div style=\"position:absolute;width:19.2%;height:70%;z-index:1;left:$w%;top:$h%;background-color:#f6f6f6; \">";
+	echo "<div style=\"position:absolute;width:22%;height:83%;z-index:1;left:$w%;top:$h%;background-color:#f6f6f6; \">";
 	$temp=(int)$arr[$i];
 	$qry=mysql_query("select * from products where pid=$temp");
 	while($row = mysql_fetch_array($qry))
@@ -1423,23 +1424,39 @@ for($i=0;$i<$no-1;$i++)
 		$name= $row['pname'];
 		$size= $row['size'];
 		$price= $row['price'];
+		$price1=$row['discprice'];
+		$discount=$row['discountpercent'];
 		$img1=$row['img1'];
 		$brand=$row['brand'];
+	}
+	if($price==$price1)
+	{
+		$flag=1;
 	}
 echo "<form action=\"removeprod.php\" method=\"post\" name=\"remove1".$i."\" id=\"remove1\">";
 echo "<input type=\"hidden\" value=\"$id\" name=\"hid\">";
 
 echo "</form>";
 echo "<center><img src=\"prodimg/$img1\" height=53% width=90% style=\"margin-top:2%\"></center>";
-echo "<p style=\"position:absolute; left:3%; top:51%; color:#555;  font-family:'Comic Sans MS', cursive;\">Name:- $name</p>";
-echo "<p style=\"position:absolute; left:3%; top:68%; color:#555;  font-family:'Comic Sans MS', cursive;\">Size:- $size</p>";
-echo "<p style=\"position:absolute; left:3%; top:77%; color:#555;  font-family:'Comic Sans MS', cursive;\">Price:-$price</p>";
-
-echo "<a href=\"#\"><img src=\"prodimg/remove.png\" width=\"48%\" height=\"35%\" style=\"position:absolute; left:54%; top:70%; \" onclick=\"removeaaa('remove1".$i."')\" onmousedown=\"this.src='prodimg/remove.png'\" onmouseup=\"this.src='prodimg/remove.png'\"></a>";
+echo "<p style=\"position:absolute; left:3%; top:51%; color:#555;  font-family:'Comic Sans MS', cursive;\"><b>Name:-</b> $name</p>";
+echo "<p style=\"position:absolute; left:3%; top:64%; color:#555;  font-family:'Comic Sans MS', cursive;\"><b>Size:-</b> $size</p>";
+if($flag==1)
+{
+	echo "<p style=\"position:absolute; left:3%; top:72%; color:#555;font-family:'Comic Sans MS', cursive;\"><b>Price:-</b>$price</p>";
+}
+else
+{
+echo "<p style=\"position:absolute; left:3%; top:72%; color:#555;font-family:'Comic Sans MS', cursive;\"><b>Price:-</b></p>";
+echo "<p style=\"position:absolute; left:34%; top:72%; color:#555;
+text-decoration:line-through;font-family:'Comic Sans MS', cursive;\">$price</p>";
+echo "<p style=\"position:absolute; left:60%; top:72%; color:#555;  font-family:'Comic Sans MS', cursive;\">$price1</p>";
+echo "<p style=\"position:absolute; left:38%; top:79%; color:#555; font-family:'Comic Sans MS', cursive; font-size:70%;\">($discount)</p>";
+}
+echo "<a href=\"#\"><img src=\"prodimg/remove.png\" width=\"48%\" height=\"35%\" style=\"position:absolute; left:18%; top:74%; \" onclick=\"removeaaa('remove1".$i."')\" onmousedown=\"this.src='prodimg/remove.png'\" onmouseup=\"this.src='prodimg/remove.png'\"></a>";
  
 echo "</div>";
 $tot+=$price;
-$w=$w+20.2;
+$w=$w+23.2;
 
 
 }
