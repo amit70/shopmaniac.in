@@ -182,7 +182,7 @@ $add="$_POST[add]";
 $contact="$_POST[contact]";
 $email="$_POST[email]";
 $final1="$_POST[final123]";
-
+$leftcredits="$_POST[leftcredits]";
 ?>
 <div id="bill">
 <p style="position:absolute;top:-50%; left:35%;font-family:'Comic Sans MS', cursive; font-size:150%; font-variant:small-caps;">Confirm Order</p>
@@ -308,6 +308,7 @@ $temp=(int)$arr[$i];
   echo "<input type=\"hidden\" name=\"image\" value=\"$img1\" />";
     echo "<input type=\"hidden\" name=\"final123\" value=\"$final1\" />";
 	echo "<input type=\"hidden\" name=\"tr\" value=\"$trolley1\" />";
+	 echo "<input type=\"hidden\" name=\"leftcredits\" value=\"$leftcredits\" />";
 	?>
 	</form>
     
