@@ -571,7 +571,16 @@ echo "$email";
   
   <tr>
   <td><font face="Comic Sans MS, cursive"><?php
-  echo "$total";
+  $full=0;
+  if($total<200)
+  {
+  $full=$total+30;
+  echo "$total+30=$full";
+  }
+  else
+  {
+	  echo "$total";
+  }
   ?></font></td> 
   
    <td><font face="Comic Sans MS, cursive"><?php
@@ -600,6 +609,40 @@ echo "$email";
  
   <td><font face="Comic Sans MS, cursive"><?php
   $final=0;
+  if($total<200)
+  {
+	  if($mypoints<=4999)
+  {
+	  $final=$full-0;
+	  echo "$final";
+  }
+  else if($mypoints>=5000 && $mypoints<=7999)
+  {
+	  $discount=($full*3)/100;
+	  $final=$full-$discount;
+	  echo "$final";
+  }
+  else if($mypoints>=8000 && $mypoints<=9999)
+  {
+	  $discount=($full*5)/100;
+	  $final=$full-$discount;
+	  echo "$final";
+  }
+  else if($mypoints>=10000 && $mypoints<=14999)
+  {
+	  $discount=($full*7)/100;
+	  $final=$full-$discount;
+	  echo "$final";
+  }
+  else if($mypoints>=15000)
+  {
+	  $discount=($full*10)/100;
+	  $final=$full-$discount;
+	  echo "$final";
+  }
+  }
+  else
+  {
    if($mypoints<=4999)
   {
 	  $final=$total-0;
@@ -629,7 +672,7 @@ echo "$email";
 	  $final=$total-$discount;
 	  echo "$final";
   }
-	  
+  }
    ?>
    </font>
    </td>
