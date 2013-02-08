@@ -697,7 +697,7 @@ echo $credits;
 	  $leftcredits=$credits-$final;
 	  $total1=0;
   }
-  echo "$total1";
+  echo "<b>$total1</b>";
   ?>
   </font></td> 
   </table>
