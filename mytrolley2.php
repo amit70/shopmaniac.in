@@ -1486,7 +1486,7 @@ echo "<p style=\"position:absolute; left:30%; top:-50%; font-family:'Comic Sans 
 }
 else
 {
-echo "<p style=\"position:absolute; left:30%; top:-50%; font-family:'Comic Sans MS', cursive; color:#111;\">Total:-$tot</p>";
+echo "<p style=\"position:absolute; left:30%; top:-50%; font-family:'Comic Sans MS', cursive; color:#111;\">Total:-<b>$tot</b></p>";
 }
 ?>
 
