@@ -1477,11 +1477,18 @@ else
 echo "<p style=\"position:absolute; left:5%; top:-50%; font-size:90%; color:#717171; font-family:'Comic Sans MS', cursive\">".$_SESSION['uname']."</p>";
 ?>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="position:absolute; left:10%; top:-50%; font-size:90%; font-family:'Comic Sans MS', cursive; ">Your Trolley</p>
-<p style="position:absolute; left:45%; top:-50%; font-family:'Comic Sans MS', cursive; color:#111;">Total:-
 <?php
-echo $tot;
+$full=0;
+if($tot<200)
+{
+	$full=$tot+30;
+echo "<p style=\"position:absolute; left:30%; top:-50%; font-family:'Comic Sans MS', cursive; color:#111;\">Total:- $tot &nbsp;+ 30 = Total:- <b>$full</b> </p>";
+}
+else
+{
+echo "<p style=\"position:absolute; left:30%; top:-50%; font-family:'Comic Sans MS', cursive; color:#111;\">Total:-$tot</p>";
+}
 ?>
-</p> 
 
 
 <?php
