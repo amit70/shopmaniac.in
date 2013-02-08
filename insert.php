@@ -25,6 +25,7 @@ $trolley1="$_POST[tr]";
 $arr=spliti(",",$trolley1);
 $no=count($arr);
 $period=date("Y/m/d");
+$leftcredits="$_POST[leftcredits]";
 
 
 try
@@ -67,7 +68,8 @@ $mypoints=0;
 	
 	$result1=mysql_query($qry1);
 	
-	
+	$qry444="update user set credits='$leftcredits' where username='".$_SESSION[uname]."'";
+		$result1=mysql_query($qry444);
 	mysql_close($sql);
 	header("Location: http://localhost/shopmaniac/home.php");
 
