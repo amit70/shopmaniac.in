@@ -690,19 +690,25 @@ echo $credits;
     
   <td><font face="Comic Sans MS, cursive"><?php
   $total1=0;
+  $leftcredits=0;
   $total1=$final-$credits;
   if($total1<0)
   {
+	  $leftcredits=$credits-$final;
 	  $total1=0;
   }
   echo "$total1";
   ?>
-  </font></td>
-  
- 
- 
- 
+  </font></td> 
   </table>
+  </tr>
+  </tr>
+  <?php
+  if($credits>0)
+  {
+echo "<p style=\"position:absolute; left:4%; top:100%; color:#555;\">Your Credits Left is Rs $leftcredits</p>";
+  }
+?>
   
    <form action="confirmation.php" method="post" name="confirm1" id="confirm1"> 
  <?php
@@ -712,6 +718,7 @@ echo $credits;
  echo "<input type=\"hidden\" name=\"contact\" value=\"$contact\" />";
  echo "<input type=\"hidden\" name=\"email\" value=\"$email\" />";
  echo "<input type=\"hidden\" name=\"final123\" value=\"$total1\" />";
+ echo "<input type=\"hidden\" name=\"leftcredits\" value=\"$leftcredits\" />"
  ?>
  </form>
  
