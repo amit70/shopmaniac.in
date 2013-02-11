@@ -1433,6 +1433,10 @@ for($i=0;$i<$no-1;$i++)
 	{
 		$flag=1;
 	}
+	else
+	{
+		$flag=0;
+	}
 echo "<form action=\"removeprod.php\" method=\"post\" name=\"remove1".$i."\" id=\"remove1\">";
 echo "<input type=\"hidden\" value=\"$id\" name=\"hid\">";
 
