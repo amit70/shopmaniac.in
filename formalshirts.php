@@ -1073,7 +1073,10 @@ $flag=0;
 		{
 			$flag=1;
 		}
-		
+		else
+		{
+			$flag=0;
+		}
 		echo "<form method=\"post\" action=\"http://localhost/shopmaniac/prodinfo.php\" id=\"prod123\" name=\"prod123".$i."\">";
 	
         echo "<input type=\"hidden\" name=\"pid1\" value=\"$id\" >";
