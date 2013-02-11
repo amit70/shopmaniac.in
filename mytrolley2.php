@@ -1479,6 +1479,12 @@ echo "<p style=\"position:absolute; left:5%; top:-50%; font-size:90%; color:#717
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="position:absolute; left:10%; top:-50%; font-size:90%; font-family:'Comic Sans MS', cursive; ">Your Trolley</p>
 <?php
 $full=0;
+if(strcmp($trolley1,"")==0)
+{
+	echo "<p style=\"position:absolute; left:30%; top:-50%; font-family:'Comic Sans MS', cursive; color:#111;\">Total:- <b>0</b></p>";
+}
+else
+{
 if($tot<200)
 {
 	$full=$tot+30;
@@ -1487,6 +1493,7 @@ echo "<p style=\"position:absolute; left:30%; top:-50%; font-family:'Comic Sans 
 else
 {
 echo "<p style=\"position:absolute; left:30%; top:-50%; font-family:'Comic Sans MS', cursive; color:#111;\">Total:-<b>$tot</b></p>";
+}
 }
 ?>
 
