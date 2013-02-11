@@ -1114,7 +1114,7 @@ echo "</form> ";
 	if($flag==1)
 	{
 	echo "<p style=\"position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;\"> $name</p>";
-	echo "<p style=\"position:absolute; left:35%; top:72%; font-family:'Comic Sans MS', cursive; color:#F00;   font-size:100%;\"> $prize</p>";
+	echo "<p style=\"position:absolute; left:10%; top:72%; font-family:'Comic Sans MS', cursive; color:#F00;   font-size:100%;\"> $prize</p>";
 	echo "<a href=\"#\"><img src=\"prodimg/Buy1.png\" width=\"35%\" height=\"15%\" style=\"position:absolute; left:2%; top:87%; \" onclick=\"prod1('prod123".$i."')\" onmousedown=\"this.src='prodimg/Buy2.png'\" onmouseup=\"this.src='prodimg/Buy1.png'\"></a>";
 	}
 	else
