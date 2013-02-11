@@ -4,13 +4,13 @@ session_start();
 <html>
 <head>
 <link href="navbar.css" rel="stylesheet" type="text/css" />
-
 <title>Untitled Document</title>
 <script type="text/javascript">
 function website()
 {
 	document.forms["website1"].submit();
 }
+
 function aaa(amit)
 {
     document.forms[amit].submit();
@@ -19,6 +19,7 @@ function submitform()
 {
     document.forms["filter"].submit();
 }
+
 function mytrol()
 {
 	document.forms["trol"].submit();
@@ -36,6 +37,10 @@ function myaccount()
 function prod1(a)
 {
 	document.forms[a].submit();
+}
+function go(q)
+{
+    document.forms[q].submit();
 }
 
 function logtr() {
@@ -71,6 +76,13 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
   	alert("Not a valid E-Mail address");
   	return false;
   }
+var atpos=x.indexOf("@");
+var dotpos=x.lastIndexOf(".");
+if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+  {
+  	alert("Not a valid E-Mail address");
+  	return false;
+  }
 var y=document.forms["login123"]["pwd123"].value;
 if (y==null || y=="")
   {
@@ -82,7 +94,6 @@ if (y==null || y=="")
 
 function reg1()
 {
-
 var x=document.forms["register"]["Username"].value;
 if (x==null || x=="")
   {
@@ -165,12 +176,7 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
   	return false;
   }
 document.forms["contactaaa"].submit();
-}
-
-function go(q)
-{
-    document.forms[q].submit();
-}
+}	
 
 </script>
 <style type="text/css">
@@ -201,81 +207,6 @@ body {
 	height:70px;
 	
 }
-			/* The CSS Code for the menu starts here */
-			#menu {
-				font-family: Arial, sans-serif;
-				font-weight: bold;
-				text-transform: uppercase;
-				margin:2% -0.5%;
-				padding: 0 0 0 10px;
-				list-style-type: none;
-				font-size: 13px;
-				background: #eee;
-				height: 40px;
-				-moz-border-radius: 10px;
-				-webkit-border-radius: 10px;
-				border-top: 2px solid #eee;
-				border-left: 2px solid #eee;
-				border-bottom: 2px solid #ccc;
-				border-right: 2px solid #ccc;
-				
-				
-			}
-			#menu li {
-				float: left;
-				
-				list-style: none;
-			}
-			#menu li ul {
-   				display: none; 
-  				 width: 10em; /* Width to help Opera out */
-   				background-color:#111;
-				font-size:16px;
-				z-index:10;}
-			#menu li a {
-				text-decoration: none;
-				display: block;
-				padding: 0 20px;
-				line-height: 40px;
-				color: #666;
-				
-			}
-			#menu li:hover li, #menu li.hover li { float: none; }
-			#menu li a:hover, #menu li.active a {
-				background-color:#444;
-				border-bottom: 2px solid #DDD;
-				color: #F66;
-			}
-			
-			#menu li:hover ul, #menu li.hover ul {
-   				display: block;
-   				position: absolute;
-   				margin: 0;
-   				padding: 0; }
-			
-			#menu li:hover li, #navbar li.hover li {
-   				float: none; }
-			#menu li:hover li a, #menu li.hover li a {
-   				background-color:#111;
-   				/*border-bottom: 1px solid #fff;*/
-   				color: #CCC; }
-			#menu li li a:hover {
-   				background-color:#111; }	
-   
-			/* Black Menu */
-			#menu.black {
-				border-top: 2px solid #333;
-				border-left: 2px solid #333;
-				border-bottom: 2px solid #000;
-				border-right: 2px solid #000;
-				background:#111;}
-			#menu.black a {color:#CCC;}
-			#menu.black li a:hover, #menu.black li.active a {color: #999; background:#444; border-bottom: 2px solid #444;}	
-	h1
-	{
-		color:#636;
-	}
-	
 #apDiv42 {
 position:relative;
 	width:194%;
@@ -291,8 +222,44 @@ position:relative;
 	height:400px;
 	z-index:14;
 	left:-200px;
-	top:-150px;	
+	top:-150px;
 }
+#apDiv48 {
+	position:relative;
+	z-index:13;
+	left:-200px;
+	top:-175px;
+	width:196%;
+	height:200px;
+	background-color:#fff;
+	border-style:solid;
+	border-width:thin;
+	border-color:#f4f4f4	;
+}
+
+#apDiv18 {
+	position:relative;
+	width:195%;
+	height:400px;
+	z-index:12;
+	left: -200px;
+	top: -100px;
+	background-color:#333;
+	border-style:solid;
+	border-width:thin;
+	border-color:#333;
+}
+/* Some stylesheet reset */
+
+	
+	h1
+	{
+		color:#636;
+	}
+	
+
+
+
 #apDiv38 {
 	position:absolute;
 	width:50%;
@@ -362,18 +329,7 @@ p.aaa
 	font-size:13px;
 	}
 	
-	#apDiv48 {
-	position:relative;
-	z-index:13;
-	left:-200px;
-	top:-175px;
-	width:196%;
-	height:200px;
-	background-color:#fff;
-	border-style:solid;
-	border-width:thin;
-	border-color:#f4f4f4	;
-}
+	
 p.guest
 {
 	position:absolute;
@@ -674,18 +630,7 @@ p.stay
 	color:#999;
 	font-weight:bold;
 }
-#apDiv18 {
-	position:relative;
-	width:195%;
-	height:400px;
-	z-index:12;
-	left: -200px;
-	top: -100px;
-	background-color:#333;
-	border-style:solid;
-	border-width:thin;
-	border-color:#333;
-}
+
 #apDiv40 {
 	position:absolute;
 	width:0.5%;
@@ -734,16 +679,16 @@ p.stay
 	height:115px;
 	z-index:13;
 }
+
 </style>
 </head>
 
 <body>
-<div id="container" >
 
+<div id="container">
 <?php
 $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
-$trolley1="";
 if($_SESSION['uname']!="")
 {
 $qry=mysql_query("select * from User where username='".$_SESSION['uname']."'");
@@ -754,6 +699,7 @@ while($row = mysql_fetch_array($qry))
 $arr=spliti(",",$trolley1);
 $no=0;
 $no=count($arr);
+
 }
 ?>
 
@@ -765,11 +711,12 @@ $no=count($arr);
 <h4 align="center"><font face="Comic Sans MS, cursive" color="#666666">For Existing Users</font></h4>
 <form method="POST" action="http://localhost/shopmaniac/check.php"  name="login123">
   <table align="left" border="0" cols=2 cellspacing="3" style="position:absolute; left:10%; top:20%">
-  <tr>
+   <tr>
   <td height="50"><font color="#666666" face="Comic Sans MS, cursive">Email Id:</font></td>
   <td><?php 
   echo "<input type=\"text\" name=\"email123\" id=\"email123\">";
   ?></td>
+  </tr>
   </tr>
   <tr>
   <td><label for="Password"><font color="#666666" face="Comic Sans MS, cursive">Password:</font></label></td>
@@ -780,7 +727,7 @@ $no=count($arr);
   </tr>
   </table>
   <?php
-  echo "<input type=\"hidden\" name=\"flag\" value=\"8\" />";
+  echo "<input type=\"hidden\" name=\"flag\" value=\"1\" />";
   ?>
  <a href="#" onClick="login1()"><img src="prodimg/Login1.png" width="50%" height="15%" style="position:absolute; left:25%; top:88%;" onMouseDown="this.src='prodimg/Login2.png'" onMouseUp="this.src='prodimg/Login1.png'"/></a>
 </form>
@@ -792,9 +739,9 @@ $no=count($arr);
 <form method="POST" action="http://localhost/shopmaniac/Divert.php" name="register" >
   <table align="left" border="0" cols=2 cellspacing="5" style="position:absolute; left:10%; top:20%">
   <tr>
-  <td height="30"><font color="#666666" face="Comic Sans MS, cursive">Email Id:</font></td>
+  <td height="30"><font color="#666666" face="Comic Sans MS, cursive">Username:</font></td>
   <td height="30"><?php
-  echo "<input type=\"text\" name=\"email123\" >";
+  echo "<input type=\"text\" name=\"Username\" >";
   ?></td>
   </tr>
   <tr>
@@ -930,107 +877,126 @@ else
 </div>
 
 
-
-<ul class="nav">
-	<li class="dropdown"><a href="mens.php">Men</a>
-	<ul>
-    
-    <li class="dropdown"><a href="apparels.php">Mens Apparels</a>
-    <ul>
-    <li><a href="formalshirts.php">Formal Shirts</a></li>
-    <li><a href="cs.php">Casual Shirts</a></li>
-    <li><a href="jeans.php">Jeans</a></li>
-    <li><a href="trousers.php">Trousers</a></li>
-    <li><a href="t-shirts.php">T-Shirts</a></li>
+    <ul class="nav">
+        <li class="dropdown"><a href="mens.php">Men</a>
+        <ul>
+        
+        <li class="dropdown"><a href="apparels.php">Mens Apparels</a>
+        <ul>
+        <li><a href="formalshirts.php">Formal Shirts</a></li>
+        <li><a href="cs.php">Casual Shirts</a></li>
+        <li><a href="jeans.php">Jeans</a></li>
+        <li><a href="trousers.php">Trousers</a></li>
+        <li><a href="t-shirts.php">T-Shirts</a></li>
+        </ul>
+        </li>
+        
+        <li class="dropdown"><a href="footwear.php">Mens Footwear</a>
+      <ul>
+         <li><a href="casualshoes.php">Casual Shoes</a></li>
+        <li><a href="formalshoes.php">Formal Shoes</a></li>
+        <li><a href="sportsshoes.php">Sports Shoes</a></li>
+        <li><a href="sf.php">Slippers n FlipFLop's</a></li>
+      </ul>
+        </li>
+        
+       </ul>
+        </li>
+        
+        
+        <li class="dropdown"><a href="#">Accessories</a>
+        <ul>
+        <li><a href="#">Wallets</a></li>
+        <li><a href="#">Googles</a></li>
+        <li><a href="#">Caps</a></li>
+        <li><a href="#">Ties n Couplings</a></li>
+        </ul>
+        </li>
+        
+         <li class="dropdown"><a href="homeware.php">Homeware</a>
+        <ul>
+        <li><a href="#">Microwave</a></li>
+        <li><a href="#">Cannisters</a></li>
+        </ul>
+        </li>
+        
+        <li class="dropdown"><a href="#">Brand</a>
+        <ul>
+        <li><a href="#">Levis</a></li>
+        <li><a href="#">Pepe Jeans</a></li>
+        </ul>
+        </li>
     </ul>
-    </li>
-    
-    <li class="dropdown"><a href="footwear.php">Mens Footwear</a>
-  <ul>
-     <li><a href="casualshoes.php">Casual Shoes</a></li>
-    <li><a href="formalshoes.php">Formal Shoes</a></li>
-    <li><a href="sportsshoes.php">Sports Shoes</a></li>
-    <li><a href="sf.php">Slippers n FlipFLop's</a></li>
-  </ul>
-    </li>
-    
-   </ul>
-	</li>
-    
-    
-    <li class="dropdown"><a href="#">Accessories</a>
-	<ul>
-    <li><a href="#">Wallets</a></li>
-    <li><a href="#">Googles</a></li>
-    <li><a href="#">Caps</a></li>
-    <li><a href="#">Ties n Couplings</a></li>
-    </ul>
-	</li>
-    
-     <li class="dropdown"><a href="homeware.php">Homeware</a>
-	<ul>
-    <li><a href="#">Microwave</a></li>
-    <li><a href="#">Cannisters</a></li>
-    </ul>
-	</li>
-    
-    <li class="dropdown"><a href="#">Brand</a>
-	<ul>
-    <li><a href="#">Levis</a></li>
-    <li><a href="#">Pepe Jeans</a></li>
-    </ul>
-	</li>
-    
-</ul>
 
 <div id="apDiv48">
-<form action="http://localhost/shopmaniac/formalshoesresponse.php" method="POST" name="filter" id="filter">
+<form action="http://localhost/shopmaniac/fsresponse.php" method="POST" name="filter" id="filter">
 
 <div style="position:absolute; left:1%; top:2%; width:19.5%; height:96%; ">
 <p style="position:absolute; left:10%; top:3%; font-family:'Comic Sans MS', cursive; color:#111;"><b>Category</b></p>
-  
-  <select name="category" id="category" style="position:absolute; left:2%; top:30%; width:90%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
-  <option>Choose Category</option>
-  <option value="Half Sleeves">Half Sleeves</option>
-  <option value="Full Sleeves">Full Sleeves</option>
-  <option value="Checks">Checks</option>
+   <?php
+   
+  $qry1=mysql_query("select * from products where subname='formal shirts' and category='half sleeves'");
+ $count1=mysql_num_rows($qry1);
+ 
+  $qry2=mysql_query("select * from products where subname='formal shirts' and category='full sleeves'");
+ $count2=mysql_num_rows($qry2);
+  ?>
+  <select name="category" id="category" style="position:absolute; left:2%; top:30%; width:90%; font-family:'Comic Sans MS', cursive; " onChange="javascript: submitform()" >
+
+  <option>Choose Category</option> 
+ <?php 
+ echo "<option value=\"Half Sleeves\">Half Sleeves($count1)</option>
+  <option value=\"Full Sleeves\">Full Sleeves($count2)</option>
+  <option value=\"Checks\">Checks()</option>";
+  ?>
  
    </select>
  
 </div>
-<div style="position:absolute; left:19.5%; top:2%; height:96%; width:0.3%; background-color:#f1f1f1;">
+<div style="position:absolute; left:19.5%; top:2%; height:96%; width:0.3%; background-color:#F1F1F1;">
 </div>
 
 <div style="position:absolute; left:19.5%; top:2%; width:19.5%; height:96%; ">
-<p style="position:absolute; left:10%; top:3%;font-family:'Comic Sans MS', cursive; color:#111;"><b>Size</b></p>
-  
+<p style="position:absolute; left:10%; top:3%; font-family:'Comic Sans MS', cursive;"><b>Size</b></p>
+   <?php
+  $qry3=mysql_query("select * from products where subname='formal shirts' and size='36'");
+ $count3=mysql_num_rows($qry3);
+ 
+  $qry4=mysql_query("select * from products where subname='formal shirts' and size='38'");
+ $count4=mysql_num_rows($qry4);
+ 
+   $qry5=mysql_query("select * from products where subname='formal shirts' and size='40'");
+ $count5=mysql_num_rows($qry5);
+  ?>
   <select name="size1" id="size1" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
   <option>Choose Size</option>
-  <option value="8">8</option>
-  <option value="9">9</option>
-  <option value="10">10</option>
+ <?php
+ echo "<option value=\"36\">36($count3)</option>
+  <option value=\"38\">38($count4)</option>
+  <option value=\"40\">40($count5)</option>";
+  ?>
 </select>
  
 </div>
-<div style="position:absolute; left:39.5%; top:2%; height:96%; width:0.3%; background-color:#f1f1f1;">
+<div style="position:absolute; left:39.5%; top:2%; height:96%; width:0.3%; background-color:#F1F1F1;">
 </div>
 
 <div style="position:absolute; left:39.5%; top:2%; width:19.5%; height:96%; ">
-<p style="position:absolute; left:10%; top:3%;font-family:'Comic Sans MS', cursive; color:#111;"><b>Brand</b></p>
+<p style="position:absolute; left:10%; top:3%;font-family:'Comic Sans MS', cursive;"><b>Brand</b></p>
   
   <select name="brand1" id="brand1" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
   <option>Choose Brand</option>
-  <option value="bata">Bata</option>
-  <option value="carlton london">CARLTON LONDON</option>
+  <option value="arrow">Arrow</option>
+  <option value="black berry">Black Berry</option>
 </select>
  
 </div>
-<div style="position:absolute; left:58.5%; top:2%; height:96%; width:0.3%; background-color:#f1f1f1;">
+<div style="position:absolute; left:58.5%; top:2%; height:96%; width:0.3%; background-color:#F1F1F1;">
 </div>
 
 
 <div style="position:absolute; left:58.5%; top:2%; width:19.5%; height:96%; ">
-<p style="position:absolute; left:10%; top:3%; font-family:'Comic Sans MS', cursive; color:#111;"><b>Price</b></p>
+<p style="position:absolute; left:10%; top:3%; font-family:'Comic Sans MS', cursive;"><b>Price</b></p>
   
   <select name="range" id="range" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
   <option>Price Range</option>
@@ -1039,16 +1005,18 @@ else
 </select>
  
 </div>
-<div style="position:absolute; left:78.5%; top:2%; height:96%; width:0.3%; background-color:#f1f1f1;">
+<div style="position:absolute; left:78.5%; top:2%; height:96%; width:0.3%; background-color:#F1F1F1;">
 </div>
 
 
 <div style="position:absolute; left:79.5%; top:2%; width:19.5%; height:96%; ;">
-<p style="position:absolute; left:10%; top:3%;font-family:'Comic Sans MS', cursive; color:#111;"><b>Color</b></p>
+<p style="position:absolute; left:10%; top:3%; font-family:'Comic Sans MS', cursive;"><b>Color</b></p>
   
   <select name="color" id="color" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
   <option>Choose Color</option>
-  <option value="brown">Brown</option>
+  <option value="red">Red</option>
+  <option value="blue">Blue</option>
+  <option value="green">Green</option>
   <option value="black">Black</option>
 </select>
 </div>
@@ -1060,14 +1028,15 @@ else
 <?php
 $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
-$qry=mysql_query("select count(*) from products where subname='formalshoes'");
+$qry=mysql_query("select count(*) from products where subname='formal shirts'");
 while($row = mysql_fetch_array($qry))
 {
 	$count=$row['count(*)'];
 }
-echo "<p style=\"position:absolute; left:0%; top:1%; font-family:'Comic Sans MS', cursive; font-weight:bold; font-size:150%;\">MEN'S FORMAL SHOES($count)</p><hr style=\"position:absolute; left:0%; top:85%; width:96%;\"/>";
+echo "<p style=\"position:absolute; left:0%; top:1%; font-family:'Comic Sans MS', cursive; font-weight:bold; font-size:150%;\">MEN'S FORMAL SHIRTS($count)</p><hr style=\"position:absolute; left:0%; top:85%; width:96%;\"/>";
 ?>
 </div>
+
 <div id="apDiv1">
 <?php
 $a=0;
@@ -1075,7 +1044,8 @@ $l=0;
 $t=0;
 $q=0;
 $i=0;	
-	$fetch=mysql_query("select * from products where subname='formal shoes'");
+$flag=0;
+	$fetch=mysql_query("select * from products where subname='formal shirts'");
 	$count = @mysql_num_rows($fetch);
 	if($count > 0)
 	{
@@ -1098,11 +1068,17 @@ $i=0;
 		$prize1=$row['discprice'];
 		$discount=$row['discountpercent'];
 		$img=$row['img1'];
+		
 		if($prize==$prize1)
 		{
 			$flag=1;
 		}
+		else
+		{
+			$flag=0;
+		}
 		echo "<form method=\"post\" action=\"http://localhost/shopmaniac/prodinfo.php\" id=\"prod123\" name=\"prod123".$i."\">";
+	
         echo "<input type=\"hidden\" name=\"pid1\" value=\"$id\" >";
 echo "</form> ";
 		
@@ -1124,7 +1100,7 @@ echo "</form> ";
 	echo "<p style=\"position:absolute; left:42%; top:83%; font-family:'Comic Sans MS', cursive;   color:#F00; font-size:80%;\"> ($discount)</p>";
 	}
 	echo "</div>";	
-	echo "</a>";	
+	echo "</a>";
 	$l=$l+20.2;
 	$i=$i+1;
 	}
@@ -1133,15 +1109,16 @@ echo "</form> ";
 	{
 		echo "<p style=\"position:absolute; left:30%; top:70%; font:'Comic Sans MS', cursive; font-size:150%; color:#111; font-family:'Comic Sans MS', cursive;\">SORRY NO PRODUCT FOUND</p>";
 	}
-			$a=$q*$t+50;
-
+	$a=$q*$t+50;
 mysql_close($aaa);
 ?>
 </div>
 
+
 <?php
 echo "<div id=\"apDiv18\" style=\"top:$a;\">";
-?><p class="shopmanaic"><u>Shopmanaic</u></p>
+?>
+<p class="shopmanaic"><u>Shopmanaic</u></p>
 <p class="myaccount"><u>My Account</u></p>
 <p class="policies"><u>Policies</u></p>
 <p class="help"><u>Help</u></p>
@@ -1229,6 +1206,5 @@ echo "<input type=\"text\" name=\"contact1\" id=\"contact1\" style=\"position:ab
 </div>
 
 </div>
-
 </body>
 </html>
