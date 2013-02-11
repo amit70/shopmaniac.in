@@ -1112,8 +1112,17 @@ $i=0;
 		$name= $row['pname'];
 		$size= $row['size'];
 		$prize= $row['price'];
+		$prize1=$row['discprice'];
+		$discount=$row['discountpercent'];
 		$img=$row['img1'];
-		
+		if($prize==$prize1)
+		{
+			$flag=1;
+		}
+		else
+		{
+			$flag=0;
+		}
 		echo "<form method=\"post\" action=\"http://localhost/shopmaniac/prodinfo.php\" id=\"prod123\" name=\"prod123".$i."\">";
         echo "<input type=\"hidden\" name=\"pid1\" value=\"$id\" >";
 echo "</form> ";
@@ -1121,10 +1130,20 @@ echo "</form> ";
 		echo "<a href=\"#\" onclick=\"prod1('prod123".$i."')\">";
 		echo "<div style=\" width:19.2%;height:70%; background-color:#fafafa; position:absolute; top:".$t."%; left:".$l."%; \">";
 	echo "<img src=\"prodimg/p4.jpg\" width=\"96%\" height=\"60%\" style=\"position:absolute; top:1%; left:2%;\">";
+	if($flag ==1)
+	{
 	echo "<p style=\"position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;\"> $name</p>";
-	echo "<p style=\"position:absolute; left:2%; top:72%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;\"> $prize</p>";
-	
+	echo "<p style=\"position:absolute; left:10%; top:72%; font-family:'Comic Sans MS', cursive; color:#F00;   font-size:100%;\"> $prize</p>";
 	echo "<a href=\"#\"><img src=\"prodimg/Buy1.png\" width=\"35%\" height=\"15%\" style=\"position:absolute; left:2%; top:87%; \" onclick=\"prod1('prod123".$i."')\" onmousedown=\"this.src='prodimg/Buy2.png'\" onmouseup=\"this.src='prodimg/Buy1.png'\"></a>";
+	}
+	else
+	{
+	echo "<p style=\"position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;\"> $name</p>";
+	echo "<p style=\"position:absolute; left:8%; top:72%; font-family:'Comic Sans MS', cursive; color:#555;   font-size:100%; text-decoration:line-through;\"> $prize</p>";
+		echo "<p style=\"position:absolute; left:60%; top:72%; font-family:'Comic Sans MS', cursive;   color:#F00; font-size:100%;\"> $prize1</p>";
+	echo "<a href=\"#\"><img src=\"prodimg/Buy1.png\" width=\"35%\" height=\"15%\" style=\"position:absolute; left:2%; top:87%; \" onclick=\"prod1('prod123".$i."')\" onmousedown=\"this.src='prodimg/Buy2.png'\" onmouseup=\"this.src='prodimg/Buy1.png'\"></a>";
+	echo "<p style=\"position:absolute; left:42%; top:83%; font-family:'Comic Sans MS', cursive;   color:#F00; font-size:80%;\"> ($discount)</p>";
+	}
 	echo "</div>";	
 	echo "</a>";
 	$l=$l+20.2;
