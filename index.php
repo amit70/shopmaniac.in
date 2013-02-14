@@ -1502,8 +1502,8 @@ echo "<input type=\"hidden\" name=\"pid1\" value=\"1\" >";
  <div  style="position:absolute; left:3%; top:15%;width:19%; height:83%; background-color:#fafafa;">
   <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
   <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;">Spykar Casual Shirt</p>
-  <p style="position:absolute;  left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%; text-decoration:line-through;">Rs.800 </p>
-  <p style="position:absolute; left:46%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">Rs.400 </p>
+  <p style="position:absolute;  left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%; text-decoration:line-through;">Rs.400 </p>
+  <p style="position:absolute; left:46%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">Rs.200 </p>
 <img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('a')"/>
   </div></a>
   
@@ -1864,6 +1864,8 @@ echo "<input type=\"text\" name=\"contact1\" id=\"contact1\" style=\"position:ab
 
 
 <a href="mycredits.php" onmouseover="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:19%; top:39%; font-family:'Comic Sans MS', cursive" >MyCredits</a>
+
+<a href="cancelorder.php" onmouseover="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:36%; top:53%; font-family:'Comic Sans MS', cursive" >Cancel Order</a>
 <div id="apDiv40"></div>
 </div>
 
