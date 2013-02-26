@@ -1368,6 +1368,34 @@ else if("Choose Category"==0 && "Choose Size"==0 && "Choose Brand"==0 && "Price 
 }
 
 ?>
+
+<?php
+
+$cate=array();
+$sizy=array();
+$brandy=array();
+$colory=array();
+
+$fetch1=mysql_query($qry1);
+$count1 = @mysql_num_rows($fetch1);
+
+	$v=0;
+while($row111 = mysql_fetch_array($fetch1))
+{
+	$cate[$v]=$row111['category'];
+	$sizy[$v]=$row111['size'];
+	$brandy[$v]=$row111['brand'];
+	$colory[$v]=$row111['color'];
+
+$v++;
+}
+
+
+
+echo var_export($brandy,true);
+
+
+?>
 <form action="http://localhost/shopmaniac/fsresponse.php" method="POST" name="filter" id="filter">
 <div style="position:absolute; left:1%; top:2%; width:19.5%; height:96%; ">
 <p style="position:absolute; left:10%; top:3%; font-family:'Comic Sans MS', cursive; color:#111;"><b>Category</b></p>
@@ -1382,38 +1410,37 @@ else if("Choose Category"==0 && "Choose Size"==0 && "Choose Brand"==0 && "Price 
 <?php
 if(strcmp($cat,"Choose Category")==0)
 {
+	if($category=="Half sleeves")
+	{
 	echo "<option>Choose Category</option>
   <option value=\"Half Sleeves\">Half Sleeves($counta)</option>
-  <option value=\"Full Sleeves\">Full Sleeves($countb)</option>
-  <option value=\"Checks\">Checks()</option>";
+  <option value=\"Full Sleeves\" disabled>Full Sleeves($countb)</option>";
+	}
+	else
+	{
+		echo "<option>Choose Category</option>
+  <option value=\"Half Sleeves\" disabled>Half Sleeves($counta)</option>
+  <option value=\"Full Sleeves\" >Full Sleeves($countb)</option>";
+	}
 }
 else if(strcmp($cat,"Half Sleeves")==0)
 {
 	echo "<option>Choose Category</option>
   <option value=\"Half Sleeves\" selected=\"selected\">Half Sleeves($counta)</option>
-  <option value=\"Full Sleeves\">Full Sleeves($countb)</option>
-  <option value=\"Checks\">Checks()</option>";
+  <option value=\"Full Sleeves\">Full Sleeves($countb)</option>";
 }
 else if(strcmp($cat,"Full Sleeves")==0)
 {
 	echo "<option>Choose Category</option>
   <option value=\"Half Sleeves\">Half Sleeves($counta)</option>
-  <option value=\"Full Sleeves\" selected=\"selected\">Full Sleeves($countb)</option>
-  <option value=\"Checks\">Checks()</option>";
+  <option value=\"Full Sleeves\" selected=\"selected\">Full Sleeves($countb)</option>";
 }
-else if(strcmp($cat,"Checks")==0)
-{
-	echo "<option>Choose Category</option>
-  <option value=\"Half Sleeves\">Half Sleeves($counta)</option>
-  <option value=\"Full Sleeves\">Full Sleeves($countb)</option>
-  <option value=\"Checks\" selected=\"selected\">Checks()</option>";
-}
+
 else
 {
 	echo "<option>Choose Category</option>
   <option value=\"Half Sleeves\">Half Sleeves($counta)</option>
-  <option value=\"Full Sleeves\">Full Sleeves($countb)</option>
-  <option value=\"Checks\">Checks()</option>";
+  <option value=\"Full Sleeves\">Full Sleeves($countb)</option>";
 }
 ?>
    </select>
@@ -1427,38 +1454,32 @@ else
   
   <select name="size1" id="size1" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
 <?php
+
+
 if(strcmp($size1,"Choose Size")==0)
 {
-  echo "<option>Choose Size</option>
-  <option value=\"36\">36</option>
-  <option value=\"38\">38</option>
+	echo "<option>Choose Size</option>
+  <option value=\"38\" >38</option>
   <option value=\"40\">40</option>";
+	
+	 
 }
-else if(strcmp($size1,"36")==0)
-{
-  echo "<option>Choose Size</option>
-  <option value=\"36\" selected=\"selected\">36</option>
-  <option value=\"38\">38</option>
-  <option value=\"40\">40</option>";
-}
+
 else if(strcmp($size1,"38")==0)
 {
   echo "<option>Choose Size</option>
-  <option value=\"36\">36</option>
   <option value=\"38\" selected=\"selected\">38</option>
   <option value=\"40\">40</option>";
 }
 else if(strcmp($size1,"40")==0)
 {
   echo "<option>Choose Size</option>
-  <option value=\"36\">36</option>
   <option value=\"38\">38</option>
   <option value=\"40\" selected=\"selected\">40</option>";
 }
 else
 {
 	echo "<option>Choose Size</option>
-  <option value=\"36\">36</option>
   <option value=\"38\">38</option>
   <option value=\"40\">40</option>";
 }
@@ -1475,10 +1496,21 @@ else
 <?php
 if(strcmp($brand1,"Choose Brand")==0)
 {
+	$v=0;
+	if($brandy[$v]=="arrow")
+	{
   echo "<option>Choose Brand</option>
   <option value=\"arrow\">Arrow</option>
-  <option value=\"black berry\">Black Berry</option>";
- 
+  <option value=\"black berry\" disabled>Black Berry</option>";
+  $v++;
+	}
+	else
+	{
+		echo "<option>Choose Brand</option>
+  <option value=\"arrow\" disabled>Arrow</option>
+  <option value=\"black berry\" >Black Berry</option>
+   <option value=\"hollister\" >Hollister</option>";
+	}
 }
 else if(strcmp($brand1,"arrow")==0)
 {
@@ -1549,53 +1581,39 @@ else
   
   <select name="color" id="color" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
 <?php
-if(strcmp($col,"Select Color")==0)
+if(strcmp($col,"Choose Color")==0)
 {
-	echo "<option>Choose Color</option>
-  <option value=\"red\">Red</option>
-  <option value=\"blue\">Blue</option>
-  <option value=\"green\">Green</option>
-  <option value=\"black\">Black</option>";
+	if($color=="red")
+	{
+  	echo "<option>Choose Color</option>
+  <option value=\"red\" >Red</option>
+  <option value=\"blue\" disabled>Blue</option>";
+	}
+	else
+	{
+		echo "<option>Choose Color</option>
+  <option value=\"red\" disabled>Red</option>
+  <option value=\"blue\">Blue</option>";
+	}
 }
 else if(strcmp($col,"red")==0)
 {
 	echo "<option>Choose Color</option>
   <option value=\"red\" selected=\"selected\">Red</option>
-  <option value=\"blue\">Blue</option>
-  <option value=\"green\">Green</option>
-  <option value=\"black\">Black</option>";
+  <option value=\"blue\">Blue</option>";
 }
 else if(strcmp($col,"blue")==0)
 {
 	echo "<option>Choose Color</option>
   <option value=\"red\">Red</option>
-  <option value=\"blue\" selected=\"selected\">Blue</option>
-  <option value=\"green\">Green</option>
-  <option value=\"black\">Black</option>";
+  <option value=\"blue\" selected=\"selected\">Blue</option>";
 }
-else if(strcmp($col,"green")==0)
-{
-	echo "<option>Choose Color</option>
-  <option value=\"red\">Red</option>
-  <option value=\"blue\">Blue</option>
-  <option value=\"green\" selected=\"selected\">Green</option>
-  <option value=\"black\">Black</option>";
-}
-else if(strcmp($col,"black")==0)
-{
-	echo "<option>Choose Color</option>
-  <option value=\"red\">Red</option>
-  <option value=\"blue\">Blue</option>
- <option value=\"green\">Green</option>
-  <option value=\"black\" selected=\"selected\">Black</option>";
-}
+
 else
 {
 	echo "<option>Choose Color</option>
   <option value=\"red\">Red</option>
-  <option value=\"blue\">Blue</option>
-  <option value=\"green\">Green</option>
-  <option value=\"black\">Black</option>";
+  <option value=\"blue\">Blue</option>";
 }
 ?>
 </select>
