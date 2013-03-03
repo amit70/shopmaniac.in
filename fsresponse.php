@@ -1184,8 +1184,8 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'
 	$size1=$_POST['size1'];
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
-	$qry1="select * from products where subname='formal shirts' and  category='$cat' and color='$col' and brand='$brand1'";
-	$qry2="select count(*) from products where subname='formal shirts' and  category='$cat' and color='$col' and brand='$brand1'";
+	$qry1="select * from products where subname='formal shirts' and  category='$cat' and size='$size1' and brand='$brand1'";
+	$qry2="select count(*) from products where subname='formal shirts' and  category='$cat' and size='$size1' and brand='$brand1'";
 	$test=26;
 }
 else if(strcmp($_POST['range'],"Price Range")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1389,13 +1389,10 @@ while($row111 = mysql_fetch_array($fetch1))
 
 $v++;
 }
-
-
-
-echo var_export($brandy,true);
-
+//echo var_export($sizy,true);
 
 ?>
+
 <form action="http://localhost/shopmaniac/fsresponse.php" method="POST" name="filter" id="filter">
 <div style="position:absolute; left:1%; top:2%; width:19.5%; height:96%; ">
 <p style="position:absolute; left:10%; top:3%; font-family:'Comic Sans MS', cursive; color:#111;"><b>Category</b></p>
@@ -1408,39 +1405,159 @@ echo var_export($brandy,true);
   ?>
   <select name="category" id="category" style="position:absolute; left:2%; top:30%; width:90%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
 <?php
+$qryhs=mysql_query("select * from products where subname='formal shirts' and category='half sleeves'");
+ $counths=mysql_num_rows($qryhs);
+ 
+  $qryfs=mysql_query("select * from products where subname='formal shirts' and category='full sleeves'");
+ $countfs=mysql_num_rows($qryfs);
+$qqq=array();
+$enab=array();
+$disb=array();
+$cats=array("half sleeves","full sleeves");
 if(strcmp($cat,"Choose Category")==0)
 {
-	if($category=="Half sleeves")
+	for($i=0;$i<count($cats);$i++)
 	{
-	echo "<option>Choose Category</option>
-  <option value=\"Half Sleeves\">Half Sleeves($counta)</option>
-  <option value=\"Full Sleeves\" disabled>Full Sleeves($countb)</option>";
+		if (in_array($cats[$i], $cate))
+		{
+			$enab[$i]=$cats[$i];
+		}
+		else
+		{
+			$disb[$i]=$cats[$i];
+		}
 	}
-	else
+$qqq=$enab + $disb;
+	echo "<option>Choose Category</option>";
+	for($c=0;$c<count($qqq);$c++)
 	{
-		echo "<option>Choose Category</option>
-  <option value=\"Half Sleeves\" disabled>Half Sleeves($counta)</option>
-  <option value=\"Full Sleeves\" >Full Sleeves($countb)</option>";
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="half sleeves")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($counths)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countfs)</option>";
+			}
+		}
+		else
+		{
+			if($qqq[$c]=="half sleeves")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($counths)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($countfs)</option>";
+			}
+		}
 	}
 }
-else if(strcmp($cat,"Half Sleeves")==0)
+else if(strcmp($cat, $cats[0])==0)
 {
+	for($i=0;$i<count($cats);$i++)
+	{
+		if (in_array($cats[$i], $cate))
+		{
+			$enab[$i]=$cats[$i];
+		}
+		else
+		{
+			$disb[$i]=$cats[$i];
+		}
+	}
+$qqq=$enab + $disb;
 	echo "<option>Choose Category</option>
-  <option value=\"Half Sleeves\" selected=\"selected\">Half Sleeves($counta)</option>
-  <option value=\"Full Sleeves\">Full Sleeves($countb)</option>";
+	<option value=\"$cats[0]\" selected=\"selected\">$cats[0]($counths)</option>;";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="half sleeves")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($counths)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countfs)</option>";
+			}
+		}
+	}
 }
-else if(strcmp($cat,"Full Sleeves")==0)
+else if(strcmp($cat, $cats[1])==0)
 {
+	for($i=0;$i<count($cats);$i++)
+	{
+		if (in_array($cats[$i], $cate))
+		{
+			$enab[$i]=$cats[$i];
+		}
+		else
+		{
+			$disb[$i]=$cats[$i];
+		}
+	}
+$qqq=$enab + $disb;
 	echo "<option>Choose Category</option>
-  <option value=\"Half Sleeves\">Half Sleeves($counta)</option>
-  <option value=\"Full Sleeves\" selected=\"selected\">Full Sleeves($countb)</option>";
+	<option value=\"$cats[1]\" selected=\"selected\">$cats[1]($countfs)</option>;";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="half sleeves")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($counths)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countfs)</option>";
+			}
+		}
+	}
 }
 
 else
 {
-	echo "<option>Choose Category</option>
-  <option value=\"Half Sleeves\">Half Sleeves($counta)</option>
-  <option value=\"Full Sleeves\">Full Sleeves($countb)</option>";
+	for($i=0;$i<count($cats);$i++)
+	{
+		if (in_array($cats[$i], $cate))
+		{
+			$enab[$i]=$cats[$i];
+		}
+		else
+		{
+			$disb[$i]=$cats[$i];
+		}
+	}
+$qqq=$enab + $disb;
+	echo "<option>Choose Category</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="half sleeves")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($counths)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countfs)</option>";
+			}
+		}
+		else
+		{
+			if($qqq[$c]=="half sleeves")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($counths)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($countfs)</option>";
+			}
+		}
+	}
 }
 ?>
    </select>
@@ -1454,34 +1571,225 @@ else
   
   <select name="size1" id="size1" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
 <?php
-
-
+ $qry36=mysql_query("select * from products where subname='formal shirts' and size='36'");
+ $count36=mysql_num_rows($qry36);
+ 
+   $qry38=mysql_query("select * from products where subname='formal shirts' and size='38'");
+ $count38=mysql_num_rows($qry38);
+  $qry40=mysql_query("select * from products where subname='formal shirts' and size='40'");
+ $count40=mysql_num_rows($qry40);
+$qqq=array();
+$enab=array();
+$disb=array();
+$sizs=array("36","38","40");
 if(strcmp($size1,"Choose Size")==0)
 {
-	echo "<option>Choose Size</option>
-  <option value=\"38\" >38</option>
-  <option value=\"40\">40</option>";
+	for($i=0;$i<count($sizs);$i++)
+	{
+		if (in_array($sizs[$i], $sizy))
+		{
+			$enab[$i]=$sizs[$i];
+		}
+		else
+		{
+			$disb[$i]=$sizs[$i];
+		}
+	}
+$qqq=$enab + $disb;
+	echo "<option>Choose Size</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="36")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count36)</option>";
+			}
+			else if($qqq[$c]=="38")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count38)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count40)</option>";
+			}
+		}
+		else
+		{
+			if($qqq[$c]=="36")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($count36)</option>";
+			}
+			else if($qqq[$c]=="38")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($count38)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($count40)</option>";
+			}
+		}
+	}
 	
 	 
 }
 
-else if(strcmp($size1,"38")==0)
+else if(strcmp($size1, $sizs[0])==0)
 {
-  echo "<option>Choose Size</option>
-  <option value=\"38\" selected=\"selected\">38</option>
-  <option value=\"40\">40</option>";
+  for($i=0;$i<count($sizs);$i++)
+	{
+		if (in_array($sizs[$i], $sizy))
+		{
+			$enab[$i]=$sizs[$i];
+		}
+		else
+		{
+			$disb[$i]=$sizs[$i];
+		}
+	}
+$qqq=$enab + $disb;
+	echo "<option>Choose Size</option>
+	<option value=\"$sizs[0]\" selected=\"selected\">$sizs[0]($count36)</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="36")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count36)</option>";
+			}
+			else if($qqq[$c]=="38")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count38)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count40)</option>";
+			}
+		}
+		
+	}
 }
-else if(strcmp($size1,"40")==0)
+else if(strcmp($size1, $sizs[1])==0)
 {
-  echo "<option>Choose Size</option>
-  <option value=\"38\">38</option>
-  <option value=\"40\" selected=\"selected\">40</option>";
+  for($i=0;$i<count($sizs);$i++)
+	{
+		if (in_array($sizs[$i], $sizy))
+		{
+			$enab[$i]=$sizs[$i];
+		}
+		else
+		{
+			$disb[$i]=$sizs[$i];
+		}
+	}
+$qqq=$enab + $disb;
+	echo "<option>Choose Size</option>
+	<option value=\"$sizs[1]\" selected=\"selected\">$sizs[1]($count38)</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="36")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count36)</option>";
+			}
+			else if($qqq[$c]=="38")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count38)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count40)</option>";
+			}
+		}
+		
+	}
+}
+else if(strcmp($size1, $sizs[2])==0)
+{
+  for($i=0;$i<count($sizs);$i++)
+	{
+		if (in_array($sizs[$i], $sizy))
+		{
+			$enab[$i]=$sizs[$i];
+		}
+		else
+		{
+			$disb[$i]=$sizs[$i];
+		}
+	}
+$qqq=$enab + $disb;
+	echo "<option>Choose Size</option>
+	<option value=$sizs[2] selected=\"selected\">$sizs[2]($count40)</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="36")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count36)</option>";
+			}
+			else if($qqq[$c]=="38")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count38)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count40)</option>";
+			}
+		}
+		
+	}
 }
 else
 {
-	echo "<option>Choose Size</option>
-  <option value=\"38\">38</option>
-  <option value=\"40\">40</option>";
+	for($i=0;$i<count($sizs);$i++)
+	{
+		if (in_array($sizs[$i], $sizy))
+		{
+			$enab[$i]=$sizs[$i];
+		}
+		else
+		{
+			$disb[$i]=$sizs[$i];
+		}
+	}
+$qqq=$enab + $disb;
+	echo "<option>Choose Size</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="36")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count36)</option>";
+			}
+			else if($qqq[$c]=="38")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count38)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count40)</option>";
+			}
+		}
+		else
+		{
+			if($qqq[$c]=="36")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($count36)</option>";
+			}
+			else if($qqq[$c]=="38")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($count38)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($count40)</option>";
+			}
+		}
+	}
 }
 ?>
 </select>
@@ -1494,41 +1802,223 @@ else
 <p style="position:absolute; left:10%; top:3%; font-family:'Comic Sans MS', cursive; color:#111;"><b>Brand</b></p>
  <select name="brand1" id="brand1" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
 <?php
+ $qryarrow=mysql_query("select * from products where subname='formal shirts' and brand='arrow'");
+ $countarrow=mysql_num_rows($qryarrow);
+ 
+   $qryblackberry=mysql_query("select * from products where subname='formal shirts' and brand='black berry'");
+ $countblackberry=mysql_num_rows($qryblackberry);
+ $qryhollister=mysql_query("select * from products where subname='formal shirts' and brand='hollister'");
+ $counthollister=mysql_num_rows($qryhollister);
+$qqq=array();
+$enab=array();
+$disb=array();
+$brands=array("arrow","black berry","Hollister");
 if(strcmp($brand1,"Choose Brand")==0)
 {
-	$v=0;
-	if($brandy[$v]=="arrow")
+	for($i=0;$i<count($brands);$i++)
 	{
-  echo "<option>Choose Brand</option>
-  <option value=\"arrow\">Arrow</option>
-  <option value=\"black berry\" disabled>Black Berry</option>";
-  $v++;
+		if (in_array($brands[$i], $brandy))
+		{
+			$enab[$i]=$brands[$i];
+		}
+		else
+		{
+			$disb[$i]=$brands[$i];
+		}
 	}
-	else
+$qqq=$enab + $disb;
+	echo "<option>Choose Brand</option>";
+	for($c=0;$c<count($qqq);$c++)
 	{
-		echo "<option>Choose Brand</option>
-  <option value=\"arrow\" disabled>Arrow</option>
-  <option value=\"black berry\" >Black Berry</option>
-   <option value=\"hollister\" >Hollister</option>";
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="arrow")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countarrow)</option>";
+			}
+			else if($qqq[$c]=="black berry")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countblackberry)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($counthollister)</option>";
+			}
+		}
+		else
+		{
+			if($qqq[$c]=="arrow")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($countarrow)</option>";
+			}
+			else if($qqq[$c]=="black berry")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($countblackberry)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($counthollister)</option>";
+			}
+		}
 	}
 }
-else if(strcmp($brand1,"arrow")==0)
+else if(strcmp($brand1,$brands[0])==0)
 {
-  echo "<option>Choose Brand</option>
-  <option value=\"arrow\" selected=\"selected\">Arrow</option>
-  <option value=\"black berry\">Black Berry</option>";
+  
+	for($i=0;$i<count($brands);$i++)
+	{
+		if (in_array($brands[$i], $brandy))
+		{
+			$enab[$i]=$brands[$i];
+		}
+		else
+		{
+			$disb[$i]=$brands[$i];
+		}
+	}
+	$qqq=$enab + $disb;
+ echo "<option>Choose Brand</option>
+  <option value=\"$brands[0]\" selected=\"selected\">$brands[0]($countarrow)</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="arrow")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countarrow)</option>";
+			}
+			else if($qqq[$c]=="black berry")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countblackberry)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($counthollister)</option>";
+			}
+		}
+		
+	}
 }
-else if(strcmp($brand1,"black berry")==0)
+else if(strcmp($brand1, $brands[1])==0)
 {
-  echo "<option>Choose Brand</option>
-  <option value=\"arrow\">Arrow</option>
-  <option value=\"black berry\" selected=\"selected\">Black Berry</option>";
+	for($i=0;$i<count($brands);$i++)
+	{
+		if (in_array($brands[$i], $brandy))
+		{
+			$enab[$i]=$brands[$i];
+		}
+		else
+		{
+			$disb[$i]=$brands[$i];
+		}
+	}
+	$qqq=$enab + $disb;
+ echo "<option>Choose Brand</option>
+  <option value=\"$brands[1]\" selected=\"selected\">$brands[1]($countblackberry)</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="arrow")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countarrow)</option>";
+			}
+			else if($qqq[$c]=="black berry")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countblackberry)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($counthollister)</option>";
+			}
+		}
+		
+	}
+}
+else if(strcmp($brand1, $brands[2])==0)
+{
+	for($i=0;$i<count($brands);$i++)
+	{
+		if (in_array($brands[$i], $brandy))
+		{
+			$enab[$i]=$brands[$i];
+		}
+		else
+		{
+			$disb[$i]=$brands[$i];
+		}
+	}
+	$qqq=$enab + $disb;
+ echo "<option>Choose Brand</option>
+  <option value=\"$brands[2]\" selected=\"selected\">$brands[2]($counthollister)</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="arrow")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countarrow)</option>";
+			}
+			else if($qqq[$c]=="black berry")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countblackberry)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($counthollister)</option>";
+			}
+		}
+		
+	}
 }
 else
 {
-	echo "<option>Choose Brand</option>
-  <option value=\"arrow\">Arrow</option>
-  <option value=\"black berry\">Black Berry</option>";
+	for($i=0;$i<count($brands);$i++)
+	{
+		if (in_array($brands[$i], $brandy))
+		{
+			$enab[$i]=$brands[$i];
+		}
+		else
+		{
+			$disb[$i]=$brands[$i];
+		}
+	}
+$qqq=$enab + $disb;
+	echo "<option>Choose Brand</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="arrow")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countarrow)</option>";
+			}
+			else if($qqq[$c]=="black berry")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countblackberry)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($counthollister)</option>";
+			}
+		}
+		else
+		{
+			if($qqq[$c]=="arrow")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($countarrow)</option>";
+			}
+			else if($qqq[$c]=="black berry")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($countblackberry)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($counthollister)</option>";
+			}
+		}
+	}
 }
 ?>
 </select>
@@ -1581,39 +2071,222 @@ else
   
   <select name="color" id="color" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
 <?php
+$qryred=mysql_query("select * from products where subname='formal shirts' and color='red'");
+ $countred=mysql_num_rows($qryred);
+ 
+ $qryblue=mysql_query("select * from products where subname='formal shirts' and color='blue'");
+ $countblue=mysql_num_rows($qryblue);
+$qrygreen=mysql_query("select * from products where subname='formal shirts' and color='green'");
+ $countgreen=mysql_num_rows($qrygreen);
+$qqq=array();
+$enab=array();
+$disb=array();
+$colors=array("red","green","blue");
 if(strcmp($col,"Choose Color")==0)
 {
-	if($color=="red")
+	for($i=0;$i<count($colors);$i++)
 	{
-  	echo "<option>Choose Color</option>
-  <option value=\"red\" >Red</option>
-  <option value=\"blue\" disabled>Blue</option>";
+		if (in_array($colors[$i], $colory))
+		{
+			$enab[$i]=$colors[$i];
+		}
+		else
+		{
+			$disb[$i]=$colors[$i];
+		}
 	}
-	else
+$qqq=$enab + $disb;
+	echo "<option>Choose Color</option>";
+	for($c=0;$c<count($qqq);$c++)
 	{
-		echo "<option>Choose Color</option>
-  <option value=\"red\" disabled>Red</option>
-  <option value=\"blue\">Blue</option>";
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="red")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countred)</option>";
+			}
+			else if($qqq[$c]=="blue")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countblue)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countgreen)</option>";
+			}
+		}
+		else
+		{
+			if($qqq[$c]=="red")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($countred)</option>";
+			}
+			else if($qqq[$c]=="blue")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($countblue)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($countgreen)</option>";
+			}
+		}
 	}
 }
-else if(strcmp($col,"red")==0)
+else if(strcmp($col, $colors[0])==0)
 {
+	for($i=0;$i<count($colors);$i++)
+	{
+		if (in_array($colors[$i], $colory))
+		{
+			$enab[$i]=$colors[$i];
+		}
+		else
+		{
+			$disb[$i]=$colors[$i];
+		}
+	}
+$qqq=$enab + $disb;
 	echo "<option>Choose Color</option>
-  <option value=\"red\" selected=\"selected\">Red</option>
-  <option value=\"blue\">Blue</option>";
+	<option value=\"$colors[0]\" selected=\"selected\">$colors[0]($countred)</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="red")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countred)</option>";
+			}
+			else if($qqq[$c]=="blue")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countblue)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countgreen)</option>";
+			}
+		}
+		
+	}
 }
-else if(strcmp($col,"blue")==0)
+else if(strcmp($col, $colors[1])==0)
 {
+	for($i=0;$i<count($colors);$i++)
+	{
+		if (in_array($colors[$i], $colory))
+		{
+			$enab[$i]=$colors[$i];
+		}
+		else
+		{
+			$disb[$i]=$colors[$i];
+		}
+	}
+$qqq=$enab + $disb;
 	echo "<option>Choose Color</option>
-  <option value=\"red\">Red</option>
-  <option value=\"blue\" selected=\"selected\">Blue</option>";
+	<option value=\"$colors[1]\" selected=\"selected\">$colors[1]($countblue)</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="red")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countred)</option>";
+			}
+			else if($qqq[$c]=="blue")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countblue)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countgreen)</option>";
+			}
+		}
+		
+	}
 }
-
+else if(strcmp($col, $colors[2])==0)
+{
+	for($i=0;$i<count($colors);$i++)
+	{
+		if (in_array($colors[$i], $colory))
+		{
+			$enab[$i]=$colors[$i];
+		}
+		else
+		{
+			$disb[$i]=$colors[$i];
+		}
+	}
+$qqq=$enab + $disb;
+	echo "<option>Choose Color</option>
+	<option value=\"$colors[2]\" selected=\"selected\">$colors[2]($countgreen)</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="red")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countred)</option>";
+			}
+			else if($qqq[$c]=="blue")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countblue)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countgreen)</option>";
+			}
+		}
+		
+	}
+}
 else
 {
-	echo "<option>Choose Color</option>
-  <option value=\"red\">Red</option>
-  <option value=\"blue\">Blue</option>";
+	for($i=0;$i<count($colors);$i++)
+	{
+		if (in_array($colors[$i], $colory))
+		{
+			$enab[$i]=$colors[$i];
+		}
+		else
+		{
+			$disb[$i]=$colors[$i];
+		}
+	}
+$qqq=$enab + $disb;
+	echo "<option>Choose Color</option>";
+	for($c=0;$c<count($qqq);$c++)
+	{
+		if(in_array($qqq[$c], $disb))
+		{
+			if($qqq[$c]=="red")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countred)</option>";
+			}
+			else if($qqq[$c]=="blue")
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countblue)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countgreen)</option>";
+			}
+		}
+		else
+		{
+			if($qqq[$c]=="red")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($countred)</option>";
+			}
+			else if($qqq[$c]=="blue")
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($countblue)</option>";
+			}
+			else
+			{
+			echo "<option value=\"$qqq[$c]\" >$qqq[$c]($countgreen)</option>";
+			}
+		}
+	}
 }
 ?>
 </select>
@@ -1630,7 +2303,8 @@ while($row = mysql_fetch_array($qry))
 {
 	$count=$row['count(*)'];
 }
-echo "<p style=\"position:absolute; left:0%; top:1%; font-family:'Comic Sans MS', cursive; font-weight:bold; font-size:150%;\">MEN'S FORMAL SHIRTS($count)</p><hr style=\"position:absolute; left:0%; top:85%; width:96%;\"/>";
+
+echo "<p style=\"position:absolute; left:0%; top:1%; font-family:'Comic Sans MS', cursive; font-weight:bold; font-size:150%;\">MEN'S FORMAL SHIRTS($count) $test </p><hr style=\"position:absolute; left:0%; top:85%; width:96%;\"/>";
 ?>
 </div>
 
