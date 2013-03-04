@@ -180,6 +180,18 @@ function submitform()
 {
     document.forms["filter"].submit();
 }
+function resetcat(){
+document.forms["filter"].elements["category"].selectedIndex = 0;
+}
+function resetsize(){
+document.forms["filter"].elements["size1"].selectedIndex = 0;
+}
+function resetbrand(){
+document.forms["filter"].elements["brand1"].selectedIndex = 0;
+}
+function resetcolor(){
+document.forms["filter"].elements["color"].selectedIndex = 0;
+}
 </script>
 <style type="text/css">
 <!--
@@ -1389,21 +1401,15 @@ while($row111 = mysql_fetch_array($fetch1))
 
 $v++;
 }
-//echo var_export($sizy,true);
+//echo var_export($brandy,true);
 
 ?>
 
 <form action="http://localhost/shopmaniac/fsresponse.php" method="POST" name="filter" id="filter">
 <div style="position:absolute; left:1%; top:2%; width:19.5%; height:96%; ">
 <p style="position:absolute; left:10%; top:3%; font-family:'Comic Sans MS', cursive; color:#111;"><b>Category</b></p>
-<?php
-  $qrya=mysql_query("select * from products where subname='formal shirts' and category='half sleeves'");
- $counta=mysql_num_rows($qrya);
- 
-  $qryb=mysql_query("select * from products where subname='formal shirts' and category='full sleeves'");
- $countb=mysql_num_rows($qryb);
-  ?>
-  <select name="category" id="category" style="position:absolute; left:2%; top:30%; width:90%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
+
+<select name="category" id="category" style="position:absolute; left:2%; top:30%; width:90%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
 <?php
 $qryhs=mysql_query("select * from products where subname='formal shirts' and category='half sleeves'");
  $counths=mysql_num_rows($qryhs);
@@ -1560,8 +1566,11 @@ $qqq=$enab + $disb;
 	}
 }
 ?>
-   </select>
- 
+ </select>
+ <?php
+ if($cat=="half sleeves" ||  $cat=="full sleeves")
+ echo "<button onclick=\"resetcat()\">Reset Brand</button>";
+?>
 </div>
 <div style="position:absolute; left:19.5%; top:2%; height:96%; width:0.3%; background-color:#F1F1F1;">
 </div>
@@ -1793,7 +1802,10 @@ $qqq=$enab + $disb;
 }
 ?>
 </select>
- 
+  <?php
+ if($size1=="36" ||  $size1=="38" || $size1=="40")
+ echo "<button onclick=\"resetsize()\">Reset Size</button>";
+?>
 </div>
 <div style="position:absolute; left:39.5%; top:2%; height:96%; width:0.3%; background-color:#F1F1F1;">
 </div>
@@ -1812,6 +1824,7 @@ $qqq=$enab + $disb;
 $qqq=array();
 $enab=array();
 $disb=array();
+
 $brands=array("arrow","black berry","Hollister");
 if(strcmp($brand1,"Choose Brand")==0)
 {
@@ -1932,7 +1945,7 @@ else if(strcmp($brand1, $brands[1])==0)
 			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($counthollister)</option>";
 			}
 		}
-		
+
 	}
 }
 else if(strcmp($brand1, $brands[2])==0)
@@ -2021,8 +2034,12 @@ $qqq=$enab + $disb;
 	}
 }
 ?>
+
 </select>
- 
+<?php
+ if($brand1=="arrow" ||  $brand1=="black berry" || $brand1=="Hollister")
+ echo "<button onclick=\"resetbrand()\">Reset Brand</button>";
+?>
 </div>
 <div style="position:absolute; left:58.5%; top:2%; height:96%; width:0.3%; background-color:#F1F1F1;">
 </div>
@@ -2290,6 +2307,10 @@ $qqq=$enab + $disb;
 }
 ?>
 </select>
+<?php
+ if($col=="red" ||  $col=="green" || $brand1=="blue")
+ echo "<button onclick=\"resetcolor()\">Reset Color</button>";
+?>
 </div>
 </form>
 </div>
