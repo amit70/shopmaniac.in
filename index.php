@@ -5,7 +5,9 @@ $_SESSION['uname']="";
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="navbar.css" rel="stylesheet" type="text/css" />
 <title>Untitled Document</title>
 <script src="javascript/jquery.js"></script>
 <script type="text/javascript" language="javascript">
@@ -18,8 +20,14 @@ function mytrol()
 
 function aaa(amit)
 {
+	var x=document.getElementById('srch').value;
+	if(x=="" || x==null || x=="search for your favourite brand and products")
+	{
+		alert("Please Enter Your Search");
+		return false;
+	}
     document.forms[amit].submit();
-}	
+}		
 
 function prod(aaa)
 {
@@ -49,6 +57,25 @@ function go(q)
 			document.getElementById('logdiv1').style.opacity=0.3;
 		}
 //----------------------------------------------------------------------------------------
+function emailcheck()
+{
+var x=document.forms["login123"]["email123"].value;
+if(x==null || x=="")
+{
+	alert("Please Enter E-Mail Address");
+	return false;
+}
+var atpos=x.indexOf("@");
+var dotpos=x.lastIndexOf(".");
+if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+  {
+  	alert("Not a valid E-Mail address");
+  	return false;
+  }
+	
+window.location.href = ("recovery.php?email=" + x);
+}
+
 function login1()
 {
 var x=document.forms["login123"]["email123"].value;
@@ -77,11 +104,10 @@ if (y==null || y=="")
 
 function reg1()
 {
-
 var x=document.forms["register"]["Username"].value;
 if (x==null || x=="")
   {
-  	alert("Username must be filled out");
+  	alert("Plese Enter Full Name");
   	return false;
   }
 
@@ -103,31 +129,7 @@ if(x!=y)
   		return false;	
 	}
 	
-  var x=document.forms["register"]["Name"].value;
-  if (x==null || x=="")
-  {
-  	alert("Name must be filled out");
-  	return false;
-  }
-var z=document.forms["register"]["address"].value;
-if (z==null || z=="")
-  {
-  	alert("Address must be filled out");
- 	return false;
-  }
-
-
-var x=document.forms["register"]["Telephone"].value;
-if (x==null || x=="")
-  {
-  	alert("Contact must be filled out");
-  	return false;
-  }
-  if(isNaN(x))
- {
-	 alert("Contact Must be Numerical");
-	 return false;
- }
+  
 var x=document.forms["register"]["email"].value;
 if(x==null || x=="")
 {
@@ -141,8 +143,15 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
   	alert("Not a valid E-Mail address");
   	return false;
   }
-document.forms["register"].submit();
-}		
+if(document.getElementById('male').checked || document.getElementById('female').checked)
+{
+	document.forms["register"].submit();
+}
+else
+{
+  alert("Plese select Gender");
+ }
+}	
 
 function contact123()
 {
@@ -160,8 +169,15 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
   	alert("Not a valid E-Mail address");
   	return false;
   }
-document.forms["contactaaa"].submit();
-}	
+if(document.getElementById('male').checked || document.getElementById('female').checked)
+{
+	document.forms["register"].submit();
+}
+else
+{
+  alert("Plese select Gender");
+ }
+}		
 
 
 //------------------------------------------------------------------------
@@ -221,7 +237,7 @@ var lnk=new Array(4);
 			window.setTimeout("nx(i)",500);
 		}
 	}
-	window.setInterval("next()",3000);
+	window.setInterval("next()",5000);
 
 	
 		
@@ -235,6 +251,7 @@ body {
             font-size: 100%;
             background-color: #fff;
             margin: 0;
+			
 			}
 			
 			#container {
@@ -242,239 +259,23 @@ body {
             width: 420px;
             margin: 0px auto;
             padding: 200px;
-			
     height:0px;
+	
+	 background-color\9:#fff;
+            width\9: 420px;
+            margin\9: 0px auto;
+            padding\9: 200px;
+    height\9:0px;
+	
         }
+		#container a:visited{
+				text-decoration:none; color:transparent;
+			}
+			#container a:active{
+				text-decoration: none; color:transparent;
+			}
 			/* The CSS Code for the menu starts here */
-			.nav, .nav ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	line-height: 1;
-	z-index:1000;
-}
-
-/* The main container */
-.nav {
-	/* Layout and positioning */
-	display: block;
-	position: relative;
-	height: 37px;
-	width: 196%; /* CHANGE this if you want another width or remove it if you want the width of the container */
-	left:-200px;
-	top:-190px;
-
-	border-radius: 3px;
-	border: 1px solid #c1c1c1;
-
-	/* Background and effects */
-	background: #000; /* Background for IE9 and older browsers */
-	background:#000; /* Background for Chrome & Safari */
-	background-color: -moz-linear-gradient(top, #e1e1e1, #f4f4f4); /* Background for Firefox */
-	background: -o-linear-gradient(bottom, #e1e1e1, #f4f4f4); /* Background for Opera */
-	background: -ms-linear-gradient(bottom, #e1e1e1, #f4f4f4); /* Background for Internet Explorer 10 */
-	box-shadow: inset 0 1px 0 #fff;
-}
-
-.nav>li {
-	display: block;
-	position: relative;
-	float: left;
-	margin: 0;
-	padding: 0 1px 0 0;
-	
-}
-
-/* The main navigation links */
-.nav>li>a {
-	/* Layout */
-	display: block;
-	padding: 11px 20px;
-
-	/* Typography */
-	font-family:"Comic Sans MS", cursive;
-	font-size: 77%;
-	font-weight:normal;
-	text-decoration: none;
-	color: #fff;
-	
-	/* Effects */
-	-webkit-transition: all .3s;
-	-moz-transition: all .3s;
-	-ms-transition: all .3s;
-	-o-transition: all .3s;
-	transition: all .3s;
-	
-}
-
-/* The hover state of the navigation links */
-.nav>li>a:hover, .nav>li:hover>a {
-	background: #000;
-
-	
-}
-
-
-
-.nav>.dropdown>a {
-	padding-right: 26px;
-	
-}
-
-/* The arrow indicating a dropdown menu */
-.nav>.dropdown>a::after {
-	 content: "";
-	 position: absolute;
-	 top: 14px;
-	 right: 11px;
-	 width: 4px;
-	 height: 4px;
-	 border-bottom: 1px solid #9a9a9a;
-	 border-right: 1px solid #9a9a9a;
-	 -webkit-transform: rotate(45deg);
-	 -ms-transform: rotate(45deg);
-	 -moz-transform: rotate(45deg);
-	 -o-transform: rotate(45deg);
-
-	}
-
-/* Changing the color of the arrow on hover */
-.nav>.dropdown>a:hover::after, .nav>.dropdown:hover>a::after {
-	border-color: #C60;
-	
-}
-
-.nav ul {
-	position: relative;
-	position: absolute;
-	left: -9999px;
-	display: block;
-
-}
-
-/* Level 1 submenus */
-.nav>li>ul {
-	padding-top: 0px;
-	z-index: 99;
-	border-top: 1px solid #c9c9c9;
-	top: 34px;
-	
-	
-
-}
-
-/* Making the level 1 submenu to appear on hover */
-.nav>li:hover>ul {
-	left: -1px;
-	
-}
-
-/* Level 2+ submenus */
-.nav ul ul {
-	left: -9999px;
-	top: 0px;
-	z-index: 999;
-	
-}
-
-/* Making the level 2+ submenu to appear on hover */
-.nav ul>li:hover>ul {
-	left: 120px;
-	top: -1px;
-	
-}
-
-/* The submenu link containers */
-.nav ul li {
-	position: relative;
-	display: block;
-	border-left: 1px solid #c1c1c1;
-	border-right: 1px solid #c1c1c1;
-
-	/* Creating the slide effect. The list elements which contain the links have 0 height. On hover, they will expand */
-	height: 0px;
-	-webkit-transition: height .3s;
-	-moz-transition: height .3s;
-	-o-transition: height .3s;
-	-ms-transition: height .3s;
-	
-}
-
-/* Expanding the list elements which contain the links */
-.nav li:hover>ul>li {
-	height: 30px;
-	
-}
-
-.nav ul li:hover>ul>li:first-child {
-	height: 26px;
-	
-}
-
-/* The links of the submenus */
-.nav ul li a {
-	/* Layout */
-	display: block;
-	width: 90px;
-	padding: 6px 10px 6px 20px;
-	border-bottom: 0px solid #e1e1e1;
-
-	/* Typography */
-	font-size: 12px;
-	color: #606060;
-	font-family:"Comic Sans MS", cursive;
-	text-decoration: none;
-	
-	
-	/* Background & effects */
-	background: #fff;
-	-webkit-transition: background .3s;
-	-moz-transition: background .3s;
-	-ms-transition: background .3s;
-	-o-transition: background .3s;
-	transition: background .3s;
-}
-
-/* The hover state of the links */
-.nav ul li>a:hover, .nav ul li:hover>a {
-	background: #EBEBEB;
-	color: #C60;
-	
-}
-
-.nav ul ul>li:first-child>a {
-	border-top: 1px solid #c1c1c1;
-	
-}
-
-.nav ul>li:last-child>a {
-	border-bottom: 1px solid #c1c1c1;
-	
-}
-
-
-/* The arrow indicating a level 2+ submenu */
-.nav ul>.dropdown>a::after {
-	content: "";
-	 position: absolute;
-	 top: 10px;
-	 right: 8px;
-	 width: 4px;
-	 height: 4px;
-
-	 border-bottom: 1px solid #a6a6a6;
-	 border-right: 1px solid #a6a6a6;
-	 -webkit-transform: rotate(-45deg);
-	 -ms-transform: rotate(-45deg);
-	 -moz-transform: rotate(-45deg);
-	 -o-transform: rotate(-45deg);
-}
-
-.nav ul>.dropdown:hover>a::after, .nav ul>.dropdown>a:hover::after {
-	border-color: #C60;
-	
-}
-		
+			
 			
 			#trans {
 				visibility:hidden;
@@ -971,11 +772,11 @@ p.ppp{
 
 #apDiv18 {
 	position:relative;
-	width:195%;
+	width:196%;
 	height:400px;
 	z-index:12;
 	left: -200px;
-	top: -1050px;
+	top: -880px;
 	background-color:#333;
 	border-style:solid;
 	border-width:thin;
@@ -1060,14 +861,14 @@ p.ppp{
 #apDiv29 {
 	position:relative;
 	width:196%;
-	height:260px;
+	height:340px;
 	z-index:13;
 	left: -200px;
-	top: -560px;
+	top: -545px;
 	background-color:#fff;
 	border-style:solid;
 	border-width:thin;
-	border-color:#F4F4F4;
+	border-color:#fff;
 	float:left;
 
 }
@@ -1076,45 +877,45 @@ p.ppp{
 	width:100%;
 	height:37px;
 	z-index:1;
-	background-color:#F6F6F6;
+	background-color:#EBEBEB;
 }
 #apDiv31 {
 	position:relative;
 width:196%;
-	height:260px;
+	height:340px;
 	z-index:13;
 	left: -200px;
-	top: -303px;
+	top: -185px;
 	background-color:#fff;
 	border-style:solid;
 	border-width:thin;
-	border-color:#F4F4F4;
+	border-color:#fff;
 }
 #apDiv32 {
 	position:absolute;
 	width:100%;
 	height:37px;
 	z-index:1;
-	background-color:#F6F6F6;
+	background-color:#EBEBEB;
 }
 #apDiv33 {
 	position:relative;
 	width:196%;
-	height:260px;
+	height:340px;
 	z-index:13;
 	left:-200px;
-	top: -298px;
+	top: -165px;
 	background-color:#fff;
 	border-style:solid;
 	border-width:thin;
-	border-color:#F4F4F4;
+	border-color:#fff;
 }
 #apDiv34 {
 	position:absolute;
 	width:100%;
 	height:37px;
 	z-index:1;
-	background-color:#F6F6F6;
+	background-color:#EBEBEB;
 }
 #apDiv35 {
 	position:relative;
@@ -1122,7 +923,7 @@ width:196%;
 	height:382px;
 	z-index:14;
 	left: -200px;
-	top: -295px;
+	top: -140px;
 	border-color:#fff;
 	border-style:solid;
 	border-width:thin;
@@ -1134,7 +935,7 @@ width:196%;
 	height:382px;
 	z-index:13;
 	left:-60px;
-	top: -675px;
+	top: -520px;
 	border-style:solid;
 	border-width:thin;
 	border-color:#EBEBEB;
@@ -1142,11 +943,10 @@ width:196%;
 #apDiv37 {
 	position:relative;
 	width:32%;
-		height:382px;
-
+	height:382px;
 	z-index:14;
 	left:486px;
-	top: -1060px;
+	top: -900px;
 	border-style:solid;
 	border-width:thin;
 	border-color:#EBEBEB;
@@ -1187,30 +987,35 @@ width:196%;
 #apDiv19 {
 	position:relative;
 	width:196%;
-	height:260px;
+	height:340px;
 	z-index:13;
 	left:-200px;
-	left:-200px;
-	top: -293px;
+	top: -150px;
 	background-color:#fff;
 	border-style:solid;
 	border-width:thin;
-	border-color:#F4F4F4;
+	border-color:#fff;
 }
 #apDiv41 {
 	position:absolute;
 	width:100%;
 	height:37px;
 	z-index:1;
-	background-color:#F0F0F0;
+	background-color:#EBEBEB;
 }
 #apDiv42 {
-position:relative;
+	position:relative;
 	width:194%;
 	height:80px;
 	left:-200px;
 	z-index:1;
 	top: -200px;
+position\9:relative;
+	width\9:194%;
+	height\9:80px;
+	left\9:-200px;s
+	z-index\9:1;
+	top\9: -200px;
 }
 	
 #apDiv43 
@@ -1228,7 +1033,7 @@ position:relative;
 #logdiv
 {
 	position:fixed;
-	top:42%;
+	top:65%;
 	left:38%;
 	width:80%;
 	height:85%;
@@ -1267,10 +1072,10 @@ position:relative;
 	position:relative;
 	left:-200px;
 	top:-185px;
-	width:163%;
+	width:197%;
 	height:380px;
 	z-index:0;
-}
+	}
 
 #wid
 {
@@ -1295,7 +1100,6 @@ position:relative;
 <?php
 $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
-
 ?>
 
 <div name="transdiv" id="logdiv">
@@ -1304,7 +1108,7 @@ mysql_select_db("eshop",$aaa);
 <div id="logdiv1" onmouseover="login()">
 <h3 align="center"><font face="Comic Sans MS, cursive" color="#666666">LOGIN</font></h3>
 <h4 align="center"><font face="Comic Sans MS, cursive" color="#666666">For Existing Users</font></h4>
-<form method="POST" action="http://localhost/shopmaniac/check.php"  name="login123">
+<form method="POST" action="check.php"  name="login123">
   <table align="left" border="0" cols=2 cellspacing="3" style="position:absolute; left:10%; top:20%">
   <tr>
   <td height="50"><font color="#666666" face="Comic Sans MS, cursive">Email Id:</font></td>
@@ -1318,22 +1122,25 @@ mysql_select_db("eshop",$aaa);
   echo "<input type=\"password\" name=\"pwd123\" id=\"pwd123\" />";
   ?>
   </td>
-  </tr>
+  </tr>    
   </table>
   <?php
   echo "<input type=\"hidden\" name=\"flag\" value=\"0\" />";
   ?>
- <a href="#" onclick="login1()"><img src="prodimg/Login1.png" width="50%" height="15%" style="position:absolute; left:25%; top:88%;" onmousedown="this.src='prodimg/Login2.png'" onmouseup="this.src='prodimg/Login1.png'"/></a>
+ <a href="#" onclick="login1()"><img src="prodimg/Login1.png" width="45%" height="12%" style="position:absolute; left:25%; top:88%;" onmousedown="this.src='prodimg/Login2.png'" onmouseup="this.src='prodimg/Login1.png'"/></a>
+ <a href="#" onclick="emailcheck()" style="text-decoration:none; position:absolute; left:33%; top:39%; font-size:13px; color:#6D6D6D;" onmouseover="this.style.color='#DF7000'" onmouseout="this.style.color='#6D6D6D'">Forgot your Password?</a>
+
 </form>
+
 </div>
 
 <div id="logdiv2" onmouseover="reg()">
 <h3 align="center"><font face="Comic Sans MS, cursive" color="#666666">Register</font></h3>
 <h4 align="center"><font face="Comic Sans MS, cursive" color="#666666">For New Users</font></h4>
-<form method="POST" action="http://localhost/shopmaniac/Divert.php" name="register" >
+<form method="POST" action="Divert.php" name="register" >
   <table align="left" border="0" cols=2 cellspacing="5" style="position:absolute; left:10%; top:20%">
   <tr>
-  <td height="30"><font color="#666666" face="Comic Sans MS, cursive">Username:</font></td>
+  <td height="30"><font color="#666666" face="Comic Sans MS, cursive">Full Name:</font></td>
   <td height="30"><?php
   echo "<input type=\"text\" name=\"Username\" >";
   ?></td>
@@ -1352,32 +1159,23 @@ mysql_select_db("eshop",$aaa);
   ?></td>
   </tr>
   <tr>
-  <td height="30"><label for="Full Name"><font color="#666666" face="Comic Sans MS, cursive">Full Name:</font></label></td>
-  <td height="30"><?php
-  echo "<input type=\"text\" name=\"Name\" id=\"Name\" />";
-  ?></td>
-  </tr>
-  <tr>
-  <td height="30"><label><font color="#666666">Address:</font face="Comic Sans MS, cursive"></label></td>
-  <td height="30"><?php
-  echo "<textarea rows=\"4\" cols=\"16\" name=\"address\" id=\"address\"></textarea>";
-  ?></td>
-  </tr>
-  <tr>
-  <td height="30"><label for="Telephone"><font color="#666666" face="Comic Sans MS, cursive">Contact No:</font></label></td>
-  <td height="30"><?php
-  echo "<input type=\"text\" name=\"Telephone\" id=\"Telephone\" />";
-  ?></td>
-  </tr>
-  <tr>
   <td height="30"><label for="E-mail"><font color="#666666" face="Comic Sans MS, cursive">E-mail:</font></label></td>
   <td height="30"><?php
   echo "<input type=\"text\" name=\"email\" id=\"email\" />";
   ?></td>
   </tr>
+    <tr>
+  <td height="30"><label for="E-mail"><font color="#666666" face="Comic Sans MS, cursive">Gender:</font></label></td>
+  <td height="30"><?php
+  echo "<input type=\"radio\" name=\"radio\" id=\"male\" value=\"male\"/>Male";
+   echo "<input type=\"radio\" name=\"radio\" id=\"female\" value=\"female\"/>Female";
+  ?></td>
+  </tr>
   </table>
-  
-<a href="#" onclick="reg1()"><img src="prodimg/Register1.png" width="50%" height="15%" style="position:absolute; left:25%; top:85%;" onmousedown="this.src='prodimg/Register2.png'" onmouseup="this.src='prodimg/Register1.png'"/></a>
+  <?php
+  echo "<input type=\"hidden\" name=\"flag\" value=\"0\" />";
+  ?>
+<a href="#" onclick="reg1()"><img src="prodimg/Register1.png" width="45%" height="12%" style="position:absolute; left:25%; top:85%;" onmousedown="this.src='prodimg/Register2.png'" onmouseup="this.src='prodimg/Register1.png'"/></a>
 </form>
 </div>
 </div>
@@ -1386,14 +1184,15 @@ mysql_select_db("eshop",$aaa);
 <a href="#" ><img src="prodimg/Title.png" width="38%" height="100%" style="position:absolute; float:left; left:-2%; top:5%;" /></a>
 
 <div style="position:absolute; left:38.8%; top:50%; width:44%; height:49%; background-color:#DCDCDC; "></div>
-<form id="src1" name="src1" method="post" action="http://localhost/shopmaniac/search.php">
-    <label>
+<form id="src1" name="src1" method="post" action="search.php">
+     <label>
       <input type="text" name="srch" id="srch"  value="search for your favourite brand and products" style="position:absolute;  width: 33.3%; height: 33%; color:#D6D6D6; left:39.4%; top:55.2%; font-family:'Comic Sans MS', cursive"  onfocus="if (this.value == 'search for your favourite brand and products') this.value = 'search for your favourite brand and products';"
-      onkeydown="if(this.value=='search for your favourite brand and products') this.value=''" onblur="if (this.value == '') this.value = 'search for your favourite brand and products';">
+      onkeydown="if(this.value=='search for your favourite brand and products') this.value=''; this.style.color='#000'"  onblur="if (this.value == '') this.value = 'search for your favourite brand and products'; this.style.color='#D6D6D6'">
     </label>
    
   </form>
- <img src="prodimg/Search2.png" width="10%" height="54%" style="position:absolute; left:73%; top:51.2%;" onmouseover="this.src='prodimg/Search1.png'" onmouseout="this.src='prodimg/Search2.png'" onmousedown="this.src='prodimg/Search2.png'" onmouseup="this.src='prodimg/Search1.png'" onclick="aaa('src1')"/>
+<img src="prodimg/Search2.png" width="10%" height="54%" style="position:absolute; left:73%; top:51.2%;"  onmousedown="this.src='prodimg/Search1.png'" onmouseup="this.src='prodimg/Search2.png'" onclick="aaa('src1')"/>
+
 
 
 
@@ -1408,71 +1207,54 @@ echo "<p style=\"position:absolute; left:85%; top:75%; color:#555; font-size:75%
 
 <a href="#" onclick="logtr()"><img src="prodimg/Account11.png" style="position:absolute; left:94.5%; top:39%;width:6%;height:60%" onmousedown="this.src='prodimg/Account12.png'" onmouseup="this.src='prodimg/Account11.png'"></a>
 
-<span style="float:left; position:absolute; left:50%; top:1%; font-size:80%; color:#717171; font-family:'Comic Sans MS', cursive;">Hi,Guest    | </span>
+<span style="float:left; position:absolute; left:47%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive;">Hi,Guest    | </span>
 
 
-<span style=" float:left; position:absolute; left:61%; top:1%; font-size:80%; color:#717171; font-family:'Comic Sans MS', cursive">9773436955(24x7)&nbsp;&nbsp;&nbsp;|
+<span style=" float:left; position:absolute; left:57.5%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive">9773436955(24x7)&nbsp;&nbsp;&nbsp;|
 </span>  
- <img src="Fullscreen capture 7182012 14722 PM.gif"  style="position:absolute; left:58%; top:1%; height:15%; width:2%;"/>
+ <img src="prodimg/Fullscreen capture 7182012 14722 PM.gif"  style="position:absolute; left:54.5%; top:5%; height:15%; width:2%;"/>
 
 
-<span style=" float:left; position:absolute; left:80%; top:1%; font-size:70%; color:#717171; font-family:'Comic Sans MS', cursive">amit.rajula@gmail.com |</span>
-<img src="Email-Lists-Canada-11.jpg" style="position:absolute; height:15%; width:2%; left:77%; top:1%;"/>
+<span style=" float:left; position:absolute; left:77.5%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive">support@shopmaniac.in |</span>
+<img src="prodimg/Email-Lists-Canada-11.jpg" style="position:absolute; height:18%; width:3%; left:74%; top:3%;"/>
 
 <p style="position:absolute; left:95.5%; top:-16%; font-size:80%; font-family:'Comic Sans MS', cursive"><a href="#" onmouseover="this.style.color = '#DF7000'" onmouseout="this.style.color = '#717171'" onclick="logtr()" style="text-decoration:none; color:#717171;">SignIn</a></p>
 </div>
 
-
-<ul class="nav">
-	<li class="dropdown"><a href="#">Men</a>
+<div id='cssmenu'>
 	<ul>
-    
-    <li class="dropdown"><a href="#">Mens Apprels</a>
-    <ul>
-    <li><a href="#">Casual Shirts</a></li>
-    <li><a href="#">Jeans</a></li>
-    <li><a href="#">Trousers</a></li>
-    <li><a href="#">T-Shirts</a></li>
+		<li><a href='#'><span>Men</span></a>
+		 <ul>
+				<li style="position:absolute; left:0%; top:-5%;"><a href='#'><span><h3><b>Mens Apparels</b></h6></span></a> </li>
+            	<li style="position:absolute; left:0%; top:12%;"><a href='#'><span>Casual Shirt</span></a></li>
+             	<li style="position:absolute; left:0%; top:24%;"><a href='formalshirts.php'><span>Formal Shirt</span></a></li>
+	            <li style="position:absolute; left:0%; top:36%;"><a href='#'><span>Trousers</span></a></li>
+   		        <li style="position:absolute; left:0%; top:48%;"><a href='#'><span>Jeans</span></a></li>
+        	    <li style="position:absolute; left:0%; top:60%;" ><a href='#'><span>Tees</span></a></li>
+               
+          		<li style="position:absolute; left:22%; top:-5%;"><a href='#'><span><h3><b>Mens Footwear</b></h3></span></a></li>
+            	<li style="position:absolute; left:22%; top:12%;"><a href='#'><span>Sports Shoes</span></a></li>
+             	<li style="position:absolute; left:22%; top:24%;"><a href='#'><span>Formal Shoes</span></a></li>
+              	<li style="position:absolute; left:22%; top:36%;"><a href='#'><span>Casual Shoes</span></a></li>
+               	<li style="position:absolute; left:22%; top:48%;"><a href='#'><span>Slippers/Flipflops</span></a></li>
+                
+                <li style="position:absolute; left:44%; top:-5%;"><a href='#'><span><h3><b>Mens Accessories</b></h3></span></a></li>
+            	<li style="position:absolute; left:44%; top:12%;"><a href='#'><span>Sports Shoes</span></a></li>
+             	<li style="position:absolute; left:44%; top:24%;"><a href='#'><span>Formal Shoes</span></a></li>
+              	<li style="position:absolute; left:44%; top:36%;"><a href='#'><span>Casual Shoes</span></a></li>
+               	<li style="position:absolute; left:44%; top:48%;"><a href='#'><span>Slippers/Flipflops</span></a></li>
+			
+            <img src="prodimg/nikeshoes1.jpg" width="20%"  height="80%" style="position:absolute; left:78%; top:5%;"/>
+          </ul>
+		</li>
+        
+        <li style="position:absolute; left:10%; top:0%;"><a href='#'><span>Men</span></a>
+        	 <ul >
+				<li><a href='#'><span><b>Mens Apparels</b></span></a> </li>
+             </ul>   
+        </li>
     </ul>
-    </li>
-    
-    <li class="dropdown"><a href="#">Mens Footwear</a>
-  <ul>
-     <li><a href="#">Casual Shoes</a></li>
-    <li><a href="#">Formal Shoes</a></li>
-    <li><a href="#">Sports Shoes</a></li>
-    <li><a href="#">Sf</a></li>
-  </ul>
-    </li>
-    
-   </ul>
-	</li>
-    
-    
-    <li class="dropdown"><a href="#">Accessories</a>
-	<ul>
-    <li><a href="#">Wallets</a></li>
-    <li><a href="#">Googles</a></li>
-    <li><a href="#">Caps</a></li>
-    <li><a href="#">Ties n Couplings</a></li>
-    </ul>
-	</li>
-    
-     <li class="dropdown"><a href="#">Homeware</a>
-	<ul>
-    <li><a href="#">Microwave</a></li>
-    <li><a href="#">Cannisters</a></li>
-    </ul>
-	</li>
-    
-    <li class="dropdown"><a href="#">Brand</a>
-	<ul>
-    <li><a href="#">Levis</a></li>
-    <li><a href="#">Pepe Jeans</a></li>
-    </ul>
-	</li>
-    
-</ul>
+</div>
 
 <div id="widget">
 <a href="#"><img src="prodimg/prev.png" style="position:absolute;left:0;top:50%;width:3%;height:10%;z-index:150;margin-top:-5%;" onclick="prev()"  onmousedown="this.src='prodimg/prev1.png'" onmouseup="this.src='prodimg/prev.png'"/></a>
@@ -1485,75 +1267,75 @@ echo "<p style=\"position:absolute; left:85%; top:75%; color:#555; font-size:75%
 
 
 
-<div id="apDiv24" style="border-style:solid; border-width:thin; border-color:#EBEBEB;">
+<div id="apDiv24" style="border-style:solid; border-width:thin; border-color:#EBEBEB; z-index:-1000; visibility:hidden;">
 <img src="prodimg/tupp.png" width="100%" height="33%" style="position:absolute; left:0%; top:0%;" />
 </div>
 
-<div id="apDiv29">
+<div id="apDiv29" >
  <div id="apDiv30">
   <p style="font-size:230%; position:relative; left:1%; top:-120%; font-family:'Comic Sans MS', cursive; color:#111; font-variant:small-caps;">Apparels</p>
   </div>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="a" name="a">
+  <form method="post" action="prodinfo.php" id="a" name="a">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"1\" >";
 ?>	
 </form>
  <a href="#" onclick="prod('a')">
- <div  style="position:absolute; left:3%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;">Spykar Casual Shirt</p>
-  <p style="position:absolute;  left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%; text-decoration:line-through;">Rs.400 </p>
-  <p style="position:absolute; left:46%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">Rs.200 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('a')"/>
+ <div  style="position:absolute; left:2%; top:16%;width:19%; height:83%; background-color:#fff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%; " />
+  <p style="position:absolute; top:75%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;">Spykar Casual Shirt</p>
+  <p style="position:absolute;  left:43%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;   font-size:90%; text-decoration:line-through;">400 </p>
+  <p style="position:absolute; left:20%; top:85%; font-family:'Comic Sans MS', cursive; color:#F00; font-size:90%;">200 </p>
+  <p style="position:absolute; left:63%; top:89%; font-family:'Comic Sans MS', cursive; color:#999; font-size:60%;">(50% Off)</p>
+
   </div></a>
   
-<form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="b" name="b">
+<form method="post" action="prodinfo.php" id="b" name="b">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('b')">
-<div style="position:absolute; left:22.5%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('b')"/>
+<div style="position:absolute; left:22.5%; top:16%;width:19%; height:83%; background-color:#ffff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
+
   </div></a>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="c" name="c">
+  <form method="post" action="prodinfo.php" id="c" name="c">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('c')">
-<div style="position:absolute; left:42%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('c')"/>
+<div style="position:absolute; left:42%; top:16%;width:19%; height:83%; background-color:#fff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
   </div></a>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="d" name="d">
+  <form method="post" action="prodinfo.php" id="d" name="d">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('d')">
-<div style="position:absolute; left:61.5%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('d')"/>
+<div style="position:absolute; left:61.5%; top:16%;width:19%; height:83%; background-color:#fff;">
+ <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
+
   </div></a>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="e" name="e">
+  <form method="post" action="prodinfo.php" id="e" name="e">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('e')">
-<div style="position:absolute; left:81%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('e')"/>
+<div style="position:absolute; left:81%; top:16%;width:19%; height:83%; background-color:#fff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
+
   </div></a>
   </div>
 
@@ -1561,205 +1343,207 @@ echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
   <div id="apDiv32">
   <p style="font-size:230%; position:relative; left:1%; top:-120%; font-family:'Comic Sans MS', cursive; color:#111; font-variant:small-caps;">Accessories</p>
   </div>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="f" name="f">
+   <form method="post" action="prodinfo.php" id="f" name="f">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"1\" >";
 ?>	
 </form>
  <a href="#" onclick="prod('f')">
- <div  style="position:absolute; left:3%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;">Spykar Casual Shirt</p>
-  <p style="position:absolute;  left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%; text-decoration:line-through;">Rs.800 </p>
-  <p style="position:absolute; left:46%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">Rs.400 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('f')"/>
+ <div  style="position:absolute; left:2%; top:16%;width:19%; height:83%; background-color:#fff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%; " />
+  <p style="position:absolute; top:75%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;">Spykar Casual Shirt</p>
+  <p style="position:absolute;  left:43%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;   font-size:90%; text-decoration:line-through;">400 </p>
+  <p style="position:absolute; left:20%; top:85%; font-family:'Comic Sans MS', cursive; color:#F00; font-size:90%;">200 </p>
+  <p style="position:absolute; left:63%; top:89%; font-family:'Comic Sans MS', cursive; color:#999; font-size:60%;">(50% Off)</p>
+
   </div></a>
   
-<form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="g" name="g">
+<form method="post" action="prodinfo.php" id="g" name="g">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('g')">
-<div style="position:absolute; left:22.5%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('g')"/>
+<div style="position:absolute; left:22.5%; top:16%;width:19%; height:83%; background-color:#ffff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
+
   </div></a>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="h" name="h">
+  <form method="post" action="prodinfo.php" id="h" name="h">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('h')">
-<div style="position:absolute; left:42%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('h')"/>
+<div style="position:absolute; left:42%; top:16%;width:19%; height:83%; background-color:#fff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
   </div></a>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="i" name="i">
+  <form method="post" action="prodinfo.php" id="i" name="i">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('i')">
-<div style="position:absolute; left:61.5%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('i')"/>
+<div style="position:absolute; left:61.5%; top:16%;width:19%; height:83%; background-color:#fff;">
+ <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
+
   </div></a>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="j" name="j">
+  <form method="post" action="prodinfo.php" id="j" name="j">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('j')">
-<div style="position:absolute; left:81%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('j')"/>
+<div style="position:absolute; left:81%; top:16%;width:19%; height:83%; background-color:#fff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
+
   </div></a>
-</div>
+  </div>
+
 
 <div id="apDiv33">
   <div id="apDiv34">
   <p style="font-size:230%; position:relative; left:1%; top:-120%; font-family:'Comic Sans MS', cursive; color:#111; font-variant:small-caps;">Home-Kitchen</p>
 </div>
-<form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="k" name="k">
+ <form method="post" action="prodinfo.php" id="k" name="k">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"1\" >";
 ?>	
 </form>
  <a href="#" onclick="prod('k')">
- <div  style="position:absolute; left:3%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;">Spykar Casual Shirt</p>
-  <p style="position:absolute;  left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%; text-decoration:line-through;">Rs.800 </p>
-  <p style="position:absolute; left:46%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">Rs.400 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('k')"/>
+ <div  style="position:absolute; left:2%; top:16%;width:19%; height:83%; background-color:#fff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%; " />
+  <p style="position:absolute; top:75%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;">Spykar Casual Shirt</p>
+  <p style="position:absolute;  left:43%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;   font-size:90%; text-decoration:line-through;">400 </p>
+  <p style="position:absolute; left:20%; top:85%; font-family:'Comic Sans MS', cursive; color:#F00; font-size:90%;">200 </p>
+  <p style="position:absolute; left:63%; top:89%; font-family:'Comic Sans MS', cursive; color:#999; font-size:60%;">(50% Off)</p>
+
   </div></a>
   
-<form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="l" name="l">
+<form method="post" action="prodinfo.php" id="l" name="l">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('l')">
-<div style="position:absolute; left:22.5%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('l')"/>
+<div style="position:absolute; left:22.5%; top:16%;width:19%; height:83%; background-color:#ffff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
+
   </div></a>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="m" name="m">
+  <form method="post" action="prodinfo.php" id="m" name="m">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('m')">
-<div style="position:absolute; left:42%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('m')"/>
+<div style="position:absolute; left:42%; top:16%;width:19%; height:83%; background-color:#fff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
   </div></a>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="n" name="n">
+  <form method="post" action="prodinfo.php" id="n" name="n">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('n')">
-<div style="position:absolute; left:61.5%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('n')"/>
+<div style="position:absolute; left:61.5%; top:16%;width:19%; height:83%; background-color:#fff;">
+ <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
+
   </div></a>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="o" name="o">
+  <form method="post" action="prodinfo.php" id="o" name="o">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('o')">
-<div style="position:absolute; left:81%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('o')"/>
+<div style="position:absolute; left:81%; top:16%;width:19%; height:83%; background-color:#fff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
+
   </div></a>
-</div>
+  </div>
 
 <div id="apDiv19">
   <div id="apDiv41">
   <p style="font-size:230%; position:relative; left:1%; top:-120%; font-family:'Comic Sans MS', cursive; color:#111; font-variant:small-caps;">Footwear</p>
 </div>
-<form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="p" name="p">
+ <form method="post" action="prodinfo.php" id="p" name="p">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"1\" >";
 ?>	
 </form>
  <a href="#" onclick="prod('p')">
- <div  style="position:absolute; left:3%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;">Spykar Casual Shirt</p>
-  <p style="position:absolute;  left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%; text-decoration:line-through;">Rs.800 </p>
-  <p style="position:absolute; left:46%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">Rs.400 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('p')"/>
+ <div  style="position:absolute; left:2%; top:16%;width:19%; height:83%; background-color:#fff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%; " />
+  <p style="position:absolute; top:75%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;">Spykar Casual Shirt</p>
+  <p style="position:absolute;  left:43%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;   font-size:90%; text-decoration:line-through;">400 </p>
+  <p style="position:absolute; left:20%; top:85%; font-family:'Comic Sans MS', cursive; color:#F00; font-size:90%;">200 </p>
+  <p style="position:absolute; left:63%; top:89%; font-family:'Comic Sans MS', cursive; color:#999; font-size:60%;">(50% Off)</p>
+
   </div></a>
   
-<form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="q" name="q">
+<form method="post" action="prodinfo.php" id="q" name="q">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('q')">
-<div style="position:absolute; left:22.5%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('q')"/>
+<div style="position:absolute; left:22.5%; top:16%;width:19%; height:83%; background-color:#ffff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
+
   </div></a>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="r" name="r">
+  <form method="post" action="prodinfo.php" id="r" name="r">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('r')">
-<div style="position:absolute; left:42%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('r')"/>
+<div style="position:absolute; left:42%; top:16%;width:19%; height:83%; background-color:#fff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
   </div></a>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="s" name="s">
+  <form method="post" action="prodinfo.php" id="s" name="s">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('s')">
-<div style="position:absolute; left:61.5%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('s')"/>
+<div style="position:absolute; left:61.5%; top:16%;width:19%; height:83%; background-color:#fff;">
+ <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
+
   </div></a>
-  <form method="post" action="http://localhost/shopmaniac/prodinfo.php" id="t" name="t">
+  <form method="post" action="prodinfo.php" id="t" name="t">
 <?php
 echo "<input type=\"hidden\" name=\"pid1\" value=\"7\" >";
 ?>	
 </form>  
 <a href="#" onclick="prod('t')">
-<div style="position:absolute; left:81%; top:15%;width:19%; height:83%; background-color:#fafafa;">
-  <img src="prodimg/p4.jpg" width="96%" height="60%" style="position:absolute; top:1%; left:2%;" />
-  <p style="position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
-  <p style="position:absolute; left:2%; top:65%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;">Rs.800 </p>
-<img src="prodimg/Buy1.png" width="35%" height="15%" style="position:absolute; left:2%; top:85%;" onmousedown="this.src='prodimg/Buy2.png'" onmouseup="this.src='prodimg/Buy1.png'" onclick="prod('t')"/>
+<div style="position:absolute; left:81%; top:16%;width:19%; height:83%; background-color:#fff;">
+  <img src="prodimg/p4.jpg" width="96%" height="75%" style="position:absolute; top:1%; left:2%;" />
+<p style="position:absolute; top:75%; left:30%; font-family:'Comic Sans MS', cursive;  color:#555; font-size:100%;">Pepe Jeans</p>
+  <p style="position:absolute; left:45%; top:85%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:90%;">800 </p>
+
   </div></a>
-</div>
+  </div>
+
 
 
 <div id="apDiv35">
@@ -1801,8 +1585,8 @@ while($row =mysql_fetch_array($qry))
 
 
 <div id="apDiv18">
-  <p class="shopmanaic"><u>Shopmanaic</u></p>
-<p class="myaccount"><u>My Acccount<u></p>
+  <p class="shopmanaic"><u>Shopmaniac</u></p>
+<p class="myaccount"><u>My Account<u></p>
 <p class="policies"><u>Policies<u></p>
 <p class="help"><u>Help<u></p>
 <p class="products"><u>Products<u></p><br />
@@ -1866,11 +1650,34 @@ echo "<input type=\"text\" name=\"contact1\" id=\"contact1\" style=\"position:ab
 <a href="mycredits.php" onmouseover="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:19%; top:39%; font-family:'Comic Sans MS', cursive" >MyCredits</a>
 
 <a href="cancelorder.php" onmouseover="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:36%; top:53%; font-family:'Comic Sans MS', cursive" >Cancel Order</a>
-<div id="apDiv40"></div>
+
+<hr style="position:absolute; left:0%; top:78%; border-style:dotted; width:75%; border-color:#575757;"/>
+<p style="position:absolute; left:3%; top:79%; font-family:'Comic Sans MS', cursive; font-size:100%; font-weight:bold; color:#818181;">Payment Methods</p>
+<img src="prodimg/pm_visa.jpg" width="5%"  style="position:absolute; left:3%; top:90%;" />
+<img src="prodimg/pm_mc.jpg" width="5%"  style="position:absolute; left:8.5%; top:90%;" />
+<img src="prodimg/pm_ae.jpg" width="5%" height="6%"  style="position:absolute; left:14%; top:90%;" />
+<img src="prodimg/pm_a.jpg" width="5%"  style="position:absolute; left:19.5%; top:90%;" />
+<img src="prodimg/cod.jpg" width="5%" height="6%" style="position:absolute; left:25%; top:90%;" />
+<img src="prodimg/nb.gif" width="6%" height="6%" style="position:absolute; left:31%; top:90%;" />
+
+<p style="position:absolute; left:50%; top:79%; font-family:'Comic Sans MS', cursive; font-size:100%; font-weight:bold; color:#818181;">Secured By</p>
+<img src="prodimg/cc_avenue.jpg" width="5%" height="6%"  style="position:absolute; left:50%; top:90%;" />
+<img src="prodimg/verisignsecured.jpg" width="5%" height="6%"  style="position:absolute; left:55.5%; top:90%;" />
+<img src="prodimg/ssl.jpg" width="5%"  height="6%" style="position:absolute; left:61%; top:90%;" />
+<hr width="1" size="500" style="position:absolute; left:75%; top:-2%; height:100%; border-style:dotted; border-color:#575757;"/>
+
+<div id="copyright" style="position:absolute; left:0%; top:100%; width:100%; height:8%;">
+<p style="position:absolute; left:35%; top:-25%; font-family:'Comic Sans MS', cursive; font-size:80%; color:#555;"> Copyright <img src="prodimg/copy.jpg" width="5%" style="position:absolute; left:20%; top:8%;"/>&nbsp;&nbsp;&nbsp; Prodigy Infotech. All Rights Reserved</center>
 </div>
+</div>
+
+
+
 
 <div id="trans">
 </div>
+
+
 </div>
 
 </body>
