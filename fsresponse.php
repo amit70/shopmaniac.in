@@ -12,9 +12,14 @@ function website()
 }
 function aaa(amit)
 {
+	var x=document.getElementById('srch').value;
+	if(x=="" || x==null || x=="search for your favourite brand and products")
+	{
+		alert("Please Enter Your Search");
+		return false;
+	}
     document.forms[amit].submit();
-}	
-
+}
 function mytrol()
 {
 	document.forms["trol"].submit();
@@ -189,9 +194,64 @@ document.forms["filter"].elements["size1"].selectedIndex = 0;
 function resetbrand(){
 document.forms["filter"].elements["brand1"].selectedIndex = 0;
 }
+function resetprice(){
+document.forms["filter"].elements["range"].selectedIndex = 0;
+}
 function resetcolor(){
 document.forms["filter"].elements["color"].selectedIndex = 0;
 }
+function quickbuy(a)
+{
+	document.getElementById(a).style.visibility='visible';
+}
+function quickbuy1(a)
+{
+	document.getElementById(a).style.visibility='hidden';
+}
+function quick(a)
+{
+	        document.getElementById(a).style.visibility='visible';
+			//document.getElementById('trans').style.visibility='visible';
+			document.getElementById(a).style.opacity=100;
+}
+function iquick(b) 
+{
+			document.getElementById(b).style.visibility='hidden';
+			document.getElementById('trans').style.visibility='hidden';
+}
+function image(thisImg,ob) 
+{
+	document.getElementById('main').innerHTML="";
+    document.getElementById('main').innerHTML='<img src='+thisImg+' id="mn" style="position:relative;width:100%;height:100%">';
+
+document.getElementById(ob).style.borderBottom="medium inset #090";
+}
+function nbrdr(ob)
+{
+	document.getElementById(ob).style.border="none";
+}
+function prod1xxx(a)
+{
+	document.forms[a].submit();
+}
+function contact123()
+{
+var x=document.forms["contactaaa"]["contact1"].value;
+if(x==null || x=="")
+{
+	alert("Please Enter E-Mail Address");
+	return false;
+}
+
+var atpos=x.indexOf("@");
+var dotpos=x.lastIndexOf(".");
+if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+  {
+  	alert("Not a valid E-Mail address");
+  	return false;
+  }
+  document.forms["contactaaa"].submit();
+}		
 </script>
 <style type="text/css">
 <!--
@@ -754,6 +814,10 @@ p.stay
 	height:70px;
 	
 }
+#main
+{
+	position:absolute;width:50%;height:80%;left:0%;top:0%;
+}
 </style>
 </head>
 
@@ -784,7 +848,7 @@ $no=count($arr);
 <div id="logdiv1" onMouseOver="login()">
 <h3 align="center"><font face="Comic Sans MS, cursive" color="#666666">LOGIN</font></h3>
 <h4 align="center"><font face="Comic Sans MS, cursive" color="#666666">For Existing Users</font></h4>
-<form method="POST" action="http://localhost/shopmaniac/check.php"  name="login123">
+<form method="POST" action="check.php"  name="login123">
   <table align="left" border="0" cols=2 cellspacing="3" style="position:absolute; left:10%; top:20%">
    <tr>
   <td height="50"><font color="#666666" face="Comic Sans MS, cursive">Email Id:</font></td>
@@ -810,7 +874,7 @@ $no=count($arr);
 <div id="logdiv2" onMouseOver="reg()">
 <h3 align="center"><font face="Comic Sans MS, cursive" color="#666666">Register</font></h3>
 <h4 align="center"><font face="Comic Sans MS, cursive" color="#666666">For New Users</font></h4>
-<form method="POST" action="http://localhost/shopmaniac/Divert.php" name="register" >
+<form method="POST" action="Divert.php" name="register" >
   <table align="left" border="0" cols=2 cellspacing="5" style="position:absolute; left:10%; top:20%">
   <tr>
   <td height="30"><font color="#666666" face="Comic Sans MS, cursive">Username:</font></td>
@@ -867,21 +931,22 @@ $no=count($arr);
 <?php
 if($_SESSION['uname']=="")
 {
-echo "<a href=\"http://localhost/shopmaniac/index.php\" ><img src=\"prodimg/Title.png\" width=\"38%\" height=\"100%\" style=\"position:absolute; left:-2%; top:5%;\" /></a>";
+echo "<a href=\"index.php\" ><img src=\"prodimg/Title.png\" width=\"38%\" height=\"100%\" style=\"position:absolute; left:-2%; top:5%;\" /></a>";
 }
 else
 {
-	echo "<a href=\"http://localhost/shopmaniac/home.php\"><img src=\"prodimg/Title.png\" width=\"38%\" height=\"100%\" style=\"position:absolute; left:-2%; top:5%;\" /></a>";
+	echo "<a href=\"home.php\"><img src=\"prodimg/Title.png\" width=\"38%\" height=\"100%\" style=\"position:absolute; left:-2%; top:5%;\" /></a>";
 }
 ?>
    <div style="position:absolute; left:38.8%; top:50%; width:44%; height:49%; background-color:#DCDCDC; "></div>
-<form id="form1" name="src1" method="post" action="http://localhost/shopmaniac/search.php">
+<form id="form1" name="src1" method="post" action="search.php">
     <label>
-      <input type="text" name="srch" id="srch"  value="search for your favourite brand and products" style="position:absolute;  width: 33.3%; height: 33%; color:#979797; left:39.4%; top:55.2%; font-family:'Comic Sans MS', cursive"  onfocus="if (this.value == 'search for your favourite brand and products') this.value = '';" onBlur="if (this.value == '') this.value = 'search for your favourite brand and products';">
+      <input type="text" name="srch" id="srch"  value="search for your favourite brand and products" style="position:absolute;  width: 33.3%; height: 33%; color:#D6D6D6; left:39.4%; top:55.2%; font-family:'Comic Sans MS', cursive"  onfocus="if (this.value == 'search for your favourite brand and products') this.value = 'search for your favourite brand and products';"
+      onkeydown="if(this.value=='search for your favourite brand and products') this.value=''; this.style.color='#000'"  onblur="if (this.value == '') this.value = 'search for your favourite brand and products'; this.style.color='#D6D6D6'">
     </label>
    
   </form>
- <img src="prodimg/Search2.png" width="10%" height="54%" style="position:absolute; left:73%; top:51.2%;"  onmousedown="this.src='prodimg/Search1.png'" onMouseUp="this.src='prodimg/Search2.png'" onClick="aaa('src1')"/>
+<img src="prodimg/Search2.png" width="10%" height="54%" style="position:absolute; left:73%; top:51.2%;"  onmousedown="this.src='prodimg/Search1.png'" onMouseUp="this.src='prodimg/Search2.png'" onClick="aaa('src1')"/>
 
 
 <a href="mytrolley2.php"> <img src="prodimg/Trolley11.png" style="position:absolute; left:83%; top:40%;width:6%;height:60%" onMouseDown="this.src='prodimg/Trolley12.png'" onMouseUp="this.src='prodimg/Trolley11.png'">
@@ -898,18 +963,19 @@ else
 
 
 <?php
+$arr1=spliti(" ",$_SESSION['uname']);
 if($_SESSION['uname']=="")
-echo "<p style=\"position:absolute; left:50%; top:-16%; font-size:80%; color:#717171; font-family:'Comic Sans MS', cursive\">Hi,Guest|</p>";
+echo "<span style=\"float:left; position:absolute; left:45%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive;\">Hi,Guest &nbsp;&nbsp;&nbsp;| </span>";
 else
-echo "<p style=\"position:absolute; left:50%; top:-16%; font-size:80%; color:#717171; font-family:'Comic Sans MS', cursive\">Hi,".$_SESSION['uname']."|</p>";
+echo "<span style=\"float:left; position:absolute; left:45%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive;\">Hi,<b>$arr1[0]</b> &nbsp;&nbsp;&nbsp; | </span>";
 ?>
 
-<p style="position:absolute; left:61%; top:-16%; font-size:73%; color:#717171; font-family:'Comic Sans MS', cursive">9773436955(24x7)&nbsp;&nbsp;&nbsp;|
-</p>  
- <img src="Fullscreen capture 7182012 14722 PM.gif"  style="position:absolute; left:58%; top:1%; height:15%; width:2%;"/> 
+<span style=" float:left; position:absolute; left:57.5%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive">9773436955(24x7)&nbsp;&nbsp;&nbsp;|
+</span>  
+ <img src="prodimg/Fullscreen capture 7182012 14722 PM.gif"  style="position:absolute; left:54.5%; top:5%; height:15%; width:2%;"/>
  
-<p style="position:absolute; left:80%; top:-16%; font-size:70%; color:#717171; font-family:'Comic Sans MS', cursive">amit.rajula@gmail.com |</p>
-<img src="Email-Lists-Canada-11.jpg" style="position:absolute; height:15%; width:2%; left:77%; top:1%;"/>
+<span style=" float:left; position:absolute; left:77.5%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive">support@shopmaniac.in |</span>
+<img src="prodimg/Email-Lists-Canada-11.jpg" style="position:absolute; height:18%; width:3%; left:74%; top:3%;"/>
 
 
 
@@ -934,14 +1000,14 @@ echo "<p style=\"position:absolute; left:95.5%; top:-16%; font-size:80%; font-fa
 }
 else
 {
-echo "<p style=\"position:absolute; left:95.5%; top:-16%; font-size:80%; font-family:'Comic Sans MS', cursive\"><a href=\"http://localhost/shopmaniac/index.php\" onmouseover=\"this.style.color = '#DF7000'\" onmouseout=\"this.style.color = '#717171'\" style=\"text-decoration:none; color:#717171;\">SignOut</a></p>";
+echo "<p style=\"position:absolute; left:95.5%; top:-16%; font-size:80%; font-family:'Comic Sans MS', cursive\"><a href=\"index.php\" onmouseover=\"this.style.color = '#DF7000'\" onmouseout=\"this.style.color = '#717171'\"  style=\"text-decoration:none; color:#717171;\">SignOut</a></p>";
 }
 ?>
 
 <?php
 if($_SESSION['uname']=="")
 {
-	echo "<a href=\"http://localhost/shopmaniac/index.php\"><img src=\"prodimg/Home1.png\" style=\"position:absolute; left:89.5%; top:40%;width:4.5%;height:60%\" onmousedown=\"this.src='prodimg/Home2.png'\" onmouseup=\"this.src='prodimg/Home1.png'\"></a>";
+	echo "<a href=\"index.php\"><img src=\"prodimg/Home1.png\" style=\"position:absolute; left:89.5%; top:40%;width:4.5%;height:60%\" onmousedown=\"this.src='prodimg/Home2.png'\" onmouseup=\"this.src='prodimg/Home1.png'\"></a>";
 }
 else
 {
@@ -951,58 +1017,40 @@ else
 </div>
 
 
-
-<ul class="nav">
-	<li class="dropdown"><a href="mens.php">Men</a>
+<div id='cssmenu'>
 	<ul>
-    
-    <li class="dropdown"><a href="apparels.php">Mens Apparels</a>
-    <ul>
-    <li><a href="formalshirts.php">Formal Shirts</a></li>
-    <li><a href="cs.php">Casual Shirts</a></li>
-    <li><a href="jeans.php">Jeans</a></li>
-    <li><a href="trousers.php">Trousers</a></li>
-    <li><a href="t-shirts.php">T-Shirts</a></li>
+		<li><a href='#'><span>Men</span></a>
+		 <ul>
+				<li style="position:absolute; left:0%; top:-5%;"><a href='#'><span><h3><b>Mens Apparels</b></h6></span></a> </li>
+            	<li style="position:absolute; left:0%; top:12%;"><a href='#'><span>Casual Shirt</span></a></li>
+             	<li style="position:absolute; left:0%; top:24%;"><a href='formalshirts.php'><span>Formal Shirt</span></a></li>
+	            <li style="position:absolute; left:0%; top:36%;"><a href='#'><span>Trousers</span></a></li>
+   		        <li style="position:absolute; left:0%; top:48%;"><a href='#'><span>Jeans</span></a></li>
+        	    <li style="position:absolute; left:0%; top:60%;" ><a href='#'><span>Tees</span></a></li>
+               
+          		<li style="position:absolute; left:22%; top:-5%;"><a href='#'><span><h3><b>Mens Footwear</b></h3></span></a></li>
+            	<li style="position:absolute; left:22%; top:12%;"><a href='#'><span>Sports Shoes</span></a></li>
+             	<li style="position:absolute; left:22%; top:24%;"><a href='#'><span>Formal Shoes</span></a></li>
+              	<li style="position:absolute; left:22%; top:36%;"><a href='#'><span>Casual Shoes</span></a></li>
+               	<li style="position:absolute; left:22%; top:48%;"><a href='#'><span>Slippers/Flipflops</span></a></li>
+                
+                <li style="position:absolute; left:44%; top:-5%;"><a href='#'><span><h3><b>Mens Accessories</b></h3></span></a></li>
+            	<li style="position:absolute; left:44%; top:12%;"><a href='#'><span>Sports Shoes</span></a></li>
+             	<li style="position:absolute; left:44%; top:24%;"><a href='#'><span>Formal Shoes</span></a></li>
+              	<li style="position:absolute; left:44%; top:36%;"><a href='#'><span>Casual Shoes</span></a></li>
+               	<li style="position:absolute; left:44%; top:48%;"><a href='#'><span>Slippers/Flipflops</span></a></li>
+			
+            <img src="prodimg/nikeshoes1.jpg" width="20%"  height="80%" style="position:absolute; left:78%; top:5%;"/>
+          </ul>
+		</li>
+        
+        <li style="position:absolute; left:10%; top:0%;"><a href='#'><span>Men</span></a>
+        	 <ul >
+				<li><a href='#'><span><b>Mens Apparels</b></span></a> </li>
+             </ul>   
+        </li>
     </ul>
-    </li>
-    
-    <li class="dropdown"><a href="footwear.php">Mens Footwear</a>
-  <ul>
-     <li><a href="casualshoes.php">Casual Shoes</a></li>
-    <li><a href="formalshoes.php">Formal Shoes</a></li>
-    <li><a href="sportsshoes.php">Sports Shoes</a></li>
-    <li><a href="sf.php">Slippers n FlipFLop's</a></li>
-  </ul>
-    </li>
-    
-   </ul>
-	</li>
-    
-    
-    <li class="dropdown"><a href="#">Accessories</a>
-	<ul>
-    <li><a href="#">Wallets</a></li>
-    <li><a href="#">Googles</a></li>
-    <li><a href="#">Caps</a></li>
-    <li><a href="#">Ties n Couplings</a></li>
-    </ul>
-	</li>
-    
-     <li class="dropdown"><a href="homeware.php">Homeware</a>
-	<ul>
-    <li><a href="#">Microwave</a></li>
-    <li><a href="#">Cannisters</a></li>
-    </ul>
-	</li>
-    
-    <li class="dropdown"><a href="#">Brand</a>
-	<ul>
-    <li><a href="#">Levis</a></li>
-    <li><a href="#">Pepe Jeans</a></li>
-    </ul>
-	</li>
-    
-</ul>
+</div>
 <div id="apDiv48">
 <?php
 $qry1="";
@@ -1021,8 +1069,8 @@ if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'],"Ch
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where subname='formal shirts' and price BETWEEN    $arr[0] AND $arr[1] and  category='$cat' and color='$col' and size='$size1' and brand='$brand1'";
-	$qry2="select count(*) from products where subname='formal shirts' and price BETWEEN $arr[0] AND $arr[1] and  category='$cat' and color='$col' and size='$size1' and brand='$brand1'";
+	$qry1="select * from products where subname='formal shirts' and discprice BETWEEN    $arr[0] AND $arr[1] and  category='$cat' and color='$col' and size='$size1' and brand='$brand1'";
+	$qry2="select * from products where subname='formal shirts' and discprice BETWEEN $arr[0] AND $arr[1] and  category='$cat' and color='$col' and size='$size1' and brand='$brand1'";
 	$test=1;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['range'],"Price Range")!=0)
@@ -1033,8 +1081,8 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and category='$cat' and size='$size1' and brand='$brand1'";
-	$qry2="select count(*) from products where subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and category='$cat' and size='$size1' and brand='$brand1'";
+	$qry1="select * from products where subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and category='$cat' and size='$size1' and brand='$brand1'";
+	$qry2="select * from products where subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and category='$cat' and size='$size1' and brand='$brand1'";
 	$test=2;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1045,7 +1093,7 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where subname='formal shirts' and category='$cat' and color='$col' and size='$size1' and brand='$brand1'";
-	$qry2="select count(*) from products where subname='formal shirts' and category='$cat' and color='$col' and size='$size1' and brand='$brand1'";
+	$qry2="select * from products where subname='formal shirts' and category='$cat' and color='$col' and size='$size1' and brand='$brand1'";
 	$test=3;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['range'],"Price Range")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1056,8 +1104,8 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where subname='formal shirts' and price BETWEEN    $arr[0] AND $arr[1] and category='$cat' and color='$col' and size='$size1'";
-	$qry2="select count(*) from products where subname='formal shirts' and price BETWEEN $arr[0] AND $arr[1] and category='$cat' and color='$col' and size='$size1'";
+	$qry1="select * from products where subname='formal shirts' and discprice BETWEEN    $arr[0] AND $arr[1] and category='$cat' and color='$col' and size='$size1'";
+	$qry2="select * from products where subname='formal shirts' and discprice BETWEEN $arr[0] AND $arr[1] and category='$cat' and color='$col' and size='$size1'";
 	$test=4;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['range'],"Price Range")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1068,8 +1116,8 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['brand1
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where subname='formal shirts' and price BETWEEN    $arr[0] AND $arr[1] and category='$cat' and color='$col' and brand='$brand1'";
-	$qry2="select count(*) from products where subname='formal shirts' and price BETWEEN    $arr[0] AND $arr[1] and category='$cat' and color='$col' and brand='$brand1'";
+	$qry1="select * from products where subname='formal shirts' and discprice BETWEEN    $arr[0] AND $arr[1] and category='$cat' and color='$col' and brand='$brand1'";
+	$qry2="select * from products where subname='formal shirts' and discprice BETWEEN    $arr[0] AND $arr[1] and category='$cat' and color='$col' and brand='$brand1'";
 	$test=5;
 }
 else if(strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['range'],"Price Range")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1080,8 +1128,8 @@ else if(strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['brand1'],"Cho
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where subname='formal shirts' and price BETWEEN    $arr[0] AND $arr[1] and color='$col' and size='$size1' and brand='$brand1'";
-	$qry2="select count(*) from products where  subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and color='$col' and size='$size1' and brand='$brand1'";
+	$qry1="select * from products where subname='formal shirts' and discprice BETWEEN    $arr[0] AND $arr[1] and color='$col' and size='$size1' and brand='$brand1'";
+	$qry2="select * from products where  subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and color='$col' and size='$size1' and brand='$brand1'";
 	$test=6;
 }
 else if(strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['range'],"Price Range")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1092,8 +1140,8 @@ else if(strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['range'],"Pr
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where  subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and color='$col' and brand='$brand1'";
-	$qry2="select count(*) from products where  subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and color='$col' and brand='$brand1'";
+	$qry1="select * from products where  subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and color='$col' and brand='$brand1'";
+	$qry2="select * from products where  subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and color='$col' and brand='$brand1'";
 	$test=7;
 }
 else if(strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['color'],"Choose Color")!=0 && strcmp($_POST['range'],"Price Range")!=0)
@@ -1104,8 +1152,8 @@ else if(strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['color'],"Choo
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where  subname='formal shirts' and size='$size1' and  price BETWEEN  $arr[0] AND $arr[1] and color='$col'";
-	$qry2="select count(*) from products where  subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and size='$size1' and color='$col'";
+	$qry1="select * from products where  subname='formal shirts' and size='$size1' and  discprice BETWEEN  $arr[0] AND $arr[1] and color='$col'";
+	$qry2="select * from products where  subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and size='$size1' and color='$col'";
 	$test=8;
 }
 else if(strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1116,7 +1164,7 @@ else if(strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['brand1'],"Cho
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where subname='formal shirts' and color='$col' and size='$size1' and brand='$brand1'";
-	$qry2="select count(*) from products where subname='formal shirts' and  color='$col' and size='$size1' and brand='$brand1'";
+	$qry2="select * from products where subname='formal shirts' and  color='$col' and size='$size1' and brand='$brand1'";
 	$test=9;
 }
 else if(strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['range'],"Price Range")!=0)
@@ -1127,8 +1175,8 @@ else if(strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['brand1'],"Cho
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where  subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and size='$size1' and brand='$brand1'";
-	$qry2="select count(*) from products where  subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and size='$size1' and brand='$brand1'";
+	$qry1="select * from products where  subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and size='$size1' and brand='$brand1'";
+	$qry2="select * from products where  subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and size='$size1' and brand='$brand1'";
 	$test=10;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['range'],"Price Range")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1139,8 +1187,8 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['range'
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where  subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and category='$cat' and color='$col'";
-	$qry2="select count(*) from products where  subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and category='$cat' and color='$col'";
+	$qry1="select * from products where  subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and category='$cat' and color='$col'";
+	$qry2="select * from products where  subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and category='$cat' and color='$col'";
 	$test=11;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0&& strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1151,7 +1199,7 @@ else if(strcmp($_POST['category'],"Choose Category")!=0&& strcmp($_POST['brand1'
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where subname='formal shirts' and  category='$cat' and color='$col' and brand='$brand1'";
-	$qry2="select count(*) from products where subname='formal shirts' and  category='$cat' and color='$col' and brand='$brand1'";
+	$qry2="select * from products where subname='formal shirts' and  category='$cat' and color='$col' and brand='$brand1'";
 	$test=12;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['range'],"Price Range")!=0)
@@ -1162,8 +1210,8 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['brand1
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where  subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and category='$cat' and brand='$brand1'";
-	$qry2="select count(*) from products  where subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and category='$cat' and brand='$brand1'";
+	$qry1="select * from products where  subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and category='$cat' and brand='$brand1'";
+	$qry2="select * from products  where subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and category='$cat' and brand='$brand1'";
 	$test=13;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1174,7 +1222,7 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where subname='formal shirts' and  category='$cat' and color='$col' and size='$size1'";
-	$qry2="select count(*) from products where subname='formal shirts' and   category='$cat' and color='$col' and size='$size1'";
+	$qry2="select * from products where subname='formal shirts' and   category='$cat' and color='$col' and size='$size1'";
 	$test=14;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['range'],"Price Range")!=0)
@@ -1185,8 +1233,8 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and category='$cat' and size='$size1'";
-	$qry2="select count(*) from products where subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and category='$cat' and size='$size1'";
+	$qry1="select * from products where subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and category='$cat' and size='$size1'";
+	$qry2="select * from products where subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and category='$cat' and size='$size1'";
 	$test=15;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['brand1'],"Choose Brand")!=0)
@@ -1197,7 +1245,7 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where subname='formal shirts' and  category='$cat' and size='$size1' and brand='$brand1'";
-	$qry2="select count(*) from products where subname='formal shirts' and  category='$cat' and size='$size1' and brand='$brand1'";
+	$qry2="select * from products where subname='formal shirts' and  category='$cat' and size='$size1' and brand='$brand1'";
 	$test=26;
 }
 else if(strcmp($_POST['range'],"Price Range")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1208,8 +1256,8 @@ else if(strcmp($_POST['range'],"Price Range")!=0 && strcmp($_POST['color'],"Choo
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and color='$col'";
-	$qry2="select count(*) from products where subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and color='$col'";
+	$qry1="select * from products where subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and color='$col'";
+	$qry2="select * from products where subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and color='$col'";
 	$test=16;
 }
 else if(strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1220,7 +1268,7 @@ else if(strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['color'],"Ch
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where subname='formal shirts' and  color='$col' and brand='$brand1'";
-	$qry2="select count(*) from products where subname='formal shirts' and  color='$col' and brand='$brand1'";
+	$qry2="select * from products where subname='formal shirts' and  color='$col' and brand='$brand1'";
 	$test=17;
 }
 else if(strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['size1'],"Choose Size")!=0)
@@ -1231,7 +1279,7 @@ else if(strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['size1'],"Ch
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where subname='formal shirts' and  size='$size1' and brand='$brand1'";
-	$qry2="select count(*) from products where subname='formal shirts' and  size='$size1' and brand='$brand1'";
+	$qry2="select * from products where subname='formal shirts' and  size='$size1' and brand='$brand1'";
 	$test=18;
 }
 else if(strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['range'],"Price Range")!=0)
@@ -1242,8 +1290,8 @@ else if(strcmp($_POST['brand1'],"Choose Brand")!=0 && strcmp($_POST['range'],"Pr
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and brand='$brand1'";
-	$qry2="select count(*) from products where subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1] and brand='$brand1'";
+	$qry1="select * from products where subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and brand='$brand1'";
+	$qry2="select * from products where subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1] and brand='$brand1'";
 	$test=19;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1254,7 +1302,7 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['color'
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where subname='formal shirts' and  category='$cat' and color='$col'";
-	$qry2="select count(*) from products where subname='formal shirts' and  category='$cat' and color='$col'";
+	$qry2="select * from products where subname='formal shirts' and  category='$cat' and color='$col'";
 	$test=20;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['range'],"Price Range")!=0)
@@ -1265,8 +1313,8 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['range'
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where subname='formal shirts'  and price BETWEEN $arr[0] AND $arr[1] and  category='$cat'";
-	$qry2="select count(*) from products where subname='formal shirts'  and price BETWEEN $arr[0] AND $arr[1] and  category='$cat'";
+	$qry1="select * from products where subname='formal shirts'  and discprice BETWEEN $arr[0] AND $arr[1] and  category='$cat'";
+	$qry2="select * from products where subname='formal shirts'  and discprice BETWEEN $arr[0] AND $arr[1] and  category='$cat'";
 	$test=21;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'],"Choose Size")!=0)
@@ -1277,7 +1325,7 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['size1'
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where subname='formal shirts' and  category='$cat' and size='$size1'";
-	$qry2="select count(*) from products where subname='formal shirts' and  category='$cat' and size='$size1'";
+	$qry2="select * from products where subname='formal shirts' and  category='$cat' and size='$size1'";
 	$test=22;
 }
 else if(strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['range'],"Price Range")!=0)
@@ -1288,8 +1336,8 @@ else if(strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['range'],"Pric
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1]  and size='$size1'";
-	$qry2="select count(*) from products where subname='formal shirts' and price BETWEEN  $arr[0] AND $arr[1]  and size='$size1'";
+	$qry1="select * from products where subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1]  and size='$size1'";
+	$qry2="select * from products where subname='formal shirts' and discprice BETWEEN  $arr[0] AND $arr[1]  and size='$size1'";
 	$test=23;
 }
 else if( strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['color'],"Choose Color")!=0)
@@ -1300,7 +1348,7 @@ else if( strcmp($_POST['size1'],"Choose Size")!=0 && strcmp($_POST['color'],"Cho
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where subname='formal shirts' and  color='$col' and size='$size1'";
-	$qry2="select count(*) from products where  subname='formal shirts' and  color='$col' and size='$size1'";
+	$qry2="select * from products where  subname='formal shirts' and  color='$col' and size='$size1'";
 	$test=24;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['brand1'],"Choose Brand")!=0 )
@@ -1312,7 +1360,7 @@ else if(strcmp($_POST['category'],"Choose Category")!=0 && strcmp($_POST['brand1
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
 	$qry1="select * from products where  subname='formal shirts' and category='$cat' and brand='$brand1'";
-	$qry2="select count(*) from products  where subname='formal shirts' and category='$cat' and brand='$brand1'";
+	$qry2="select * from products  where subname='formal shirts' and category='$cat' and brand='$brand1'";
 	$test=25;
 }
 
@@ -1324,7 +1372,7 @@ else if(strcmp($_POST['color'],"Choose Color")!=0)
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where color='$col' and subname='formal shirts'";
-	$qry2="select count(*) from products where color='$col' and subname='formal shirts'";
+	$qry2="select * from products where color='$col' and subname='formal shirts'";
 	$test=27;
 }
 else if(strcmp($_POST['brand1'],"Choose Brand")!=0)
@@ -1335,7 +1383,7 @@ else if(strcmp($_POST['brand1'],"Choose Brand")!=0)
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where brand='$brand1' and subname='formal shirts'";
-	$qry2="select count(*) from products where brand='$brand1' and subname='formal shirts'";
+	$qry2="select * from products where brand='$brand1' and subname='formal shirts'";
 	$test=28;
 }
 else if(strcmp($_POST['size1'],"Choose Size")!=0)
@@ -1346,7 +1394,7 @@ else if(strcmp($_POST['size1'],"Choose Size")!=0)
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where size='$size1' and subname='formal shirts'";
-	$qry2="select count(*) from products where size='$size1' and subname='formal shirts'";
+	$qry2="select * from products where size='$size1' and subname='formal shirts'";
 	$test=29;
 }
 else if(strcmp($_POST['range'],"Price Range")!=0)
@@ -1357,8 +1405,8 @@ else if(strcmp($_POST['range'],"Price Range")!=0)
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$arr=spliti("-",$range);
-	$qry1="select * from products where subname='formal shirts' and price BETWEEN $arr[0] AND $arr[1]";
-	$qry2="select count(*) from products where subname='formal shirts' and price BETWEEN $arr[0] AND $arr[1]";
+	$qry1="select * from products where subname='formal shirts' and discprice BETWEEN $arr[0] AND $arr[1]";
+	$qry2="select * from products where subname='formal shirts' and discprice BETWEEN $arr[0] AND $arr[1]";
 	$test=30;
 }
 else if(strcmp($_POST['category'],"Choose Category")!=0)
@@ -1369,13 +1417,13 @@ else if(strcmp($_POST['category'],"Choose Category")!=0)
 	$brand1=$_POST['brand1'];
 	$range=$_POST['range'];
 	$qry1="select * from products where subname='formal shirts' and category='$cat'";
-	$qry2="select count(*) from products where subname='formal shirts' and category='$cat'";
+	$qry2="select * from products where subname='formal shirts' and category='$cat'";
 	$test=31;
 }
 else if("Choose Category"==0 && "Choose Size"==0 && "Choose Brand"==0 && "Price Range"==0 && "Choose Color"==0)
 {
 	$qry1="select * from products where subname='formal shirts' ";
-	$qry2="select count(*) from products where subname='formal shirts' ";
+	$qry2="select * from products where subname='formal shirts' ";
 	$test=32;
 }
 
@@ -1387,39 +1435,81 @@ $cate=array();
 $sizy=array();
 $brandy=array();
 $colory=array();
-
+$price=array();
+$prodname1234=array();
 $fetch1=mysql_query($qry1);
 $count1 = @mysql_num_rows($fetch1);
 
 	$v=0;
+	$vv=0;
 while($row111 = mysql_fetch_array($fetch1))
 {
+	$name123=$row111['pname'];
+	$stock123=$row111['stock'];
+	if($stock123=="In Stock")
+	{
+	if(in_array($name123,$prodname1234))
+	{
+		$sizy[$vv]=$row111['size'];
+		//continue;
+		$vv++;
+	}
+	else
+	{
+	$prodname1234[$v]=$name123;
 	$cate[$v]=$row111['category'];
-	$sizy[$v]=$row111['size'];
+	$sizy[$vv]=$row111['size'];
 	$brandy[$v]=$row111['brand'];
 	$colory[$v]=$row111['color'];
-
+	$price[$v]=$row111['discprice'];
 $v++;
+$vv++;
+	}
+	}
+	else
+	{
+		continue;
+	}
 }
-//echo var_export($brandy,true);
 
 ?>
 
-<form action="http://localhost/shopmaniac/fsresponse.php" method="POST" name="filter" id="filter">
+<form action="fsresponse.php" method="POST" name="filter" id="filter">
 <div style="position:absolute; left:1%; top:2%; width:19.5%; height:96%; ">
 <p style="position:absolute; left:10%; top:3%; font-family:'Comic Sans MS', cursive; color:#111;"><b>Category</b></p>
 
 <select name="category" id="category" style="position:absolute; left:2%; top:30%; width:90%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
 <?php
-$qryhs=mysql_query("select * from products where subname='formal shirts' and category='half sleeves'");
- $counths=mysql_num_rows($qryhs);
- 
-  $qryfs=mysql_query("select * from products where subname='formal shirts' and category='full sleeves'");
- $countfs=mysql_num_rows($qryfs);
+$counths=0;
+$countfs=0;
 $qqq=array();
 $enab=array();
 $disb=array();
 $cats=array("half sleeves","full sleeves");
+for($r=0;$r<count($cate);$r++)
+{
+	$j=0;
+	if($cats[$j]==$cate[$r])
+	{
+		$counths=$counths+1;
+	}
+	else
+	{
+		$counths=$counths;
+	}
+}
+for($r=0;$r<count($cate);$r++)
+{
+	$j=1;
+	if($cats[$j]==$cate[$r])
+	{
+		$countfs=$countfs+1;
+	}
+	else
+	{
+		$countfs=$countfs;
+	}
+}
 if(strcmp($cat,"Choose Category")==0)
 {
 	for($i=0;$i<count($cats);$i++)
@@ -1569,7 +1659,7 @@ $qqq=$enab + $disb;
  </select>
  <?php
  if($cat=="half sleeves" ||  $cat=="full sleeves")
- echo "<button onclick=\"resetcat()\">Reset Brand</button>";
+ echo "<button onclick=\"resetcat()\">Reset Category</button>";
 ?>
 </div>
 <div style="position:absolute; left:19.5%; top:2%; height:96%; width:0.3%; background-color:#F1F1F1;">
@@ -1580,17 +1670,49 @@ $qqq=$enab + $disb;
   
   <select name="size1" id="size1" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
 <?php
- $qry36=mysql_query("select * from products where subname='formal shirts' and size='36'");
- $count36=mysql_num_rows($qry36);
- 
-   $qry38=mysql_query("select * from products where subname='formal shirts' and size='38'");
- $count38=mysql_num_rows($qry38);
-  $qry40=mysql_query("select * from products where subname='formal shirts' and size='40'");
- $count40=mysql_num_rows($qry40);
+$count36=0;
+$count38=0;
+$count40=0;
 $qqq=array();
 $enab=array();
 $disb=array();
 $sizs=array("36","38","40");
+for($r=0;$r<count($sizy);$r++)
+{
+	$j=0;
+	if($sizs[$j]==$sizy[$r])
+	{
+		$count36=$count36+1;
+	}
+	else
+	{
+		$count36=$count36;
+	}
+}
+for($r=0;$r<count($sizy);$r++)
+{
+	$j=1;
+	if($sizs[$j]==$sizy[$r])
+	{
+		$count38=$count38+1;
+	}
+	else
+	{
+		$count38=$count38;
+	}
+}
+for($r=0;$r<count($sizy);$r++)
+{
+	$j=2;
+	if($sizs[$j]==$sizy[$r])
+	{
+		$count40=$count40+1;
+	}
+	else
+	{
+		$count40=$count40;
+	}
+}
 if(strcmp($size1,"Choose Size")==0)
 {
 	for($i=0;$i<count($sizs);$i++)
@@ -1612,15 +1734,15 @@ $qqq=$enab + $disb;
 		{
 			if($qqq[$c]=="36")
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count36)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 			else if($qqq[$c]=="38")
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count38)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 			else
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count40)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 		}
 		else
@@ -1639,8 +1761,6 @@ $qqq=$enab + $disb;
 			}
 		}
 	}
-	
-	 
 }
 
 else if(strcmp($size1, $sizs[0])==0)
@@ -1665,15 +1785,15 @@ $qqq=$enab + $disb;
 		{
 			if($qqq[$c]=="36")
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count36)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 			else if($qqq[$c]=="38")
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count38)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 			else
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count40)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 		}
 		
@@ -1701,15 +1821,15 @@ $qqq=$enab + $disb;
 		{
 			if($qqq[$c]=="36")
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count36)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 			else if($qqq[$c]=="38")
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count38)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 			else
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count40)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 		}
 		
@@ -1737,15 +1857,15 @@ $qqq=$enab + $disb;
 		{
 			if($qqq[$c]=="36")
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count36)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 			else if($qqq[$c]=="38")
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count38)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 			else
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count40)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 		}
 		
@@ -1772,15 +1892,15 @@ $qqq=$enab + $disb;
 		{
 			if($qqq[$c]=="36")
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count36)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 			else if($qqq[$c]=="38")
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count38)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 			else
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($count40)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 		}
 		else
@@ -1814,18 +1934,49 @@ $qqq=$enab + $disb;
 <p style="position:absolute; left:10%; top:3%; font-family:'Comic Sans MS', cursive; color:#111;"><b>Brand</b></p>
  <select name="brand1" id="brand1" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
 <?php
- $qryarrow=mysql_query("select * from products where subname='formal shirts' and brand='arrow'");
- $countarrow=mysql_num_rows($qryarrow);
- 
-   $qryblackberry=mysql_query("select * from products where subname='formal shirts' and brand='black berry'");
- $countblackberry=mysql_num_rows($qryblackberry);
- $qryhollister=mysql_query("select * from products where subname='formal shirts' and brand='hollister'");
- $counthollister=mysql_num_rows($qryhollister);
 $qqq=array();
 $enab=array();
 $disb=array();
-
 $brands=array("arrow","black berry","Hollister");
+$countarrow=0;
+$countblackberry=0;
+$counthollister=0;
+for($r=0;$r<count($brandy);$r++)
+{
+	$j=0;
+	if($brands[$j]==$brandy[$r])
+	{
+		$countarrow=$countarrow+1;
+	}
+	else
+	{
+		$countarrow=$countarrow;
+	}
+}
+for($r=0;$r<count($brandy);$r++)
+{
+	$j=1;
+	if($brands[$j]==$brandy[$r])
+	{
+		$countblackberry=$countblackberry+1;
+	}
+	else
+	{
+		$countblackberry=$countblackberry;
+	}
+}
+for($r=0;$r<count($brandy);$r++)
+{
+	$j=2;
+	if($brands[$j]==$brandy[$r])
+	{
+		$counthollister=$counthollister+1;
+	}
+	else
+	{
+		$counthollister=$counthollister;
+	}
+}
 if(strcmp($brand1,"Choose Brand")==0)
 {
 	for($i=0;$i<count($brands);$i++)
@@ -1847,15 +1998,15 @@ $qqq=$enab + $disb;
 		{
 			if($qqq[$c]=="arrow")
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countarrow)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 			else if($qqq[$c]=="black berry")
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($countblackberry)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]</option>";
 			}
 			else
 			{
-			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]($counthollister)</option>";
+			echo "<option value=\"$qqq[$c]\" disabled>$qqq[$c]<option>";
 			}
 		}
 		else
@@ -2050,34 +2201,122 @@ $qqq=$enab + $disb;
   
   <select name="range" id="range" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
 <?php
+$count300=0;
+$count601=0;
+$less=array();
+$more=array();
+$pricerange=array("300-600","601-1000");
+for($r=0;$r<count($price);$r++)
+{
+	if ($price[$r]<601)
+		{
+			$count300=$count300+1;
+		}
+		else
+		{
+			$count300=$count300;
+		}
+}
+for($r=0;$r<count($price);$r++)
+{
+	if ($price[$r]>601)
+		{
+			$count601=$count601+1;
+		}
+		else
+		{
+			$count601=$count601;
+		}
+}
 if(strcmp($range,"Price Range")==0)
 {
-	echo"<option>Price Range</option>
-  <option value=\"300-600\">300-600</option>
-  <option value=\"601-1000\">601-1000</option>";
+	for($i=0;$i<count($price);$i++)
+	{
+		if ($price[$i]<601)
+		{
+			$less[$i]=$price[$i];
+		}
+		else
+		{
+			$more[$i]=$price[$i];
+		}
+	}
+	echo "<option>Price Range</option>";
+	for($c=0;$c<1;$c++)
+	{
+		if(count($less)<1)
+		{
+			echo "<option value=\"300-600\" disabled>300-600</option>";
+		}
+		else
+		{
+			echo "<option value=\"300-600\" >300-600($count300)</option>";
+		}
+		
+		if(count($more)<1)
+		{
+			echo "<option value=\"601-1000\" disabled>601-1000</option>";
+		}
+		else
+		{
+			echo "<option value=\"601-1000\" >601-1000($count601)</option>";
+		}
+	}
 }
-if(strcmp($range,"300-600")==0)
+else if(strcmp($range,"300-600")==0)
 {
 	echo"<option>Price Range</option>
-  <option value=\"300-600\" selected=\"selected\">300-600</option>
-  <option value=\"601-1000\">601-1000</option>";
+  <option value=\"300-600\" selected=\"selected\">300-600($count300)</option>
+  <option value=\"601-1000\" disabled>601-1000</option>";
 }
 
-if(strcmp($range,"601-1000")==0)
+else if(strcmp($range,"601-1000")==0)
 {
 	echo"<option>Price Range</option>
-  <option value=\"300\">300-600</option>
-  <option value=\"601-1000\" selected=\"selected\">601-1000</option>";
+  <option value=\"300\">300-600($count300)</option>
+  <option value=\"601-1000\" selected=\"selected\">601-1000($count601)</option>";
 }
 else
 {
-	echo"<option>Price Range</option>
-  <option value=\"300-600\">300-600</option>
-  <option value=\"601-1000\">601-1000</option>";
+	for($i=0;$i<count($price);$i++)
+	{
+		if ($price[$i]<601)
+		{
+			$less[$i]=$price[$i];
+		}
+		else
+		{
+			$more[$i]=$price[$i];
+		}
+	}
+	echo "<option>Price Range</option>";
+	for($c=0;$c<1;$c++)
+	{
+		if(count($less)<1)
+		{
+			echo "<option value=\"300-600\" disabled>300-600</option>";
+		}
+		else
+		{
+			echo "<option value=\"300-600\" >300-600($count300)</option>";
+		}
+		
+		if(count($more)<1)
+		{
+			echo "<option value=\"601-1000\" disabled>601-1000</option>";
+		}
+		else
+		{
+			echo "<option value=\"601-1000\" >601-1000($count601)</option>";
+		}
+	}
 }
 ?>
 </select>
- 
+ <?php
+ if($range=="300-600" ||  $range=="601-1000")
+ echo "<button onclick=\"resetprice()\">Reset Price</button>";
+?>
 </div>
 <div style="position:absolute; left:78.5%; top:2%; height:96%; width:0.3%; background-color:#F1F1F1;">
 </div>
@@ -2088,17 +2327,49 @@ else
   
   <select name="color" id="color" style="position:absolute; left:10%; top:30%; width:80%; font-family:'Comic Sans MS', cursive;" onChange="javascript: submitform()">
 <?php
-$qryred=mysql_query("select * from products where subname='formal shirts' and color='red'");
- $countred=mysql_num_rows($qryred);
- 
- $qryblue=mysql_query("select * from products where subname='formal shirts' and color='blue'");
- $countblue=mysql_num_rows($qryblue);
-$qrygreen=mysql_query("select * from products where subname='formal shirts' and color='green'");
- $countgreen=mysql_num_rows($qrygreen);
+$countred=0;
+$countgreen=0;
+$countblue=0;
 $qqq=array();
 $enab=array();
 $disb=array();
 $colors=array("red","green","blue");
+for($r=0;$r<count($colory);$r++)
+{
+	$j=0;
+	if($colors[$j]==$colory[$r])
+	{
+		$countred=$countred+1;
+	}
+	else
+	{
+		$countred=$countred;
+	}
+}
+for($r=0;$r<count($colory);$r++)
+{
+	$j=2;
+	if($colors[$j]==$colory[$r])
+	{
+		$countblue=$countblue+1;
+	}
+	else
+	{
+		$countblue=$countblue;
+	}
+}
+for($r=0;$r<count($colory);$r++)
+{
+	$j=1;
+	if($colors[$j]==$colory[$r])
+	{
+		$countgreen=$countgreen+1;
+	}
+	else
+	{
+		$countgreen=$countgreen;
+	}
+}
 if(strcmp($col,"Choose Color")==0)
 {
 	for($i=0;$i<count($colors);$i++)
@@ -2235,7 +2506,7 @@ else if(strcmp($col, $colors[2])==0)
 	}
 $qqq=$enab + $disb;
 	echo "<option>Choose Color</option>
-	<option value=\"$colors[2]\" selected=\"selected\">$colors[2]($countgreen)</option>";
+	<option value=\"$colors[2]\" selected=\"selected\">$colors[2]($countblue)</option>";
 	for($c=0;$c<count($qqq);$c++)
 	{
 		if(in_array($qqq[$c], $disb))
@@ -2308,7 +2579,7 @@ $qqq=$enab + $disb;
 ?>
 </select>
 <?php
- if($col=="red" ||  $col=="green" || $brand1=="blue")
+ if($col=="red" ||  $col=="green" || $col=="blue")
  echo "<button onclick=\"resetcolor()\">Reset Color</button>";
 ?>
 </div>
@@ -2317,15 +2588,36 @@ $qqq=$enab + $disb;
 
 <div id="count">
 <?php
+$prodname1=array();
+$i=0;
 $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
-$qry=mysql_query($qry2);
-while($row = mysql_fetch_array($qry))
+$qry123=mysql_query($qry2);
+while($row = mysql_fetch_array($qry123))
 {
-	$count=$row['count(*)'];
+	//$count=$row['count(*)'];
+	$name= $row['pname'];
+	$stock=$row['stock'];
+	if($stock=="In Stock")
+	{
+	if (in_array($name, $prodname1))
+		{
+			continue;
+		}
+		else
+		{
+			$prodname1[$i]=$name;
+			$i=$i+1;
+		}
+	}
+	else
+	{
+		continue;
+	}
 }
+$count=count($prodname1);
 
-echo "<p style=\"position:absolute; left:0%; top:1%; font-family:'Comic Sans MS', cursive; font-weight:bold; font-size:150%;\">MEN'S FORMAL SHIRTS($count) $test </p><hr style=\"position:absolute; left:0%; top:85%; width:96%;\"/>";
+echo "<p style=\"position:absolute; left:0%; top:1%; font-family:'Comic Sans MS', cursive; font-weight:bold; font-size:150%;\">MEN'S FORMAL SHIRTS ($count)</p><hr style=\"position:absolute; left:0%; top:85%; width:96%;\"/>";
 ?>
 </div>
 
@@ -2348,29 +2640,208 @@ $i=0;
 		}
 		else if($i%5==0)
 		{
-			$t=$t+72;
+			$t=$t+80;
 			$l=0;
 			$q=$q+1;
 		}
 		$id=$row['pid'];
 		$name= $row['pname'];
+		$stock=$row['stock'];
+		if($stock=="Out Of Stock")
+		{
+			continue;
+		}
+		else
+		{
+		if (in_array($name, $prodname))
+		{
+			continue;
+		}
+		else
+		{
+		$prodname[$i]=$name;
 		$size= $row['size'];
 		$prize= $row['price'];
-		$img=$row['img1'];
-		echo "<form method=\"post\" action=\"http://localhost/shopmaniac/prodinfo.php\" id=\"prod123\" name=\"prod123".$i."\">";
-        echo "<input type=\"hidden\" name=\"pid1\" value=\"$id\" >";
-echo "</form> ";
+		$prize1=$row['discprice'];
+		$discount=$row['discountpercent'];
+		$img1=$row['img1'];
+		$img2=$row['img2'];
+		$img3=$row['img3'];
+		$img4=$row['img4'];
+		$img5=$row['img5'];
 		
+		$delivery=$row['delivery'];
+		
+		if($prize==$prize1)
+		{
+			$flag=1;
+		}
+		else
+		{
+			$flag=0;
+		}
+		$qry1=mysql_query("select * from products where pname='$name'");
+		$g=0;
+		$gg="";
+		$sizy=array();
+		while($row1 = mysql_fetch_array($qry1))
+		{
+			$sizeaaa=$row1['size'];
+			$stock123=$row1['stock'];
+			if($stock123=="In Stock")
+			{
+			$sizy[$g]=$sizeaaa;
+			}
+			else
+			{
+				continue;
+			}
+			$g=$g+1;
+		}
+		echo "<form method=\"post\" action=\"prodinfo.php\" id=\"prod123\" name=\"prod123".$i."\">";
+        echo "<input type=\"hidden\" name=\"pid1\" value=\"$id\" >";
+        echo "</form> ";
+
+		echo "<div style=\" width:19.2%;height:85%; background-color:#fff; position:absolute; top:".$t."%; left:".$l."%;\" onMouseOver=\"quickbuy('quickbuy".$i."')\" onMouseOut=\"quickbuy1('quickbuy".$i."')\">";
 		echo "<a href=\"#\" onclick=\"prod1('prod123".$i."')\">";
-		echo "<div style=\" width:19.2%;height:70%; background-color:#fafafa; position:absolute; top:".$t."%; left:".$l."%; \">";
-	echo "<img src=\"prodimg/p4.jpg\" width=\"96%\" height=\"60%\" style=\"position:absolute; top:1%; left:2%;\">";
-	echo "<p style=\"position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;\"> $name</p>";
-	echo "<p style=\"position:absolute; left:2%; top:72%; font-family:'Comic Sans MS', cursive; color:#555;  color:#F00; font-size:100%;\"> $prize</p>";
-	echo "<a href=\"#\"><img src=\"prodimg/Buy1.png\" width=\"35%\" height=\"15%\" style=\"position:absolute; left:2%; top:87%; \" onclick=\"prod1('prod123".$i."')\" onmousedown=\"this.src='prodimg/Buy2.png'\" onmouseup=\"this.src='prodimg/Buy1.png'\"></a>";
-	echo "</div>";	
-	echo "</a>";	
+		
+	echo "<img src=\"prodimg/p4.jpg\" width=\"96%\" height=\"68%\" style=\"position:absolute; top:0%; left:0%; \">";
+	if($flag==1)
+	{
+	echo "<table border=\"0\" style=\"position:absolute; left:0%; top:70%; width:100%; \">";
+		echo "<tr><td height=\"1\" style=\"text-align:center; font-size:80%; font-family:'Comic Sans MS', cursive; color:#555;\">$name </td></tr>";
+		echo "<tr><td style=\"font-family:'Comic Sans MS', cursive; color:#F00;font-size:90%;\"><center>$prize </center></td>
+		</tr>";
+echo "</table>";
+	}
+	else
+	{
+	echo "<table border=\"0\" style=\"position:absolute; left:0%; top:70%; width:100%; \">";
+		echo "<tr><td height=\"1\" style=\"text-align:center; font-size:80%; font-family:'Comic Sans MS', cursive; color:#555;\">$name </td></tr>";
+		echo "<tr><td style=\"font-family:'Comic Sans MS', cursive; color:#F00; font-size:90%;\"><center>$prize1 &nbsp;<strong style=\"text-decoration:line-through; color:#555;font-weight:lighter;\">$prize</strong></center></td>
+		</tr>";
+				echo "<tr><td style=\"font-family:'Comic Sans MS', cursive;   color:#F00; font-size:60%;\"><center>($discount)</center></td></tr>";
+echo "</table>";
+	}
+	echo "</a>";
+		
+echo "<div id=\"quickbuy".$i."\" style=\"position:absolute; left:25%; top:90%; width:55%; height:20%; visibility:hidden;\">";
+echo "<a href=\"#\" onclick=\"quick('quick".$i."')\"><img src=\"prodimg/quick buy.png\" width=\"70%\" height=\"50%\"></a>";
+echo "<p style=\"position:absolute; left:0%; top:45%; color:#999;\">Size:-</p>";
+$y=50;
+$x=68;
+for($r=0;$r<count($sizy);$r++)
+{
+	echo "<p style=\"position:absolute; left:$y%; top:45%;\">$sizy[$r]</p>";
+	if($r==count($sizy)-1)
+	{
+		continue;
+	}
+	else
+	{
+		echo "<p style=\"position:absolute; left:$x%; top:45%;\">,</p>";
+	}
+	$y=$y+25;
+	$x=$x+25;
+}
+echo "</div>";
+echo "</div>";	
+	
+   echo	"<div id=\"quick".$i."\" style=\"position:fixed;top:65%;left:38%;width:70%;height:70%;	margin-top:-35%;margin-left:-25%;visibility:hidden;z-index:10000;background-color:#fff;border-style:solid;border-width:thick;border-color:#828282;\">";
+   echo "<a href=\"#\" onclick=\"iquick('quick".$i."')\"><img src=\"prodimg/close.png\" style=\"height:3.5%;width:2.5%;position:relative;left:97.5%;top:0.3%;z-index:10\"></a>";
+   echo "<div name=\"main\" id=\"main\"><img src=\"prodimg/$img1\" id=\"mn\" style=\"height:100%;width:100%\" />";
+   echo "</div>";
+   
+   	echo "<div style=\"position:absolute;left:0%;width:50%;height:18%; top:81%; border-color:#666;border-width:thin; border-bottom-style:solid;border-top-style:solid;\">";
+	echo "<img src=\"prodimg/$img1\" id=\"img1\" style=\"position:absolute;width:18%; height:100%; left:0%;top:0%\" onmouseover=\"image('prodimg/$img1','img1')\" onmouseout=\"nbrdr('img1')\">";
+	echo "<img src=\"prodimg/$img2\" id=\"img2\" style=\"position:absolute;width:18%; height:100%; left:20%;top:0%\" onmouseover=\"image('prodimg/$img2','img2')\" onmouseout=\"nbrdr('img2')\">";
+	echo "<img src=\"prodimg/$img3\" id=\"img3\" style=\"position:absolute;width:18%; height:100%; left:40%;top:0%\" onmouseover=\"image('prodimg/$img3','img3')\" onmouseout=\"nbrdr('img3')\">";
+	echo "<img src=\"prodimg/$img4\" id=\"img4\" style=\"position:absolute;width:18%; height:100%; left:60%;top:0%\" onmouseover=\"image('prodimg/$img4','img4')\" onmouseout=\"nbrdr('img4')\">";
+	echo "<img src=\"prodimg/$img5\" id=\"img5\" style=\"position:absolute;width:18%; height:100%; left:80%;top:0%\" onmouseover=\"image('prodimg/$img5','img5')\" onmouseout=\"nbrdr('img5')\">";
+	echo "</div>";
+	
+	echo "<div style=\"position:absolute; left:50%; top:0%; width:47%; height:100%; background-color:#fff;\">";
+	echo "<form method=\"post\" action=\"trolley.php\" id=\"prod123xxx".$i."\" name=\"prod123xxx".$i."\">";
+echo "<input type=\"hidden\" name=\"prodid\" value=\"$id\" />";
+echo "<input type=\"hidden\" name=\"cost\" value=\"$price\" />";
+echo "<input type=\"hidden\" name=\"name1\" value=\"$name\" />";
+echo "<input type=\"hidden\" name=\"cost1\" value=\"$price1\" />";
+echo "<input type=\"hidden\" name=\"disc\" value=\"$discount\" />";
+	echo "<center><font face=\"'Comic Sans MS', cursive\" size=\"+2\" color=\"#333333\"><b>$name</b></font></center>";
+	if($flag==1)
+{
+	echo "<p style=\"position:absolute;left:35%; top:15%;  \"><font face=\"Comic Sans MS, cursive\" size=\"+2\" color=\"#990000\"><b>Rs.$prize</b></font></p>";	
+}
+else
+{
+echo "<p style=\"position:absolute;left:25%; top:15%;  text-decoration:line-through;\"><font face=\"Comic Sans MS, cursive\" size=\"+2\" color=\"#979797\"><b>Rs.$prize</b></font></p>";	
+echo "<p style=\"position:absolute;left:58%; top:15%;\"><font face=\"Comic Sans MS, cursive\" size=\"+2\" color=\"#990000\"><b>Rs.$prize1</b></font></p>";
+echo "<p style=\"position:absolute; left:40%; top:22%;color:#979797;\">($discount)</p>";
+}
+echo "<p style=\"position:absolute;left:28%; top:35%;\"><font face=\"'Comic Sans MS', cursive	\" size=\"4\" color=\"#333333\">Select your Size:</font>";
+echo "<p style=\"position:absolute;left:30%; top:43%; width:50%;\"><select name=\"size\" id=\"size\">";
+
+$qry1=mysql_query("select * from products where pname='$name'");
+while($row1 = mysql_fetch_array($qry1))
+{
+	$size1234=$row1['size'];
+	$stock123=$row1['stock'];
+	if($stock123=="In Stock")
+	{
+	echo "<option style:\"align:center\">$size1234</option>";
+	}
+	else
+	{
+		echo "<option style:\"align:center\" disabled=\"disabled\">$size1234 (out of stock)</option>";
+	}
+}
+echo "</select>";
+echo "</form> ";
+if($_SESSION['uname']=="")
+{
+	if($stock=="In Stock")
+	{
+	echo "<p style=\"position:absolute;left:30%; top:60%;\"><a href=\"#\"><img src=\"prodimg/addtotrolley.png\" width=\"55%\" height=\"12%\" onclick=\"logtr()\" onmousedown=\"this.src='prodimg/addtotrolley1.png'\" onmouseup=\"this.src='prodimg/addtotrolley.png'\"></a></center>";
+	}
+	else
+	{
+		echo "<p style=\"position:absolute;left:15%; top:70%;\"><img src=\"prodimg/addtotrolley2.png\" width=\"55%\" height=\"12%\">";
+	}
+}
+else
+{
+	if($stock=="In Stock")
+	{
+echo "<p style=\"position:absolute;left:30%; top:55%;\"><a href=\"#\"><img src=\"prodimg/addtotrolley.png\" width=\"55%\" height=\"12%\" onclick=\"prod1xxx('prod123xxx".$i."')\" onmousedown=\"this.src='prodimg/addtotrolley1.png'\" onmouseup=\"this.src='prodimg/addtotrolley.png'\">";
+	}
+	else
+	{
+	echo "<p style=\"position:absolute;left:15%; top:70%;\"><img src=\"prodimg/addtotrolley2.png\" width=\"55%\" height=\"12%\">";
+	}
+}
+if($stock=="In Stock")
+{
+echo "<img src=\"prodimg/rigthtick.jpg\" width=\"11%\" height=\"31%\" style=\"position:absolute;left:58%; top:10%;\" />";
+echo "<p style=\"position:absolute;left:72%; top:65%; text-decoration:none;\"><font face=\"'Comic Sans MS', cursive	\"  color=\"#333333\">$stock</font>";
+}
+else
+{
+	echo "<img src=\"prodimg/wrongtick.jpg\" width=\"11%\" height=\"31%\" style=\"position:absolute;left:58%; top:10%;\" />";
+echo "<p style=\"position:absolute;left:72%; top:65%; text-decoration:none;\"><font face=\"'Comic Sans MS', cursive	\" size=\"3\" color=\"#333333\">$stock</font>";
+}
+echo "<p style=\"position:absolute; left:27%; top:72%; color:#333;text-decoration:none;\">$delivery</p>";
+if($prize1<200)
+{
+echo "<p style=\"position:absolute; left:27%; top:76%; font-family:'Comic Sans MS', cursive; color:#333; font-size:90%;\">Note:- For total order amount less than 200 add SHIPPING CHARGE Rs 30</p>";
+}
+echo "<a href=\"#\" onclick=\"prod1('prod123".$i."')\"><p style=\"position:absolute; left:32%; top:92%; coloe:#333;\">View full Product Info</p>";
+	echo "</div>";
+	
+   echo "</div>";
 	$l=$l+20.2;
 	$i=$i+1;
+	}
+	}
 	}
 	}
 	else
@@ -2383,7 +2854,7 @@ mysql_close($aaa);
 </div>
 
 <?php
-echo "<div id=\"apDiv18\" style=\"top:$a;\">";
+echo "<div id=\"apDiv18\" style=\"top:$a%;\">";
 ?>
 <p class="shopmanaic"><u>Shopmanaic</u></p>
 <p class="myaccount"><u>My Account</u></p>
@@ -2393,7 +2864,7 @@ echo "<div id=\"apDiv18\" style=\"top:$a;\">";
 <?php
 if($_SESSION['uname']=="")
 {
-	echo "<a href=\"http://localhost/shopmaniac/index.php\" onmouseover=\"this.style.color = '#DF7000'\"  onmouseout=\"this.style.color = '#999'\" style=\"text-decoration:none; color:#999;height:0px; \" ><p class=\"home\">Home</p></a>";
+	echo "<a href=\"index.php\" onmouseover=\"this.style.color = '#DF7000'\"  onmouseout=\"this.style.color = '#999'\" style=\"text-decoration:none; color:#999;height:0px; \" ><p class=\"home\">Home</p></a>";
 }
 else
 {
@@ -2454,14 +2925,12 @@ Shirts</p></a>
 
 <form id="contactaaa" name="contactaaa" method="post" action="contact.php" >
 <?php 
-echo "<input type=\"text\" name=\"contact1\" id=\"contact1\" style=\"position:absolute; top:59%; left:77%; color:#CCC; width:17%; height:5%; border:#F60\"  value=\"Enter your Email-Id\" onfocus=\"if (this.value == 'Enter your Email-Id') this.value = '';\" onblur=\"if (this.value == '') this.value = 'Enter your Email-Id';\"  />";
-
-
-
+echo "<input type=\"text\" name=\"contact1\" id=\"contact1\" style=\"position:absolute; top:59%; left:77%; color:#CCC; width:17%; height:5%; border:#F60\"  value=\"Enter your Email-Id\" onfocus=\"if (this.value == 'search for your favourite brand and products') this.value = 'Enter your Email-Id';\"
+      onkeydown=\"if(this.value=='Enter your Email-Id') this.value=''; this.style.color='#000'\"  onblur=\"if (this.value == '') this.value = 'Enter your Email-Id'; this.style.color='#D6D6D6' \" />";
 
 ?>
 </form>
-<a href="#" onClick="contact()"><img src="prodimg/submit.png" width="10%" height="5%" onMouseDown="this.src='prodimg/submit1.png'" onMouseUp="this.src='prodimg/submit.png'" style="position:absolute; top:58.5%; left:94.5%; color:#CCC; width: 5%; height:6%;"  /></a>
+<a href="#" onClick="contact123()"><img src="prodimg/submit.png" width="10%" height="5%" onMouseDown="this.src='prodimg/submit1.png'" onMouseUp="this.src='prodimg/submit.png'" style="position:absolute; top:58.5%; left:94.5%; color:#CCC; width: 5%; height:6%;"  /></a>
 
 
 <a href="mypoints.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:19%; top:33%; font-family:'Comic Sans MS', cursive" >MyPoints</a>
@@ -2469,9 +2938,31 @@ echo "<input type=\"text\" name=\"contact1\" id=\"contact1\" style=\"position:ab
 
 
 <a href="mycredits.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:19%; top:39%; font-family:'Comic Sans MS', cursive" >MyCredits</a>
-<div id="apDiv40"></div>
+<a href="cancelorder.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:36%; top:53%; font-family:'Comic Sans MS', cursive;" >Cancel Order</a>
+<hr style="position:absolute; left:0%; top:78%; border-style:dotted; width:75%; border-color:#575757;"/>
+<p style="position:absolute; left:3%; top:79%; font-family:'Comic Sans MS', cursive; font-size:100%; font-weight:bold; color:#818181;">Payment Methods</p>
+<img src="prodimg/pm_visa.jpg" width="5%"  style="position:absolute; left:3%; top:90%;" />
+<img src="prodimg/pm_mc.jpg" width="5%"  style="position:absolute; left:8.5%; top:90%;" />
+<img src="prodimg/pm_ae.jpg" width="5%" height="6%"  style="position:absolute; left:14%; top:90%;" />
+<img src="prodimg/pm_a.jpg" width="5%"  style="position:absolute; left:19.5%; top:90%;" />
+<img src="prodimg/cod.jpg" width="5%" height="6%" style="position:absolute; left:25%; top:90%;" />
+<img src="prodimg/nb.gif" width="6%" height="6%" style="position:absolute; left:31%; top:90%;" />
+
+<p style="position:absolute; left:50%; top:79%; font-family:'Comic Sans MS', cursive; font-size:100%; font-weight:bold; color:#818181;">Secured By</p>
+<img src="prodimg/cc_avenue.jpg" width="5%" height="6%"  style="position:absolute; left:50%; top:90%;" />
+<img src="prodimg/verisignsecured.jpg" width="5%" height="6%"  style="position:absolute; left:55.5%; top:90%;" />
+<img src="prodimg/ssl.jpg" width="5%"  height="6%" style="position:absolute; left:61%; top:90%;" />
+<hr width="1" size="500" style="position:absolute; left:75%; top:-2%; height:100%; border-style:dotted; border-color:#575757;"/>
+
+<div id="copyright" style="position:absolute; left:0%; top:100%; width:100%; height:8%;">
+<p style="position:absolute; left:35%; top:-25%; font-family:'Comic Sans MS', cursive; font-size:80%; color:#555;"> Copyright <img src="prodimg/copy.jpg" width="5%" style="position:absolute; left:20%; top:8%;"/>&nbsp;&nbsp;&nbsp; Prodigy Infotech. All Rights Reserved</center>
+</div>
+</div>
+
+<div id="trans">
 </div>
 
 </div>
+
 </body>
 </html>
