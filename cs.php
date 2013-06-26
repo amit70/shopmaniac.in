@@ -1078,7 +1078,6 @@ $q=0;
 $i=0;
 $flag=0;
 	$fetch=mysql_query("select * from products where subname='casual shirts'");
-	$count = @mysql_num_rows($fetch);
 	if($count > 0)
 	{
 	while($row = mysql_fetch_array($fetch))
@@ -1104,6 +1103,10 @@ $flag=0;
 		{
 			$flag=1;
 		}
+		else
+		{
+			$flag=0;
+		}
 		echo "<form method=\"post\" action=\"http://localhost/shopmaniac/prodinfo.php\" id=\"prod123\" name=\"prod123".$i."\">";
         echo "<input type=\"hidden\" name=\"pid1\" value=\"$id\" >";
 echo "</form> ";
@@ -1111,7 +1114,7 @@ echo "</form> ";
 		echo "<a href=\"#\" onclick=\"prod1('prod123".$i."')\">";
 		echo "<div style=\" width:19.2%;height:70%; background-color:#fafafa; position:absolute; top:".$t."%; left:".$l."%; \">";
 	echo "<img src=\"prodimg/p4.jpg\" width=\"96%\" height=\"60%\" style=\"position:absolute; top:1%; left:2%;\">";
-	if($flag==1)
+	if($flag ==1)
 	{
 	echo "<p style=\"position:absolute; top:56%; left:2%; font-family:'Comic Sans MS', cursive; color:#555; font-size:94%;\"> $name</p>";
 	echo "<p style=\"position:absolute; left:10%; top:72%; font-family:'Comic Sans MS', cursive; color:#F00;   font-size:100%;\"> $prize</p>";
@@ -1227,6 +1230,7 @@ echo "<input type=\"text\" name=\"contact1\" id=\"contact1\" style=\"position:ab
 
 
 <a href="mycredits.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:19%; top:39%; font-family:'Comic Sans MS', cursive" >MyCredits</a>
+<a href="cancelorder.php" onmouseover="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:36%; top:53%; font-family:'Comic Sans MS', cursive;" >Cancel Order</a>
 <div id="apDiv40"></div>
 </div>
 

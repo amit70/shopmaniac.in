@@ -18,11 +18,11 @@ $qry=mysql_query("insert into contact values('$contact');");
 
 if($_SESSION['uname']=="")
 {
-header("Location: http://localhost/shopmaniac/index.php");
+header("Location: index.php");
 }
 else
 {
-	header("Location: http://localhost/shopmaniac/home.php");
+	header("Location: home.php");
 }
 ?>
 </body>

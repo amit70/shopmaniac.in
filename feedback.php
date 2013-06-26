@@ -18,7 +18,7 @@ function feed(aaa)
 <?php
 $feed="$_POST[fd]";
 
-$period=date("Y/m/d");
+$period=date("Y/m/d H:i");
 
 try
 {
@@ -33,7 +33,7 @@ catch(Exception $e)
 {
 	echo $e->getmessage();
 }
-echo "<form action=\"http://localhost/shopmaniac/myaccount.php\" method=\"POST\" name=\"fd\">
+echo "<form action=\"myaccount.php\" method=\"POST\" name=\"fd\">
 <input type=\"hidden\" name=\"name\" value=\"$user\">
 			</form>";
 			echo "<script>feed('fd')</script>";

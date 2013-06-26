@@ -29,7 +29,7 @@ try
 
 	
 	mysql_close($sql);
-	header("Location: http://localhost/shopmaniac/home.php");
+	header("Location: http://localhost/shopmaniac/prodinfo.php?pid1=$pid1");
 
 }
 catch(Exception $e)

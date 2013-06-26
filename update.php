@@ -20,14 +20,13 @@ if($flag==0)
 {
 $addr="$_POST[Addr]";
 $cont="$_POST[Telephone]";
-$name="$_POST[name1]";
 $email="$_POST[email]";
 try
 {
-	$qry="update user set name='$name',address='$addr',contact='$cont',email='$email' where username='".$_SESSION['uname']."'";
+	$qry="update user set address='$addr',contact='$cont',email='$email' where username='".$_SESSION['uname']."'";
 	$result=mysql_query($qry);
 	mysql_close($sql);
-	echo "Data has been successfully updated.$flag";
+	//echo "Data has been successfully updated.$flag";
 
 }
 catch(Exception $e)
@@ -44,16 +43,14 @@ try
 	$qry="update user set password='$pass' where username='".$_SESSION['uname']."'";
 	$result=mysql_query($qry);
 	mysql_close($sql);
-	echo "Data has been successfully updated.$flag";
+	//echo "Data has been successfully updated.$flag";
 }
 catch(Exception $e)
 {
 	echo $e->getmessage();
 }
 }
-echo "<form method=\"post\" name=\"trol\" action=\"http://localhost/shopmaniac/myaccount.php\">
-</form>";
-echo "<script>mytrol();</script>";
+header("Location: myaccount.php");
 ?>
 </body>
 </html>

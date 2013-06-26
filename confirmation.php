@@ -28,6 +28,16 @@ function confirm()
 {
 	document.forms["confirm1"].submit();
 }
+function aaa(amit)
+{
+	var x=document.getElementById('srch').value;
+	if(x=="" || x==null || x=="search for your favourite brand and products")
+	{
+		alert("Please Enter Your Search");
+		return false;
+	}
+    document.forms[amit].submit();
+}	
 </script>
 <style type="text/css">
 <!--
@@ -49,10 +59,10 @@ body {
         }
 #apDiv1 {
 	position:relative;
-	width:82%;
+	width:90%;
 	height:450px;
 	z-index:2;
-	left: -40px;
+	left: -42px;
 	top: -615px;
 	background-color:#f6f6f6;
 }
@@ -69,11 +79,11 @@ body {
 }
 #apDiv2 {
 	position:relative;
-	width:75%;
+	width:70%;
 	height:450px;
 	z-index:3;
 	top: -1065px;
-	right:-315px;
+	right:-340px;
 	background-color:#f6f6f6;
 	overflow:scroll;
 }
@@ -104,6 +114,16 @@ position:relative;
 				
 					
 				}
+				#navigation
+				{
+					position:relative;
+					top:-185px;
+					left:-200px;
+					height:35px;
+					width:100%;
+					border-style:solid;
+					border-color:#fff;
+				}
 -->
 </style>
 </head>
@@ -113,7 +133,7 @@ position:relative;
 <?php
 $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
-$qry=mysql_query("select * from User where username='$_SESSION[uname]'");
+$qry=mysql_query("select * from user where username='$_SESSION[uname]'");
 while($row = mysql_fetch_array($qry))
 {
 	$trolley1=$row['trolley'];
@@ -124,13 +144,13 @@ $no=count($arr);
 ?>
 
 <div id="apDiv42">
-<form method="post" action="http://localhost/shopmaniac/home.php" id="website1" name="website1">
+<form method="post" action="home.php" id="website1" name="website1">
 
 </form>
 <?php
 if($_SESSION['uname']=="")
 {
-echo "<a href=\"http://localhost/shopmaniac/index.php\" ><img src=\"prodimg/Title.png\" width=\"38%\" height=\"100%\" style=\"position:absolute; left:-2%; top:5%;\" /></a>";
+echo "<a href=\"index.php\" ><img src=\"prodimg/Title.png\" width=\"38%\" height=\"100%\" style=\"position:absolute; left:-2%; top:5%;\" /></a>";
 }
 else
 {
@@ -139,14 +159,17 @@ else
 ?>
 
 <div style="position:absolute; left:38.8%; top:50%; width:44%; height:49%; background-color:#DCDCDC; "></div>
-<form id="form1" name="form1" method="post" action="">
-    <label>
-      <input type="text" name="textfield" id="textfield"  value="search for your favourite brand and products" style="position:absolute;  width: 33.3%; height: 33%; color:#979797; left:39.4%; top:55.2%; font-family:'Comic Sans MS', cursive"  onfocus="if (this.value == 'search for your favourite brand and products') this.value = '';" onblur="if (this.value == '') this.value = 'search for your favourite brand and products';">
+<form id="form1" name="src1" method="post" action="search.php">
+   <label>
+      <input type="text" name="srch" id="srch"  value="search for your favourite brand and products" style="position:absolute;  width: 33.3%; height: 33%; color:#D6D6D6; left:39.4%; top:55.2%; font-family:'Comic Sans MS', cursive"  onfocus="if (this.value == 'search for your favourite brand and products') this.value = 'search for your favourite brand and products';"
+      onkeydown="if(this.value=='search for your favourite brand and products') this.value=''; this.style.color='#000'"  onblur="if (this.value == '') this.value = 'search for your favourite brand and products'; this.style.color='#D6D6D6'">
     </label>
+    
   </form>
-  <img src="prodimg/Search2.png" width="10%" height="54%" style="position:absolute; left:73%; top:51.2%;" onmouseover="this.src='prodimg/Search1.png'" onmouseout="this.src='prodimg/Search2.png'" onmousedown="this.src='prodimg/Search2.png'" onmouseup="this.src='prodimg/Search1.png'"/>
+ <img src="prodimg/Search2.png" width="10%" height="54%" style="position:absolute; left:73%; top:51.2%;"  onmousedown="this.src='prodimg/Search1.png'" onmouseup="this.src='prodimg/Search2.png'" onclick="aaa('src1')"/>
 
-<form method="post" action="http://localhost/shopmaniac/mytrolley2.php" id="trol" name="trol">
+
+<form method="post" action="mytrolley2.php" id="trol" name="trol">
 
 </form>
 <a href="#" onclick="mytrol()"><img src="prodimg/Trolley11.png" style="position:absolute; left:83%; top:40%;width:6%;height:60%" onmousedown="this.src='prodimg/Trolley12.png'" onmouseup="this.src='prodimg/Trolley11.png'">
@@ -154,21 +177,21 @@ else
 echo "<p style=\"position:absolute; left:85%; top:75%; color:#555; font-size:75%;\">(".($no-1).")</p>";
 ?>
 </a>
-<p style="position:absolute; left:61%; top:-16%; font-size:73%; color:#717171; font-family:'Comic Sans MS', cursive">9773436955(24x7)&nbsp;&nbsp;&nbsp;|
-</p>  
- <img src="Fullscreen capture 7182012 14722 PM.gif"  style="position:absolute; left:58%; top:1%; height:15%; width:2%;"/> 
+<span style=" float:left; position:absolute; left:57.5%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive">9773436955(24x7)&nbsp;&nbsp;&nbsp;|
+</span>  
+ <img src="prodimg/Fullscreen capture 7182012 14722 PM.gif"  style="position:absolute; left:54.5%; top:5%; height:15%; width:2%;"/>
  
-<p style="position:absolute; left:80%; top:-16%; font-size:70%; color:#717171; font-family:'Comic Sans MS', cursive">amit.rajula@gmail.com |</p>
-<img src="Email-Lists-Canada-11.jpg" style="position:absolute; height:15%; width:2%; left:77%; top:1%;"/>
+<span style=" float:left; position:absolute; left:77.5%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive">support@shopmaniac.in |</span>
+<img src="prodimg/Email-Lists-Canada-11.jpg" style="position:absolute; height:18%; width:3%; left:74%; top:3%;"/>
 
-<form method="post" action="http://localhost/shopmaniac/myaccount.php" id="acc" name="acc">
+<form method="post" action="myaccount.php" id="acc" name="acc">
 
 </form>
 <a href="#" onclick="myaccount()"><img src="prodimg/Account11.png" style="position:absolute; left:94.5%; top:39%;width:6%;height:60%" onmousedown="this.src='prodimg/Account12.png'" onmouseup="this.src='prodimg/Account11.png'"></a>
 
-<p style="position:absolute; left:95.5%; top:-16%; font-size:80%; font-family:'Comic Sans MS', cursive"><a href="http://localhost/shopmaniac/index.php" onmouseover="this.style.color = '#DF7000'" onmouseout="this.style.color = '#717171'" style="text-decoration:none; color:#717171;">SignOut</a></p>
+<p style="position:absolute; left:95.5%; top:-16%; font-size:80%; font-family:'Comic Sans MS', cursive"><a href="index.php" onmouseover="this.style.color = '#DF7000'" onmouseout="this.style.color = '#717171'"  style="text-decoration:none; color:#717171;">SignOut</a></p>
 
-<form method="post" action="http://localhost/shopmaniac/home.php" id="home" name="home">
+<form method="post" action="home.php" id="home" name="home">
 
 </form>
 <a href="#" onclick="homes()"><img src="prodimg/Home1.png" style="position:absolute; left:89.5%; top:40%;width:4.5%;height:60%" onmousedown="this.src='prodimg/Home2.png'" onmouseup="this.src='prodimg/Home1.png'"></a>
@@ -177,18 +200,70 @@ echo "<p style=\"position:absolute; left:85%; top:75%; color:#555; font-size:75%
 
 <?php
 $id="$_POST[id]";
-$name="$_POST[name123]";
-$add="$_POST[add]";
-$contact="$_POST[contact]";
-$email="$_POST[email]";
+$namebill="$_POST[namebill]";
+$addbill="$_POST[address1]";
+$landbill="$_POST[landbill]";
+$citybill="$_POST[citybill]";
+$statebill="$_POST[statebill]";
+$pincodebill="$_POST[pinbill]";
+$contactbill="$_POST[contact1]";
+$emailbill="$_POST[emailbill]";
+$nameship="$_POST[nameship]";
+$addship="$_POST[address2]";
+$landship="$_POST[landship]";
+$cityship="$_POST[cityship]";
+$stateship="$_POST[stateship]";
+$pincodeship="$_POST[pinship]";
+$contactship="$_POST[contact2]";
+$emailship="$_POST[emailship]";
+$address="$_POST[addressbill]";
 $final1="$_POST[final123]";
 $leftcredits="$_POST[leftcredits]";
+$payment="$_POST[radio]";
+
+$shippingaddress="$addship,$landship,$cityship,$stateship,$pincodeship";
+if($address=="")
+{
+	$billingaddress="$addbill,$landbill,$citybill,$statebill,$pincodebill";
+}
+else
+{
+	$billingaddress=$address;
+}
+$quant=$_SESSION['quant'];
 ?>
+
+<div id="navigation">
+<a href="mytrolley2.php"><img src="prodimg/trolley.png" width="32%" height="100%" style="position:absolute; left:0%; top:0%" /></a>
+<a href="payment.php"><img src="prodimg/payment.png" width="35%" height="100%" style="position:absolute; left:29.5%; top:0%" /></a>
+<a href="#"><img src="prodimg/confirmation.png" width="32%" height="100%" style="position:absolute; left:62%; top:0%" /></a>
+<img src="prodimg/forward.png" width="7%" height="90%" style="position:absolute; left:92%; top:5%" />
+</div>
+
 <div id="bill">
+<p style="position:absolute; top:-25%; left:2%; font-family:'Comic Sans MS', cursive; font-size:120%;">PM:-<?php
+if($payment=="cod")
+{
+echo "Cash On Delivery";
+}
+else if($payment=="nb")
+{
+	echo "Net Banking";
+}
+else if($payment=="cc")
+{
+	echo "Credit Card";
+}
+else
+{
+	echo "Debit Card";
+}
+
+?></p>
 <p style="position:absolute;top:-50%; left:35%;font-family:'Comic Sans MS', cursive; font-size:150%; font-variant:small-caps;">Confirm Order</p>
 
-<p style="position:absolute;top:-25%; left:80%;font-family:'Comic Sans MS', cursive; font-size:120%; ">You Pay:- <?php
-echo "$final1";
+<p style="position:absolute;top:-25%; left:80%;font-family:'Comic Sans MS', cursive; font-size:120%; ">You Pay:-<?php
+echo $final1;
 ?></p>
 </div>
 
@@ -205,7 +280,7 @@ echo "$final1";
 <tr>
   <td height="50" width="120"><font color="#666666" face="Comic Sans MS, cursive">Name:-</font></td>
 <td><font face="Comic Sans MS, cursive"><?php
-echo "$name";
+echo "$nameship";
 ?></font>
   </td>
   </tr>
@@ -213,14 +288,14 @@ echo "$name";
   <tr>
   <td height="50"><font color="#666666" face="Comic Sans MS, cursive">Address:-</font></td>
 <td><font face="Comic Sans MS, cursive"><?php
-echo "$add";
+echo "$shippingaddress";
 ?></font>
   </td>
   </tr>
   <tr>
   <td height="90"><font color="#666666"face="Comic Sans MS, cursive">Contact No:-</font></td>
 <td><?php
-echo "$contact";
+echo "$contactship";
 ?>
   </td>
   </tr>
@@ -228,7 +303,7 @@ echo "$contact";
   <tr>
   <td height="30"><font color="#666666" face="Comic Sans MS, cursive">Email:-</font></td>
 <td><font face="Comic Sans MS, cursive"><?php
-echo "$email";
+echo "$emailship";
 ?></font>
   </td>
   </tr>
@@ -243,11 +318,13 @@ echo "$email";
   <th height="50" width="90" ><font color="#666666" face="Comic Sans MS, cursive">Product Name</font></th>
   <th height="50" width="90"><font color="#666666"  face="Comic Sans MS, cursive">Size</font></th>
   <th height="50" width="90"><font color="#666666"  face="Comic Sans MS, cursive">Price</font></th>
+   <th height="50" width="90"><font color="#666666"  face="Comic Sans MS, cursive">Quantity</font></th>
+    <th height="50" width="90"><font color="#666666"  face="Comic Sans MS, cursive">Total</font></th>
   </tr>
   <?php
   $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
-$qry=mysql_query("select * from User where username='$_SESSION[uname]'");
+$qry=mysql_query("select * from user where username='".$_SESSION[uname]."'");
 while($row = mysql_fetch_array($qry))
 {
 	$trolley1=$row['trolley'];
@@ -267,6 +344,14 @@ $temp=(int)$arr[$i];
 		$img1=$row['img1'];
 		$brand=$row['brand'];
 	}
+	if($quant[$i]=="" || $quant[$i]==NULL)
+	{
+		$finalprice1=$price*1;
+	}
+	else
+	{
+	$finalprice1=$price*$quant[$i];
+	}
 	echo "<tr>";
   
   echo "<td height=\"50\" width=\"90\" align=\"center\"><font face=\"Comic Sans MS, cursive\">";
@@ -285,6 +370,24 @@ $temp=(int)$arr[$i];
   echo "$price";
   echo "</font>";
   echo "</td>";
+  if($quant[$i]=="" || $quant[$i]==NULL)
+  {
+	   echo "<td height=\"50\" width=\"90\" align=\"center\"> <font face=\"Comic Sans MS, cursive\">";
+  echo "1";
+ echo "</font>";
+  echo "</td>";
+  }
+  else
+  {
+    echo "<td height=\"50\" width=\"90\" align=\"center\"> <font face=\"Comic Sans MS, cursive\">";
+  echo "$quant[$i]";
+ echo "</font>";
+  echo "</td>";
+  }
+  echo "<td height=\"50\" width=\"90\" align=\"center\"> <font face=\"Comic Sans MS, cursive\">";
+  echo "$finalprice1";
+ echo "</font>";
+ echo "</td>";
   
   echo "<tr>";
 }
@@ -298,10 +401,14 @@ $temp=(int)$arr[$i];
 <form method="post" action="insert.php" name="confirm1" id="confirm1">
 <?php
  echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />";
- echo "<input type=\"hidden\" name=\"name123\" value=\"$name\" />";
- echo "<input type=\"hidden\" name=\"add\" value=\"$add\" />";
- echo "<input type=\"hidden\" name=\"contact\" value=\"$contact\" />";
- echo "<input type=\"hidden\" name=\"email\" value=\"$email\" />";
+ echo "<input type=\"hidden\" name=\"nameship\" value=\"$nameship\" />";
+  echo "<input type=\"hidden\" name=\"namebill\" value=\"$namebill\" />";
+ echo "<input type=\"hidden\" name=\"address2\" value=\"$shippingaddress\" />";
+  echo "<input type=\"hidden\" name=\"address1\" value=\"$billingaddress\" />";
+ echo "<input type=\"hidden\" name=\"contact2\" value=\"$contactship\" />";
+ echo "<input type=\"hidden\" name=\"contact1\" value=\"$contactbill\" />";
+ echo "<input type=\"hidden\" name=\"emailship\" value=\"$emailship\" />";
+ echo "<input type=\"hidden\" name=\"emailbill\" value=\"$emailbill\" />";
  echo "<input type=\"hidden\" name=\"pname\" value=\"$pname\" />";
  echo "<input type=\"hidden\" name=\"size\" value=\"$size\" />";
   echo "<input type=\"hidden\" name=\"price\" value=\"$price\" />";
@@ -309,6 +416,7 @@ $temp=(int)$arr[$i];
     echo "<input type=\"hidden\" name=\"final123\" value=\"$final1\" />";
 	echo "<input type=\"hidden\" name=\"tr\" value=\"$trolley1\" />";
 	 echo "<input type=\"hidden\" name=\"leftcredits\" value=\"$leftcredits\" />";
+	 echo "<input type=\"hidden\" name=\"payment\" value=\"$payment\" />";
 	?>
 	</form>
     

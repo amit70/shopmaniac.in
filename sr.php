@@ -15,11 +15,8 @@ $_SESSION['size']=$_POST['size1'];
 $_SESSION['brand']=$_POST['brand1'];
 $_SESSION['price']=$_POST['range'];
 $_SESSION['clr']=$_POST['color'];
-$_SESSION['pid1']=$_POST['pid'];
-$_SESSION['item']=$_POST['aaa'];
 
-
-header("Location: http://localhost/shopmaniac/searchresponse.php");
+header("Location:searchresponse.php");
 ?>
 </body>
 </html>

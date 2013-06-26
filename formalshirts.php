@@ -184,6 +184,7 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
 }		
 function quickbuy(a)
 {
+	
 	document.getElementById(a).style.visibility='visible';
 }
 function quickbuy1(a)
@@ -192,7 +193,7 @@ function quickbuy1(a)
 }
 function quick(a)
 {
-	        document.getElementById(a).style.visibility='visible';
+			document.getElementById(a).style.visibility='visible';
 			//document.getElementById('trans').style.visibility='visible';
 			document.getElementById(a).style.opacity=100;
 }
@@ -201,10 +202,10 @@ function iquick(b)
 			document.getElementById(b).style.visibility='hidden';
 			document.getElementById('trans').style.visibility='hidden';
 }
-function image(thisImg,ob) 
+function image(maindiv,thisImg,ob) 
 {
-	document.getElementById('main').innerHTML="";
-    document.getElementById('main').innerHTML='<img src='+thisImg+' id="mn" style="position:relative;width:100%;height:100%">';
+	document.getElementById(maindiv).innerHTML="";
+    document.getElementById(maindiv).innerHTML='<img src='+thisImg+'  style="position:relative;width:100%;height:100%">';
 
 document.getElementById(ob).style.borderBottom="medium inset #090";
 }
@@ -717,10 +718,7 @@ p.stay
 	height:115px;
 	z-index:13;
 }
-#main
-{
-	position:absolute;width:50%;height:80%;left:0%;top:0%;
-}
+
 </style>
 </head>
 
@@ -1527,17 +1525,17 @@ for($r=0;$r<count($sizy);$r++)
 echo "</div>";
 echo "</div>";	
 	
-   echo	"<div id=\"quick".$i."\" style=\"position:fixed;top:65%;left:38%;width:70%;height:70%;	margin-top:-35%;margin-left:-25%;visibility:hidden;z-index:10000;background-color:#fff;border-style:solid;border-width:thick;border-color:#828282;\">";
+   echo	"<div id=\"quick".$i."\" style=\"position:fixed;top:65%;left:38%;width:70%;height:70%;	margin-top:-35%;margin-left:-25%;visibility:hidden;z-index:100000;background-color:#fff;border-style:solid;border-width:thick;border-color:#828282;\">";
    echo "<a href=\"#\" onclick=\"iquick('quick".$i."')\"><img src=\"prodimg/close.png\" style=\"height:3.5%;width:2.5%;position:relative;left:97.5%;top:0.3%;z-index:10\"></a>";
-   echo "<div name=\"main\" id=\"main\"><img src=\"prodimg/$img1\" id=\"mn\" style=\"height:100%;width:100%\" />";
+   echo "<div name=\"main".$i."\" id=\"main".$i."\" style=\"position:absolute; left:0%; top:0%; width:50%; height:80%; \"><img src=\"prodimg/$img1\" id=\"mn\" style=\"height:100%;width:100%\" />";
    echo "</div>";
    
    	echo "<div style=\"position:absolute;left:0%;width:50%;height:18%; top:81%; border-color:#666;border-width:thin; border-bottom-style:solid;border-top-style:solid;\">";
-	echo "<img src=\"prodimg/$img1\" id=\"img1\" style=\"position:absolute;width:18%; height:100%; left:0%;top:0%\" onmouseover=\"image('prodimg/$img1','img1')\" onmouseout=\"nbrdr('img1')\">";
-	echo "<img src=\"prodimg/$img2\" id=\"img2\" style=\"position:absolute;width:18%; height:100%; left:20%;top:0%\" onmouseover=\"image('prodimg/$img2','img2')\" onmouseout=\"nbrdr('img2')\">";
-	echo "<img src=\"prodimg/$img3\" id=\"img3\" style=\"position:absolute;width:18%; height:100%; left:40%;top:0%\" onmouseover=\"image('prodimg/$img3','img3')\" onmouseout=\"nbrdr('img3')\">";
-	echo "<img src=\"prodimg/$img4\" id=\"img4\" style=\"position:absolute;width:18%; height:100%; left:60%;top:0%\" onmouseover=\"image('prodimg/$img4','img4')\" onmouseout=\"nbrdr('img4')\">";
-	echo "<img src=\"prodimg/$img5\" id=\"img5\" style=\"position:absolute;width:18%; height:100%; left:80%;top:0%\" onmouseover=\"image('prodimg/$img5','img5')\" onmouseout=\"nbrdr('img5')\">";
+	echo "<img src=\"prodimg/$img1\" id=\"img1".$i."\" style=\"position:absolute;width:18%; height:100%; left:0%;top:0%\" onmouseover=\"image('main".$i."','prodimg/$img1','img1".$i."')\" onmouseout=\"nbrdr('img1".$i."')\">";
+	echo "<img src=\"prodimg/$img2\" id=\"img2".$i."\" style=\"position:absolute;width:18%; height:100%; left:20%;top:0%\" onmouseover=\"image('main".$i."','prodimg/$img2','img2".$i."')\" onmouseout=\"nbrdr('img2".$i."')\">";
+	echo "<img src=\"prodimg/$img3\" id=\"img3".$i."\" style=\"position:absolute;width:18%; height:100%; left:40%;top:0%\" onmouseover=\"image('main".$i."','prodimg/$img3','img3".$i."')\" onmouseout=\"nbrdr('img3".$i."')\">";
+	echo "<img src=\"prodimg/$img4\" id=\"img4".$i."\" style=\"position:absolute;width:18%; height:100%; left:60%;top:0%\" onmouseover=\"image('main".$i."','prodimg/$img4','img4".$i."')\" onmouseout=\"nbrdr('img4".$i."')\">";
+	echo "<img src=\"prodimg/$img5\" id=\"img5".$i."\" style=\"position:absolute;width:18%; height:100%; left:80%;top:0%\" onmouseover=\"image('main".$i."','prodimg/$img5','img5".$i."')\" onmouseout=\"nbrdr('img5".$i."')\">";
 	echo "</div>";
 	
 	echo "<div style=\"position:absolute; left:50%; top:0%; width:47%; height:100%; background-color:#fff;\">";

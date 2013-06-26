@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <html>
 <head>
@@ -25,144 +24,155 @@ try
 {
 	$sql=mysql_connect("localhost","root","system");
 	mysql_select_db("eshop",$sql);
-	$result = mysql_query("SELECT * FROM User WHERE email='$email1'");
+	$result = mysql_query("SELECT * FROM user WHERE email='$email1'");
 	while($row = mysql_fetch_array($result))
 	{
 		$user= $row['username'];
 		$pass= $row['password'];
 		$sesn=$row['sesid'];
 	}
-		$_SESSION['uname']=$user;
+		
+		
 
 	if($pwd==$pass)
 	{
+		$_SESSION['uname']=$user;
+	
         if($flag==0) 
 		{ 		
-			header("Location: http://localhost/shopmaniac/home.php");
+			header("Location:home.php");
 		}
 		else if($flag==1)
 		{
-			header("Location: http://localhost/shopmaniac/formalshirts.php");
+			header("Location:formalshirts.php");
 		}
 		else if($flag==2)
 		{
-			header("Location: http://localhost/shopmaniac/cs.php");
+			header("Location:cs.php");
 		}
 		
 		else if($flag==3)
 		{
-			header("Location: http://localhost/shopmaniac/trousers.php");
+			header("Location:trousers.php");
 		}
 		else if($flag==4)
 		{
-			header("Location: http://localhost/shopmaniac/jeans.php");
+			header("Location:jeans.php");
 		}
 		else if($flag==5)
 		{
-			header("Location: http://localhost/shopmaniac/t-shirts.php");
+			header("Location:t-shirts.php");
 		}
 		else if($flag==6)
 		{
-		header("Location: http://localhost/shopmaniac/sportsshoes.php");
+		header("Location:sportsshoes.php");
 		}
 		else if($flag==7)
 		{
-		header("Location: http://localhost/shopmaniac/casualshoes.php");
+		header("Location:casualshoes.php");
 		}
 		else if($flag==8)
 		{
-			header("Location: http://localhost/shopmaniac/formalshoes.php");
+			header("Location:formalshoes.php");
 		}
 		else if($flag==9)
 		{
-			header("Location: http://localhost/shopmaniac/sf.php");
+			header("Location:sf.php");
 		}
 		else if($flag==100)
 		{
 			$pid="$_POST[pid]";
-			echo "<form action=\"http://localhost/shopmaniac/prodinfo.php\" method=\"POST\" name=\"pf\">
+			echo "<form action=\"prodinfo.php\" method=\"POST\" name=\"pf\">
 			<input type=\"hidden\" name=\"pid1\" value=\"$pid\">
 			</form>";
 			echo "<script>myaccount('pf')</script>";
 		}
        else if($flag==101)
 		{
-			header("Location: http://localhost/shopmaniac/mytrolley2.php");
+			header("Location:mytrolley2.php");
 		}
 		else if($flag==102)
 		{
-			header("Location: http://localhost/shopmaniac/search.php");
+			header("Location:search.php");
 		}
 		else if($flag==1001)
 		{
-			header("Location: http://localhost/shopmaniac/returnpolicy.php");
+			header("Location:returnpolicy.php");
 		}
 		else if($flag==1002)
 		{
-		header("Location: http://localhost/shopmaniac/privacypolicy.php");
+		header("Location:privacypolicy.php");
 		}
 		else if($flag==1003)
 		{
-			header("Location: http://localhost/shopmaniac/shippingpolicy.php");
+			header("Location:shippingpolicy.php");
 		}
 		else if($flag==1004)
 		{
-			header("Location: http://localhost/shopmaniac/t&c.php");
+			header("Location:t&c.php");
 		}
 		else if($flag==1005)
 		{
-		header("Location: http://localhost/shopmaniac/faq.php");
+		header("Location:faq.php");
 		}
 		else if($flag==1006)
 		{
-			header("Location: http://localhost/shopmaniac/trackorder.php");
+			header("Location:trackorder.php");
 		}
 		else if($flag==1007)
 		{
-		header("Location: http://localhost/shopmaniac/placeorder.php");
+		header("Location:placeorder.php");
 		}
 		else if($flag==1008)
 		{
-	header("Location: http://localhost/shopmaniac/returnproduct.php");
+	header("Location:returnproduct.php");
 		}
 		else if($flag==1009)
 		{
-			header("Location: http://localhost/shopmaniac/mypoints.php");
+			header("Location:mypoints.php");
 		}
 		else if($flag==1010)
 		{
-		header("Location: http://localhost/shopmaniac/contactus.php");
+		header("Location:contactus.php");
 		}
 		else if($flag==1011)
 		{
-		header("Location: http://localhost/shopmaniac/aboutus.php");
+		header("Location:aboutus.php");
 		}
 		else if($flag==1012)
 		{
-			header("Location: http://localhost/shopmaniac/mycredits.php");
+			header("Location:mycredits.php");
+		}
+		else if($flag==1013)
+		{
+			header("Location:cancelorder.php");
+		}
+		else if($flag==1014)
+		{
+			header("Location:buylook.php");
 		}
 		else if($flag==10001)
 		{
-		header("Location: http://localhost/shopmaniac/mens.php");
+		header("Location:mens.php");
 		}
 
 		else if($flag==10002)
 		{
-			header("Location: http://localhost/shopmaniac/footwear.php");
+			header("Location:footwear.php");
 		}
 		else if($flag==10003)
 		{
-			header("Location: http://localhost/shopmaniac/homeware.php");
+			header("Location:homeware.php");
 		}
 	}
 	else if(($pwd!=$pass || $pwd=="") && $flag==100)
 	{
 		$pid="$_POST[pid]";
-		header("Location: http://localhost/shopmaniac/index1.php?flag=$flag&pid1=$pid");
+		header("Location:wrongpwd.php?flag=$flag&pid1=$pid");
 	}
 	else if($pwd!=$pass || $pwd=="" )
 	{
-		header("Location: http://localhost/shopmaniac/index1.php?flag=$flag");
+		header("Location:wrongpwd.php?flag=$flag");
 		
 	}
 }

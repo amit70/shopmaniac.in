@@ -12,27 +12,62 @@ session_start();
 <?php
 //$nam="$_POST[name1]";
 $id="$_POST[prodid]";
-$size="$_POST[size]";
+$size1="$_POST[size]";
 $cost="$_POST[cost]";
 $cost1="$_POST[cost1]";
 $discount="$_POST[disc]";
+
 $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
-$qry=mysql_query("select * from User where username='".$_SESSION['uname']."'");
+$qry1=mysql_query("select * from products where pid='$id'");
+while($row111 = mysql_fetch_array($qry1))
+{
+	$size=$row111['size'];
+	$pname=$row111['pname'];
+}
+if($size==$size1)
+{
+	$flag=0;
+}
+else
+{
+$qry2=mysql_query("select * from products where pname='$pname' and size=$size1");
+while($row222 = mysql_fetch_array($qry2))
+{
+	$pid=$row222['pid'];
+}
+	$flag=1;
+}
+echo $pid;
+$qry=mysql_query("select * from user where username='".$_SESSION['uname']."'");
 while($row = mysql_fetch_array($qry))
 {
 	$trolley=$row['trolley'];
 }
+if($flag==0)
+{
 if(strcmp($trolley,"NULL")==0)
 {
-	$entdb="update User set trolley='$id,' where username='".$_SESSION['uname']."'";
+	$entdb="update user set trolley='$id,' where username='".$_SESSION['uname']."'";
 }
 else
 {
-	$entdb="update User set trolley='$trolley"."$id,' where username='".$_SESSION['uname']."'";
+	$entdb="update user set trolley='$trolley"."$id,' where username='".$_SESSION['uname']."'";
+}
+}
+else
+{
+	if(strcmp($trolley,"NULL")==0)
+{
+	$entdb="update user set trolley='$pid,' where username='".$_SESSION['uname']."'";
+}
+else
+{
+	$entdb="update user set trolley='$trolley"."$pid,' where username='".$_SESSION['uname']."'";
+}
 }
 mysql_query($entdb);
-$qry=mysql_query("select * from User where username='".$_SESSION['uname']."'");
+$qry=mysql_query("select * from user where username='".$_SESSION['uname']."'");
 while($row = mysql_fetch_array($qry))
 {
 	$trolley1=$row['trolley'];
@@ -40,7 +75,7 @@ while($row = mysql_fetch_array($qry))
 $arr=spliti(",",$trolley1);
 $no=count($arr);
 
-header("Location: http://localhost/shopmaniac/mytrolley2.php");
+header("Location:mytrolley2.php");
 ?>
 </body>
 </html>

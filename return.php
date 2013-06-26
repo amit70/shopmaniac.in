@@ -24,13 +24,17 @@ $price=$_POST['priceaaa'];
 $image=$_POST['imageaaa'];
 $rid=$_POST['ridaaa'];
 $oid=$_POST['oidaaa'];
+$quant=$_POST['quantaaa'];
+$doo=$_POST['dooaaa'];
+$dor=$_POST['doraaa'];
+
 try
 {
 	
 	$sql=mysql_connect("localhost","root","system");
 	mysql_select_db("eshop",$sql);
 		
-	$qry="INSERT INTO `returns` VALUES ($pid, '$pname', '$size', $price, '".$_SESSION['uname']."','$image',$rid,'pending',$oid)";
+	$qry="INSERT INTO `returns` VALUES ($pid, '$pname', '$size', $price, '".$_SESSION['uname']."','$image',$rid,'pending',$oid,$quant,'$doo','$dor')";
 	
 	$qry1="update orders set flag=1 where username='".$_SESSION['uname']."' and returnid=$rid";
 	
@@ -47,9 +51,7 @@ catch(Exception $e)
 {
 	echo $e->getmessage();
 }
-echo "<form action=\"http://localhost/shopmaniac/myaccount.php\" method=\"POST\" name=\"fd\">
-			</form>";
-			echo "<script>feed('fd')</script>";
+	header("Location: myaccount.php");
 
 ?>
 </body>

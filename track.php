@@ -17,10 +17,10 @@ try
 {
 $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
-$qry=mysql_query("select * from track");
+$qry=mysql_query("select * from orders");
 while($row=mysql_fetch_array($qry))
 {
-	$oid1=$row['oid'];
+	$oid1=$row['orderid'];
 	$status=$row['status'];	
 	if($value==$oid1)
 	{
@@ -29,6 +29,7 @@ while($row=mysql_fetch_array($qry))
 	}
 	else
 	{
+		
 		$flag=12;
 	}
 	
@@ -36,12 +37,12 @@ while($row=mysql_fetch_array($qry))
 if($flag==12)
 {
 	$_SESSION['status']="Sorry Its an Invalid Order Id";
-	header("Location: http://localhost/shopmaniac/trackorder.php");
+	header("Location: trackorder.php");
 }
 else
 {
 	$_SESSION['status']=$status;
-	header("Location: http://localhost/shopmaniac/trackorder.php");
+	header("Location: trackorder.php");
 }
 }
 catch(Exception $e)

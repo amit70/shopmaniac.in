@@ -15,7 +15,7 @@ $id=(int)$_POST["hid"];
 
 $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
-$qry=mysql_query("select * from User where username='".$_SESSION['uname']."'");
+$qry=mysql_query("select * from user where username='".$_SESSION['uname']."'");
 while($row = mysql_fetch_array($qry))
 {
 	$trolley1=$row['trolley'];
@@ -40,9 +40,9 @@ for($i=0;$i<$no-2;$i++)
 {
 	$str=$str."$arr[$i],";
 }
-$qry=mysql_query("update User set trolley='$str' where username='".$_SESSION['uname']."'");
+$qry=mysql_query("update user set trolley='$str' where username='".$_SESSION['uname']."'");
 
-header("Location: http://localhost/shopmaniac/mytrolley2.php");
+header("Location: mytrolley2.php");
 ?>
 
 
