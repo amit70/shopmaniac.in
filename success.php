@@ -4,10 +4,11 @@ session_start();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link href="navbar.css" rel="stylesheet" type="text/css"  />
+<link rel="shortcut icon" type="image/png" href="prodimg/title123.png" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="navbar.css" rel="stylesheet" type="text/css" />
+<title>Successful Transaction : Shopmaniac.in</title>
 
-<title>Untitled Document</title>
 <script type="text/javascript" language="javascript">
 		sfHover = function() {
    		var sfEls = document.getElementById("navbar").getElementsByTagName("li");
@@ -1408,15 +1409,15 @@ border-style:double;
 <?php
 $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
-
+$AuthDesc=$_REQUEST['AuthDesc'];
 $today=date("Y/m/d H:i");
 
-//$qry=mysql_query("select * from track where username='".$_SESSION['uname']."' ");
-//while($row = mysql_fetch_array($qry))
-//	///$oid=$row[oid];
-//}
+if($AuthDesc=="N")
+{
+	
+}
 
-$qry1=mysql_query("select * from orders where username='".$_SESSION['uname']."' ");
+$qry1=mysql_query("select * from orders where username='".$_SESSION['uname']."' and orderid='".$_SESSION['orderid']."' ");
 while($row1 = mysql_fetch_array($qry1))
 {
 	$pid=$row1[pid];
@@ -1448,11 +1449,12 @@ else
 <div id="apDiv45">
 
 <p style="position:absolute; left:10%; top:0%; font-family:'Comic Sans MS', cursive; font-size:130%;">Thank You <b><?php
-echo $_SESSION['uname'];
+echo $_SESSION['uname']; 
+echo $AuthDesc;
 ?></b> for shopping at SHOPMANIAC.in .</p>
 <img src="prodimg/rigthtick.jpg" width="4.5%" height="5%" style="position:absolute; left:15%; top:19%" /><p style="position:absolute; left:22%; top:14%; font-family:'Comic Sans MS', cursive; font-size:130%;">Your Orders was placed SUCCESSFULLY.</p>
 <p style="position:absolute; left:22%; top:28%; font-family:'Comic Sans MS', cursive; font-size:105%;">Your Order Id is :- <b><?php
-echo $orderid;
+echo $_SESSION['orderid'];
 ?>.</b></p>
 <p style="position:absolute; left:22%; top:38%; font-family:'Comic Sans MS', cursive; font-size:105%;">Total products Ordered :- <b><?php
 echo $no-1;
@@ -1479,9 +1481,9 @@ else
 }
 ?>
 
-<p style="position:absolute; left:15%; top:75%; font-family:'Comic Sans MS', cursive; font-size:105%;">You can track your Order in the <b>Track Order</b> section .</p>
+<p style="position:absolute; left:15%; top:75%; font-family:'Comic Sans MS', cursive; font-size:105%;">You can track your Order in the <a href="trackorder.php" style="text-decoration:none;color:#000;" onmouseover="this.style.color='#DF7000'" onmouseout="this.style.color='#000'"><b>Track Order</b></a> section .</p>
 
-<p style="position:absolute; left:15%; top:85%; font-family:'Comic Sans MS', cursive; font-size:105%;">In Case you want to Return Product then read the <b>Retun Policy</b> and then go to the Myorder section of Myaccount.</p>
+<p style="position:absolute; left:15%; top:85%; font-family:'Comic Sans MS', cursive; font-size:105%;">In Case you want to Return Product then read the <a href="returnpolicy.php" style="text-decoration:none;color:#000;" onmouseover="this.style.color='#DF7000'" onmouseout="this.style.color='#000'"><b>Retun Policy</b></a> and then go to the Myorder section of Myaccount.</p>
 
 
 

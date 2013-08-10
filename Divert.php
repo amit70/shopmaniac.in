@@ -52,8 +52,20 @@ try
 	$qry="insert into user values('$uname', '$pwd',NULL, '$email', NULL,NULL,500,'".session_id()."',0,'$gender',NULL)";
 	$result=mysql_query($qry,$sql);
 	$_SESSION['uname']=$uname;
+	
+	$to = $email;
+$subject = "Shopmaniac.in";
+$message = "Dear $uname Thank You for Registering at Shopmaniac.in.
+	
+	Regards
+	Shopmaniac Support Team";
+$from = "support@shopmaniac.in";
+$headers = "From:" . $from;
+mail($to,$subject,$message,$headers);
+	
 	    if($flag==0) 
 		{ 		
+	
 			header("Location: home.php");
 		}
 		else if($flag==1)
@@ -93,10 +105,50 @@ try
 		{
 			header("Location: sf.php");
 		}
+		else if($flag==10)
+		{
+			header("Location:samsung.php");
+		}
+		else if($flag==11)
+		{
+			header("Location:nokia.php");
+		}
+		else if($flag==12)
+		{
+			header("Location:micromax.php");
+		}
+		else if($flag==13)
+		{
+			header("Location:sony.php");
+		}
+		else if($flag==14)
+		{
+			header("Location:htc.php");
+		}
+		else if($flag==15)
+		{
+			header("Location:bb.php");
+		}
+		else if($flag==16)
+		{
+			header("Location:apple.php");
+		}
+		else if($flag==20)
+		{
+			header("Location:samsungtablets.php");
+		}
+		else if($flag==21)
+		{
+			header("Location:appletablets.php");
+		}
+		else if($flag==22)
+		{
+			header("Location:mobilestablets.php");
+		}
 		else if($flag==100)
 		{
 			
-			echo "<form action=\"prodinfo.php\" method=\"POST\" name=\"pf\">
+			echo "<form action=\"prodinfo.php\" method=\"get\" name=\"pf\">
 			<input type=\"hidden\" name=\"pid1\" value=\"$pid\">
 			</form>";
 			echo "<script>myaccount('pf')</script>";

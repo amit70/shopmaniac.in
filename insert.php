@@ -34,6 +34,8 @@ $payment="$_POST[payment]";
 $orderid=rand(10000,99999);
 $quant=$_SESSION['quant'];
 $credits= $_SESSION['credits'];
+$finalaaa=0;
+$flag=0;
 try
 { 
 $mypoints=0;
@@ -90,10 +92,10 @@ $mypoints=0;
   		{
 	 		 $quant[$i]=1;
   		}
-		if($i>=1 && $credits>0)
-		{
-			$credits="-";
-		}
+		//if($i>=1 && $credits>0)
+		//{
+			//$credits="-";
+		//}
 		$returnid=rand(10000,99999);
 		$temp=(int)$arr[$i];
 		$qryaaa=mysql_query("select * from products where pid=$temp");
@@ -104,6 +106,7 @@ $mypoints=0;
 			$size= $rowaaa['size'];
 			$price1= $rowaaa['discprice'];
 			$image=$rowaaa['img1'];
+			$subname=$rowaaa['subname'];
 		}
 		if($no==2)
 		{
@@ -130,35 +133,33 @@ $mypoints=0;
 			$discprice=$price123-$b;
 			$discprice=round($discprice);
 		}
-		$qry="INSERT INTO `orders` VALUES ($id, '$pname', '$size', $price1, 							'$namebill','$image',0,'$final1','$period','$trolley1','$billingaddress','$emailbill',$contactbill,'$shippingaddress','$emailship',$contactship,'$nameship','$payment','$disc%','$discprice','$orderid','$returnid','WIll Be Delivered in 24 hours','$quant[$i]','$shipping','$credits')";
-		$result=mysql_query($qry);
+		$qry="INSERT INTO `orders` VALUES ($id, '$pname', '$size', $price1, 							'$namebill','$image',0,'$final1','$period','$trolley1','$billingaddress','$emailbill',$contactbill,'$shippingaddress','$emailship',$contactship,'$nameship','$payment','$disc%','$discprice','$orderid','$returnid','WIll Be Delivered in 3-4 Business Days','$quant[$i]','$shipping','$credits','pending')";
+		if($subname=="mobiles" || $subname=="tablets")
+		{
+			$flag=1;
+			$finalaaa=$finalaaa+$discprice;
 		}
-		
+		$result=mysql_query($qry);		
+		}
+				
 		$qry2="select mypoints from user where username='".$_SESSION['uname']."'";
 		$result2=mysql_query($qry2);
 		while($row3=mysql_fetch_array($result2))
 		{
 			$aaa=$row3['mypoints'];
 		}
-		$mypoints=$aaa+$final1;
+		if($flag==1)
+		{
+			$finalaaa=$final1-$finalaaa;
+			$mypoints=$aaa+$finalaaa;
+		}
+		else
+		{
+			$mypoints=$aaa+$final1;
+		}
 		$qry3="update user set mypoints=$mypoints where username='".$_SESSION['uname']."'";
 		$result5=mysql_query($qry3);
 		
-		
-		//$qry123="insert into track values(NULL,'WIll Be Delivered in 24 hours','".$_SESSION['uname']."','$period','$trolley1')";
-		//$result123=mysql_query($qry123);	
-		
-		//$qryid="select * from track where username='".$_SESSION['uname']."' and DOO='$period' ";
-		//$resultid=mysql_query($qryid);
-		//while($rowid=mysql_fetch_array($resultid))
-		//{
-		//	$oid=$rowid['oid'];
-		//}
-
-		//for($j=0;$j<$no-1;$j++)
-		//{
-		//	$qryid1=mysql_query("update orders set orderid='$oid' where username='".$_SESSION['uname']."' and DOO='$period'");
-	//	}
 		
 	$qry1="update user set trolley=NULL where username='".$_SESSION[uname]."'";
 	$result1=mysql_query($qry1);
@@ -183,7 +184,18 @@ $mypoints=0;
 		$resultcont=mysql_query($qrycont);
 	}
 	mysql_close($sql);
-	header("Location: success.php");
+
+	$_SESSION['orderid']=$orderid;
+	$_SESSION['finalamt']=$final1;
+	
+	if($payment!=="cod")
+	{
+		header("Location: checkout.php");
+	}
+	else
+	{
+		header("Location: transactioncomplete.php");
+	}
 
 }
 catch(Exception $e)

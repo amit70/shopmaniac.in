@@ -12,7 +12,11 @@ session_start();
 <?php
 //$nam="$_POST[name1]";
 $id="$_POST[prodid]";
+$subname="$_POST[subname]";
+if($subname!=="mobiles" && $subname!=="tablets")
+{
 $size1="$_POST[size]";
+}
 $cost="$_POST[cost]";
 $cost1="$_POST[cost1]";
 $discount="$_POST[disc]";
@@ -24,7 +28,10 @@ while($row111 = mysql_fetch_array($qry1))
 {
 	$size=$row111['size'];
 	$pname=$row111['pname'];
+	$subname=$row111['subname'];
 }
+if($subname!=="mobiles" && $subname!=="tablets")
+{
 if($size==$size1)
 {
 	$flag=0;
@@ -38,7 +45,7 @@ while($row222 = mysql_fetch_array($qry2))
 }
 	$flag=1;
 }
-echo $pid;
+
 $qry=mysql_query("select * from user where username='".$_SESSION['uname']."'");
 while($row = mysql_fetch_array($qry))
 {
@@ -63,17 +70,37 @@ else
 }
 else
 {
-	$entdb="update user set trolley='$trolley"."$pid,' where username='".$_SESSION['uname']."'";
+ $entdb="update user set trolley='$trolley"."$pid,' where username='".$_SESSION['uname']."'";
 }
 }
-mysql_query($entdb);
+}
+else
+{
 $qry=mysql_query("select * from user where username='".$_SESSION['uname']."'");
 while($row = mysql_fetch_array($qry))
 {
-	$trolley1=$row['trolley'];
+	$trolley=$row['trolley'];
 }
-$arr=spliti(",",$trolley1);
-$no=count($arr);
+if(strcmp($trolley,"NULL")==0)
+{
+	$entdb="update user set trolley='$id,' where username='".$_SESSION['uname']."'";
+}
+else
+{
+	$entdb="update user set trolley='$trolley"."$id,' where username='".$_SESSION['uname']."'";
+}
+}
+mysql_query($entdb);
+
+
+
+//$qry=mysql_query("select * from user where username='".$_SESSION['uname']."'");
+//while($row = mysql_fetch_array($qry))
+//{
+//	$trolley1=$row['trolley'];
+//}
+//$arr=spliti(",",$trolley1);
+//$no=count($arr);
 
 header("Location:mytrolley2.php");
 ?>

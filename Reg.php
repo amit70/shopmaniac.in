@@ -4,10 +4,10 @@ session_start();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link href="navbar.css" rel="stylesheet" type="text/css"  />
+<link rel="shortcut icon" type="image/png" href="prodimg/title123.png" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<title>Untitled Document</title>
+<link href="navbar.css" rel="stylesheet" type="text/css" />
+<title>Online Shopping India : Shop Apparels,Footwear,Accessories,Mobiles in India | Shopmaniac.in</title>
 <script type="text/javascript" language="javascript">
 		sfHover = function() {
    		var sfEls = document.getElementById("navbar").getElementsByTagName("li");
@@ -110,6 +110,11 @@ if (y==null || y=="")
   {
   	alert("Please enter confirm password");
   	return false;
+  }
+  if(x.length<8)
+  {
+	alert("Password should be minimum of 8 Chracters");
+	return false;
   }
 if(x!=y)
 	{
@@ -385,6 +390,14 @@ p.products
 	font:Verdana, Geneva, sans-serif;
 	color:#999;
 	font-weight:bold;
+}
+img {
+   border: 0;
+}
+a { 
+    text-decoration: none; 
+    border:0;
+    color: #248AC9; 
 }
 p.home
 {
@@ -1019,7 +1032,7 @@ p.ppp{
 #logdiv
 {
 	position:fixed;
-	top:60%;
+	top:70%;
 	left:55%;
 	width:40%;
 	height:70%;
@@ -1028,9 +1041,8 @@ p.ppp{
 	visibility:hidden;
 	z-index:10000;
 	background-color:#f6f6f6;
-	border:thin;
-	border-style:solid;
-	border-color:#fff;
+border-style:solid;
+	border-color:#979797;
 	
 }
 
@@ -1055,7 +1067,7 @@ p.ppp{
 				z-index:1000;
 				background:#333;
 				/* For web browsers who care */
-				opacity: 0.4;
+				opacity: 0.9;
 				/* For IE 5-7 */
 				filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
 				/* For IE 8 (and 9, 10, 11?). Don't miss the added quotes */
@@ -1354,7 +1366,7 @@ p.stay
 		#apDiv44 {
 	position:relative;
 	width:193.8%;
-	height:500px;
+	height:700px;
 	z-index:13;
 	left: -200px;
 	top: -180px;
@@ -1404,20 +1416,20 @@ $pid="$_GET[pid1]";
 <div name="transdiv" id="logdiv">
 <a href="#"><img src="prodimg/close.png" alt="Close" style="height:4.5%;width:5%;position:relative;left:95%;top:0.3%;z-index:10" onclick="ilogtr()" /> </a>
 <div id="logdiv1" onmouseover="login()">
-<h3 align="center"><font face="Comic Sans MS, cursive" color="#666666">LOGIN</font></h3>
+<h3 align="center"><font face="Comic Sans MS, cursive" color="#444">LOGIN</font></h3>
 
 <form method="POST" action="check.php"  name="login123">
-  <table align="left" border="0" cols=2 cellspacing="3" style="position:absolute; left:10%; top:25%">
+  <table align="left" border="0" cols=2 cellspacing="15" style="position:absolute; left:10%; top:25%">
   <tr>
-  <td height="50"><font color="#666666" face="Comic Sans MS, cursive">Email Id:</font></td>
+  <td height="50"><font color="#333" face="Comic Sans MS, cursive">Email Id:</font></td>
   <td><?php 
-  echo "<input type=\"text\" name=\"email123\" id=\"email123\">";
+  echo "<input type=\"text\" name=\"email123\" id=\"email123\" style=\"width:130%; height:55%;\">";
   ?></td>
   </tr>
   <tr>
-  <td><label for="Password"><font color="#666666" face="Comic Sans MS, cursive">Password:</font></label></td>
+  <td><label for="Password"><font color="#333" face="Comic Sans MS, cursive">Password:</font></label></td>
   <td><?php
-  echo "<input type=\"password\" name=\"pwd123\" id=\"pwd123\" />";
+  echo "<input type=\"password\" name=\"pwd123\" id=\"pwd123\" style=\"width:130%; height:130%;\"/>";
   ?>
   </td>
   </tr>    
@@ -1426,8 +1438,8 @@ $pid="$_GET[pid1]";
   echo "<input type=\"hidden\" name=\"flag\" value=\"$flag\" />";
    echo "<input type=\"hidden\" value=\"$pid\" name=\"pid\"/>";
   ?>
- <a href="#" onclick="login1()"><img src="prodimg/Login1.png" width="50%" height="15%" style="position:absolute; left:25%; top:88%;" onmousedown="this.src='prodimg/Login2.png'" onmouseup="this.src='prodimg/Login1.png'"/></a>
- <a href="#" onclick="emailcheck()" style="text-decoration:none; position:absolute; left:33%; top:55%; font-size:13px; color:#6D6D6D;" onmouseover="this.style.color='#DF7000'" onmouseout="this.style.color='#6D6D6D'">Forgot your Password?</a>
+ <a href="#" onclick="login1()"><img src="prodimg/Login1.png" width="40%" height="18%" style="position:absolute; left:30%; top:85%;" onmousedown="this.src='prodimg/Login2.png'" onmouseup="this.src='prodimg/Login1.png'"/></a>
+ <a href="#" onclick="emailcheck()" style="text-decoration:none; position:absolute; left:33%; top:55%; font-size:18px; color:#6D6D6D;" onmouseover="this.style.color='#DF7000'" onmouseout="this.style.color='#6D6D6D'">Forgot your Password?</a>
 
 </form>
 
@@ -1439,11 +1451,11 @@ $pid="$_GET[pid1]";
 <?php
 if($_SESSION['uname']=="")
 {
-echo "<a href=\"index.php\" ><img src=\"prodimg/Title.png\" width=\"38%\" height=\"100%\" style=\"position:absolute; left:-2%; top:5%;\" /></a>";
+echo "<a href=\"index.php\" ><img src=\"prodimg/Logo.jpg\" width=\"38%\" height=\"60%\" style=\"position:absolute; left:-2%; top:18%;\" /></a>";
 }
 else
 {
-	echo "<a href=\"home.php\"><img src=\"prodimg/Title.png\" width=\"38%\" height=\"100%\" style=\"position:absolute; left:-2%; top:5%;\" /></a>";
+	echo "<a href=\"home.php\"><img src=\"prodimg/Logo.jpg\" width=\"38%\" height=\"60%\" style=\"position:absolute; left:-2%; top:18%;\" /></a>";
 }
 ?>
 </div>
@@ -1456,6 +1468,7 @@ $value="$_GET[value]";
 <div id="apDiv45">
 
 <p style="font-family:'Comic Sans MS', cursive; font-size:125%; text-align:center;">Register</p>
+<p style="font-family:'Comic Sans MS', cursive; font-size:125%; text-align:center; position:absolute; left:42%; top:5%;">For New Users	</p>
 <?php
 if($value==1)
 {
@@ -1470,13 +1483,13 @@ else
 </div>";
 }
 ?>
-<form method="POST" action="Divert.php"  name="register" id="register">
-<p style="position:absolute; left:30%; top:35%;">Full Name:-</p><input type="text" name="Username" id="Username"  style="position:absolute; left:43%; top:38%;"/>
-<p style="position:absolute; left:30%; top:45%;">Password:-</p><input type="password" name="pwd123" id="pwd123"  style="position:absolute; left:43%; top:49%;"/>
-<p style="position:absolute; left:22%; top:55%;">Confirm Password:-</p><input type="password" name="cpwd123" id="cpwd123"  style="position:absolute; left:43%; top:58%;"/>
-<p style="position:absolute; left:34%; top:65%;">Email:-</p><input type="text" name="email" id="email"  style="position:absolute; left:43%; top:68%;"/>
-<p style="position:absolute; left:32%; top:74%;">Gender:-</p><input type="radio" name="radio" id="male" value="male" style="position:absolute; left:43%; top:77%;"/><p style="position:absolute; left:46%; top:73%;">Male</p>
-<input type="radio" name="radio" id="female" value="female" style="position:absolute; left:53%; top:77%;"/><p style="position:absolute; left:56%; top:73%;">Female</p>
+<form method="post" action="Divert.php"  name="register" id="register">
+<p style="position:absolute; left:30%; top:35%;">Full Name:-</p><input type="text" name="Username" id="Username"  style="position:absolute; left:43%; top:37%; width:30%; height:4%;"/>
+<p style="position:absolute; left:30%; top:44%;">Password:-</p><input type="password" name="pwd123" id="pwd123"  style="position:absolute; left:43%; top:46%;width:30%; height:4%;"/>
+<p style="position:absolute; left:22%; top:53%;">Confirm Password:-</p><input type="password" name="cpwd123" id="cpwd123"  style="position:absolute; left:43%; top:55%;width:30%; height:4%;"/>
+<p style="position:absolute; left:34%; top:63%;">Email:-</p><input type="text" name="email" id="email"  style="position:absolute; left:43%; top:65%;width:30%; height:4%;"/>
+<p style="position:absolute; left:32%; top:73%;">Gender:-</p><input type="radio" name="radio" id="male" value="male" style="position:absolute; left:43%; top:75%;"/><p style="position:absolute; left:46.5%; top:72.3%;">Male</p>
+<input type="radio" name="radio" id="female" value="female" style="position:absolute; left:53%; top:75%;"/><p style="position:absolute; left:56.5%; top:72.3%;">Female</p>
 
  
  <p style="position:absolute; left:38%; top:83%; font-family:'Comic Sans MS', cursive;color:#6D6D6D;">Already have an account Click <a href="#" onclick="logtr()" style="text-decoration:none; color:#2E2E2E;" onmouseover="this.style.color='#DF7000'" onmouseout="this.style.color='#2E2E2E'">HERE</a></p> 

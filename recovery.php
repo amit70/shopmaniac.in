@@ -4,10 +4,10 @@ session_start();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link href="navbar.css" rel="stylesheet" type="text/css"  />
+<link rel="shortcut icon" type="image/png" href="prodimg/title123.png" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<title>Untitled Document</title>
+<link href="navbar.css" rel="stylesheet" type="text/css" />
+<title>Recovery	 : Shopmaniac.in</title>
 <script type="text/javascript" language="javascript">
 		sfHover = function() {
    		var sfEls = document.getElementById("navbar").getElementsByTagName("li");
@@ -502,7 +502,14 @@ p.contactus
 	font:Verdana, Geneva, sans-serif;
 }
 
-	
+	img {
+   border: 0;
+}
+a { 
+    text-decoration: none; 
+    border:0;
+    color: #248AC9; 
+}
 p.login
 {
 	position:absolute;
@@ -1387,7 +1394,7 @@ p.stay
 		#apDiv44 {
 	position:relative;
 	width:193.8%;
-	height:400px;
+	height:450px;
 	z-index:13;
 	left: -200px;
 	top: -180px;
@@ -1438,11 +1445,11 @@ $no=count($arr);
 <?php
 if($_SESSION['uname']=="")
 {
-echo "<a href=\"index.php\" ><img src=\"prodimg/Title.png\" width=\"38%\" height=\"100%\" style=\"position:absolute; left:-2%; top:5%;\" /></a>";
+echo "<a href=\"index.php\" ><img src=\"prodimg/Logo.jpg\" width=\"38%\" height=\"60%\" style=\"position:absolute; left:-2%; top:18%;\" /></a>";
 }
 else
 {
-	echo "<a href=\"home.php\"><img src=\"prodimg/Title.png\" width=\"38%\" height=\"100%\" style=\"position:absolute; left:-2%; top:5%;\" /></a>";
+	echo "<a href=\"home.php\"><img src=\"prodimg/Logo.jpg\" width=\"38%\" height=\"60%\" style=\"position:absolute; left:-2%; top:18%;\" /></a>";
 }
 ?>
   
@@ -1453,7 +1460,7 @@ $flag="$_GET[flag]";
 ?>
 
 <div id="apDiv44">
-<div id="apDiv45">
+<div id="apDiv45" style=" z-index:0;">
 <p style="font-family:'Comic Sans MS', cursive; font-size:125%; text-align:center; ">Reset Your Password</p>
 <hr/>
 <p>Please select one option</p>
@@ -1463,7 +1470,7 @@ $flag="$_GET[flag]";
 ?></p>
 <!--<input type="radio" name="reset" id="code1" value="cd" style="font-family:'Comic Sans MS', cursive; position:absolute; left:5%; top:50%;"><p style="position:absolute; left:10%; top:45%; font-family:'Comic Sans MS', cursive;">Message a Code to Reset Password </p>-->
 
-<a href="#" onclick="continue1()"><img src="prodimg/continue.png" width="15%" height="12%" style="position:absolute; left:40%; top:65%" onmousedown="this.src='prodimg/continue1.png'" onmouseup="this.src='prodimg/continue.png'">
+<a href="#" onclick="continue1()"><img src="prodimg/continue.png" width="15%" height="12%" style="position:absolute; left:40%; top:55%" onmousedown="this.src='prodimg/continue1.png'" onmouseup="this.src='prodimg/continue.png'">
 <?php
 echo "<input type=\"hidden\" name=\"email\" value=\"$email\" />";
 ?>
@@ -1472,13 +1479,21 @@ echo "<input type=\"hidden\" name=\"email\" value=\"$email\" />";
 <?php
 if($flag==1)
 {
-	echo "<img src=\"prodimg/rigthtick.jpg\" width=\"3%\" height=\"4%\" style=\"position:absolute; left:4%; top:85%;\"/>";
-	echo "<p style=\"position:absolute; left:8%; top:80%; color:#f00;\">An email with link to reset password has been mailed to email addresss($email)</p>";
+	echo "<img src=\"prodimg/rigthtick.jpg\" width=\"3%\" height=\"4%\" style=\"position:absolute; left:4%; top:72%;\"/>";
+	echo "<p style=\"position:absolute; left:8%; top:68%; color:#f00;\">An email with link to reset password has been mailed to email addresss($email)</p>";
+		echo "<a href=\"index.php\" ><img src=\"prodimg/continueshopping.png\" width=\"20%\" height=\"11%\" style=\"position:absolute; left:38%; top:83%\" onmousedown=\"this.src='prodimg/continueshopping1.png'\" onmouseup=\"this.src='prodimg/continueshopping.png'\"></a>";
+}
+if($flag==2)
+{
+	echo "<img src=\"prodimg/wrongtick.jpg\" width=\"3%\" height=\"4%\" style=\"position:absolute; left:20%; top:72%;\"/>";
+	echo "<p style=\"position:absolute; left:25%; top:68%; color:#f00;\">It seems this email Id is not registered with us</p>";
+	echo "<a href=\"index.php\" ><img src=\"prodimg/continueshopping.png\" width=\"20%\" height=\"11%\" style=\"position:absolute; left:38%; top:83%\" onmousedown=\"this.src='prodimg/continueshopping1.png'\" onmouseup=\"this.src='prodimg/continueshopping.png'\"></a>";
 }
 ?>
+
+
+
 </div>
-
-
 </div>
 
 </body>

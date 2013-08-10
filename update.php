@@ -38,12 +38,12 @@ else if($flag==1)
 {
 	$pass="$_POST[pass1]";
 	$pass=md5($pass);
+	
 try
 {
 	$qry="update user set password='$pass' where username='".$_SESSION['uname']."'";
 	$result=mysql_query($qry);
 	mysql_close($sql);
-	//echo "Data has been successfully updated.$flag";
 }
 catch(Exception $e)
 {

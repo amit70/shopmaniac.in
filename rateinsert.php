@@ -15,7 +15,7 @@ $title1=$_POST['title'];
 $desc1=$_POST['desc'];
 $rating1=$_POST['abc'];
 $pid1=$_POST['prodid'];
-
+$period=date("Y/m/d H:i");
 try
 { 
 
@@ -23,13 +23,13 @@ try
 	mysql_select_db("eshop",$sql);
 	
 
-	$qry1="INSERT INTO `review` VALUES ($pid1,'$uname1','$title1','$desc1','$rating1')";
+	$qry1="INSERT INTO `review` VALUES ($pid1,'$uname1','$title1','$desc1','$rating1','$period')";
 	
 	$result=mysql_query($qry1);
 
 	
 	mysql_close($sql);
-	header("Location: http://localhost/shopmaniac/prodinfo.php?pid1=$pid1");
+	header("Location: prodinfo.php?pid1=$pid1");
 
 }
 catch(Exception $e)

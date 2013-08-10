@@ -5,12 +5,10 @@ date_default_timezone_set('Asia/Calcutta');
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link href="navbar.css" rel="stylesheet" type="text/css" />
-
+<link rel="shortcut icon" type="image/png" href="prodimg/title123.png" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="themes/4/js-image-slider.css" rel="stylesheet" type="text/css" />
-<script src="themes/4/js-image-slider.js" type="text/javascript"></script>
-<title>Untitled Document</title>
+<link href="navbar.css" rel="stylesheet" type="text/css" />
+<title>Online Shopping India : Shop Apparels,Footwear,Accessories,Mobiles in India | Shopmaniac.in</title>
 <script type="text/javascript" language="javascript">
 		
 function aaa123(amit)
@@ -76,7 +74,7 @@ var datetime = currentdate.getFullYear() + "/"
 			document.getElementById('trans').style.visibility='visible';
 			document.getElementById('rid').style.opacity=100;
 			document.getElementById('rid').innerHTML="";			
-			document.getElementById('rid').innerHTML='<a href="#"><img src="prodimg/close.png" alt="Close" style="height:8%;width:4%;position:absolute;left:95.4%;top:0.3%;z-index:10" onclick="irid()" /> </a> <img src="prodimg/'+t+'" width=20% height=100% style="left:0%; top:0%;"/><p style="position:absolute; left:40%; top:-3%;" ><b>Order Id:</b> '+x+'</p> <p style="position:absolute; left:40%; top:15%;" ><b>Product Id:</b> '+p+'</p> <p style="position:absolute; left:40%; top:25%;" ><b>Product Name:</b> '+q+'</p> <p style="position:absolute; left:40%; top:34%;" ><b>Size:</b> '+r+'</p> <p style="position:absolute; left:40%; top:44%;" ><b>Return Price:</b> '+s+'</p> <p style="position:absolute; left:40%; top:6%;" ><b>Return Id:</b> '+u+'</p> <p style="position:absolute; left:40%; top:53%;"><b>Quantity:</b> '+a+' </p> <p style="position:absolute; left:40%; top:63%;"><b>Date Of Order:</b> '+b+' </p> <p style="position:absolute; left:40%; top:73%;"><b>Date Of Return:</b> '+datetime+' </p> <form method="post" action="return.php" name="returns"><input type="hidden" name="oidaaa" value="'+x+'"><input type="hidden" name="pidaaa" value="'+p+'"><input type="hidden" name="pnameaaa" value="'+q+'" ><input type="hidden" name="sizeaaa" value="'+r+'" ><input type="hidden" name="priceaaa" value="'+s+'"><input type="hidden" name="imageaaa" value="'+t+'"><input type="hidden" name="ridaaa" value="'+u+'" ><input type="hidden" name="quantaaa" value="'+a+'" ><input type="hidden" name="dooaaa" value="'+b+'" ><input type="hidden" name="doraaa" value="'+datetime+'" ><a href="#"  onclick="returnsaaa()"><img src="prodimg/confirmreturn.png" width="25%;" height="12%;" onmousedown="this.src=prodimg/confirmreturn1.png" onmouseup="this.src=prodimg/confirmreturn.png" style="position:absolute; left:50%; top:87%;" /></form>';
+			document.getElementById('rid').innerHTML='<a href="#"><img src="prodimg/close.png" alt="Close" style="height:8%;width:4%;position:absolute;left:95.4%;top:0.3%;z-index:10" onclick="irid()" /> </a> <div id="image_container" style="position:absolute; top:5%; left:5%;width:50%; height:100%;"><img src="prodimg/'+t+'" class=\"resize1\"/></div><p style="position:absolute; left:40%; top:-3%;" ><b>Order Id:</b> '+x+'</p> <p style="position:absolute; left:40%; top:15%;" ><b>Product Id:</b> '+p+'</p> <p style="position:absolute; left:40%; top:25%;" ><b>Product Name:</b> '+q+'</p> <p style="position:absolute; left:40%; top:34%;" ><b>Size:</b> '+r+'</p> <p style="position:absolute; left:40%; top:44%;" ><b>Return Price:</b> '+s+'</p> <p style="position:absolute; left:40%; top:6%;" ><b>Return Id:</b> '+u+'</p> <p style="position:absolute; left:40%; top:53%;"><b>Quantity:</b> '+a+' </p> <p style="position:absolute; left:40%; top:63%;"><b>Date Of Order:</b> '+b+' </p> <p style="position:absolute; left:40%; top:73%;"><b>Date Of Return:</b> '+datetime+' </p> <form method="post" action="return.php" name="returns"><input type="hidden" name="oidaaa" value="'+x+'"><input type="hidden" name="pidaaa" value="'+p+'"><input type="hidden" name="pnameaaa" value="'+q+'" ><input type="hidden" name="sizeaaa" value="'+r+'" ><input type="hidden" name="priceaaa" value="'+s+'"><input type="hidden" name="imageaaa" value="'+t+'"><input type="hidden" name="ridaaa" value="'+u+'" ><input type="hidden" name="quantaaa" value="'+a+'" ><input type="hidden" name="dooaaa" value="'+b+'" ><input type="hidden" name="doraaa" value="'+datetime+'" ><a href="#"  onclick="returnsaaa()"><img src="prodimg/confirmreturn.png" width="25%;" height="12%;" onmousedown="this.src=prodimg/confirmreturn1.png" onmouseup="this.src=prodimg/confirmreturn.png" style="position:absolute; left:50%; top:87%;" /></form>';
 	     }
 		
 		function irid() {
@@ -104,7 +102,11 @@ if(isNaN(x))
 	 alert("Contact Must be Numerical");
 	 return false;
  }
-
+if(x.length<10)
+{
+	alert("Please Enter a Valid Contact Number");
+	return false;
+}
 var x=document.forms["up1"]["email"].value;
 if(x==null || x=="")
 {
@@ -135,6 +137,11 @@ function updatepass()
 	{
 		alert("Confrim Password Should Be filled");
 	     return false;
+	}
+	if(x.length<8)
+	{
+		alert("Password should be minimum 8 characters");
+		return false;
 	}
 	if(x!=y)
 	{
@@ -178,7 +185,14 @@ function aaa1(amit)
 	}
     document.forms[amit].submit();
 }		
-
+function addressformat()
+{
+	document.getElementById('addressformat').style.visibility='visible';
+}
+function addressformat1()
+{
+	document.getElementById('addressformat').style.visibility='hidden';
+}
 </script>
 <style type="text/css">
 body {
@@ -188,7 +202,14 @@ body {
             background-color: #fff;
             margin: 0;
 			}
-			
+			img {
+   border: 0;
+}
+a { 
+    text-decoration: none; 
+    border:0;
+    color: #248AC9; 
+}
 			#container {
             background-color: #fff;
             width: 420px;
@@ -832,7 +853,7 @@ position:relative;
 	font-family:"Comic Sans MS", cursive;
 	font-size:90%;
 }
-#upper {
+#apDiv42 {
 position:relative;
 	width:194%;
 	height:80px;
@@ -1141,10 +1162,10 @@ p.stay
 	z-index:12;
 	left: -200px;
 	top: -2120px;
-	background-color:#333;
-	border-style:solid;
-	border-width:thin;
-	border-color:#333;
+background-color:#FCFCFC;
+	border-top-style:solid;
+	border-top-width:medium;
+	border-color:#C1C1C1;
 }
 #apDiv40 {
 	position:absolute;
@@ -1194,6 +1215,30 @@ p.stay
 	height:115px;
 	z-index:13;
 }
+img.resize
+{
+	height:40px;
+	width:auto;
+	text-align:center;
+}
+img.resize
+{
+	height:auto;
+	width:40px;
+	text-align:center;
+}
+img.resize1
+{
+	height:180px;
+	width:auto;
+	text-align:center;
+}
+img.resize1
+{
+	height:auto;
+	width:180px;
+	text-align:center;
+}
 </style>
 
 </head>
@@ -1229,85 +1274,15 @@ $no=0;
 $no=count($arr);
 ?>
 
-<div id="upper">
-
- <a href="home.php"><img src="prodimg/Title.png" width="38%" height="100%" style="position:absolute; left:-2%; top:5%;" /></a>
-
-<div style="position:absolute; left:38.8%; top:50%; width:44%; height:49%; background-color:#DCDCDC; "></div>
-<form id="form1" name="src1" method="post" action="search.php">
-   <label>
-      <input type="text" name="srch" id="srch"  value="search for your favourite brand and products" style="position:absolute;  width: 33.3%; height: 33%; color:#D6D6D6; left:39.4%; top:55.2%; font-family:'Comic Sans MS', cursive"  onfocus="if (this.value == 'search for your favourite brand and products') this.value = 'search for your favourite brand and products';"
-      onkeydown="if(this.value=='search for your favourite brand and products') this.value=''; this.style.color='#000'"  onblur="if (this.value == '') this.value = 'search for your favourite brand and products'; this.style.color='#D6D6D6'">
-    </label>
-    
-  </form>
- <img src="prodimg/Search2.png" width="10%" height="54%" style="position:absolute; left:73%; top:51.2%;"  onmousedown="this.src='prodimg/Search1.png'" onmouseup="this.src='prodimg/Search2.png'" onclick="aaa1('src1')"/>
-
-
-
-<a href="mytrolley2.php"><img src="prodimg/Trolley11.png" style="position:absolute; left:83%; top:40%;width:6%;height:60%" onmousedown="this.src='prodimg/Trolley12.png'" onmouseup="this.src='prodimg/Trolley11.png'">
 <?php
-echo "<p style=\"position:absolute; left:85%; top:75%; color:#555; font-size:75%;\">(".($no-1).")</p>";
+include("header.php");
 ?>
-</a>
 
 
+<?php
+include("menu.php");
+?>
 
-<span style=" float:left; position:absolute; left:57.5%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive">9773436955(24x7)&nbsp;&nbsp;&nbsp;|
-</span>  
- <img src="prodimg/Fullscreen capture 7182012 14722 PM.gif"  style="position:absolute; left:54.5%; top:5%; height:15%; width:2%;"/>
- 
-<span style=" float:left; position:absolute; left:77.5%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive">support@shopmaniac.in |</span>
-<img src="prodimg/Email-Lists-Canada-11.jpg" style="position:absolute; height:18%; width:3%; left:74%; top:3%;"/>
-
-
-<p style="position:absolute; left:95.5%; top:-16%; font-size:80%; font-family:'Comic Sans MS', cursive"><a href="index.php" onmouseover="this.style.color = '#DF7000'" onmouseout="this.style.color = '#717171'"  style="text-decoration:none; color:#717171;">SignOut</a></p>
-
-<a href="#"><img src="prodimg/Account11.png" style="position:absolute; left:94.5%; top:39%;width:6%;height:60%" onmousedown="this.src='prodimg/Account12.png'" onmouseup="this.src='prodimg/Account11.png'"></a>
-
-
-<a href="home.php"><img src="prodimg/Home1.png" style="position:absolute; left:89.5%; top:40%;width:4.5%;height:60%" onmousedown="this.src='prodimg/Home2.png'" onmouseup="this.src='prodimg/Home1.png'"></a>
-
-</div>
-
-
-
-
-
-<div id='cssmenu'>
-	<ul>
-		<li><a href='#'><span>Men</span></a>
-		 <ul>
-				<li style="position:absolute; left:0%; top:-5%;"><a href='#'><span><h3><b>Mens Apparels</b></h6></span></a> </li>
-            	<li style="position:absolute; left:0%; top:12%;"><a href='#'><span>Casual Shirt</span></a></li>
-             	<li style="position:absolute; left:0%; top:24%;"><a href='formalshirts.php'><span>Formal Shirt</span></a></li>
-	            <li style="position:absolute; left:0%; top:36%;"><a href='#'><span>Trousers</span></a></li>
-   		        <li style="position:absolute; left:0%; top:48%;"><a href='#'><span>Jeans</span></a></li>
-        	    <li style="position:absolute; left:0%; top:60%;" ><a href='#'><span>Tees</span></a></li>
-               
-          		<li style="position:absolute; left:22%; top:-5%;"><a href='#'><span><h3><b>Mens Footwear</b></h3></span></a></li>
-            	<li style="position:absolute; left:22%; top:12%;"><a href='#'><span>Sports Shoes</span></a></li>
-             	<li style="position:absolute; left:22%; top:24%;"><a href='#'><span>Formal Shoes</span></a></li>
-              	<li style="position:absolute; left:22%; top:36%;"><a href='#'><span>Casual Shoes</span></a></li>
-               	<li style="position:absolute; left:22%; top:48%;"><a href='#'><span>Slippers/Flipflops</span></a></li>
-                
-                <li style="position:absolute; left:44%; top:-5%;"><a href='#'><span><h3><b>Mens Accessories</b></h3></span></a></li>
-            	<li style="position:absolute; left:44%; top:12%;"><a href='#'><span>Sports Shoes</span></a></li>
-             	<li style="position:absolute; left:44%; top:24%;"><a href='#'><span>Formal Shoes</span></a></li>
-              	<li style="position:absolute; left:44%; top:36%;"><a href='#'><span>Casual Shoes</span></a></li>
-               	<li style="position:absolute; left:44%; top:48%;"><a href='#'><span>Slippers/Flipflops</span></a></li>
-			
-            <img src="prodimg/nikeshoes1.jpg" width="20%"  height="80%" style="position:absolute; left:78%; top:5%;"/>
-          </ul>
-		</li>
-        
-        <li style="position:absolute; left:10%; top:0%;"><a href='#'><span>Men</span></a>
-        	 <ul >
-				<li><a href='#'><span><b>Mens Apparels</b></span></a> </li>
-             </ul>   
-        </li>
-    </ul>
-</div>
 
 <div id="apDiv41">
 <a href="#" onclick="aaa('profile','order','mypoints','feedback','returns','mycredits')" style="position:absolute; left:10%; top:5%; color:#000; text-decoration:none;" onmouseover="this.style.color='#DF7000'" onmouseout="this.style.color='#000'">My Profile</a>
@@ -1355,24 +1330,24 @@ echo "<input type=\"hidden\" name=\"flag\" value=\"0\" />";
   echo "<td><input type=\"hidden\" name=\"Username\" style=\"font-family:'Comic Sans MS', cursive;\" id=\"Username\"  value=\"$user1\"></td>";
   ?>
   </tr>  
-  <tr>
+  <tr >
   <td height="33"><label><center><font face="Comic Sans MS, cursive"
 	font size="4%" color="#555">Address:</font></label></td>
   <?php
   if($addr=="" || $addr=="NULL")
   {
-	  echo "<td><textarea rows=\"4\" cols=\"30\" name=\"Addr\" style=\"font-family:'Comic Sans MS', cursive;\" id=\"Addr\"/></textarea></td>";
+	  echo "<td ><textarea rows=\"4\" cols=\"30\" name=\"Addr\" style=\"font-family:'Comic Sans MS', cursive;\" id=\"Addr\"/></textarea></td>";
   }
   else
   {
-  echo "<td><textarea rows=\"4\" cols=\"30\" name=\"Addr\" style=\"font-family:'Comic Sans MS', cursive;\" id=\"Addr\"/>$addr</textarea></td>";
+  echo "<td onclick=\"addressformat()\" onmouseout=\"addressformat1()\"><textarea rows=\"4\" cols=\"30\" name=\"Addr\" style=\"font-family:'Comic Sans MS', cursive;\" id=\"Addr\"/>$addr</textarea></td>";
   }
   ?>
   </tr>
   
   <tr>
   <td height="33"><label for="Telephone"><center><font face="Comic Sans MS, cursive"
-	font size="4%" color="#555">Mobile No:</font></label></td>
+	font size="4%" color="#555">Contact No:</font></label></td>
    <?php
    if($cont=="" || $cont=="NULL")
    {
@@ -1394,6 +1369,14 @@ echo "<input type=\"hidden\" name=\"flag\" value=\"0\" />";
   </tr>
 </table>  
 <a href="#" onclick="updateprofile()"><img src="prodimg/updateprofile.png" width="22%" height="10%" style="position:absolute; left:18%; top:89%;" onmousedown="this.src='prodimg/updateprofile1.png'" onmouseup="this.src='prodimg/updateprofile.png'"/></a>
+<div id="addressformat" style="position:absolute; left:73%; top:40%;  width:24%; height:45%; background-color:#EBEBEB; border-style:solid; border-color:#D6D6D6; visibility:hidden;">
+<p style="position:absolute; left:0; top:-10%; color:#555; font-size:90%;">Please Enter Address in Following Format:-</p>
+<p style="position:absolute; left:0; top:24%; color:#777; font-size:85%;">1. Address1,</p> 
+<p style="position:absolute; left:0; top:38%; color:#777; font-size:85%;">2. Address2,</p> 
+<p style="position:absolute; left:0; top:54%; color:#777; font-size:85%;">3. City,</p> 
+<p style="position:absolute; left:0; top:68%; color:#777; font-size:85%;">4. State,</p> 
+<p style="position:absolute; left:0; top:81%; color:#777; font-size:85%;">5. Pincode</p> 
+</div>
 </form>
 
 
@@ -1410,7 +1393,7 @@ echo "<input type=\"hidden\" name=\"flag\" value=\"1\" />  ";
 	font size="4%" color="#555">Password:</font></td>
     <?php
 	echo "<input type=\"hidden\" name=\"Username\" style=\"font-family:'Comic Sans MS', cursive;\" id=\"Username\" readonly=\"readonly\" value=".$user1.">";
-  echo "<td><input type=\"password\" name=\"pass1\" style=\"font-family:'Comic Sans MS', cursive;\" id=\"pass1\" value=\"$pass\"></td>";
+  echo "<td><input type=\"password\" name=\"pass1\" style=\"font-family:'Comic Sans MS', cursive;\" id=\"pass1\" value=\"\"></td>";
    ?>
    </tr>
  
@@ -1419,7 +1402,7 @@ echo "<input type=\"hidden\" name=\"flag\" value=\"1\" />  ";
 	font size="4%" color="#555">Confirm Password:</font></td>
     
     <?php
-  echo "<td><input type=\"password\" name=\"pass2\" style=\"font-family:'Comic Sans MS', cursive;\" id=\"pass2\" value=\"$pass\"></td>";
+  echo "<td><input type=\"password\" name=\"pass2\" style=\"font-family:'Comic Sans MS', cursive;\" id=\"pass2\" value=\"\"></td>";
   ?>
   <td>
     </tr>
@@ -1434,28 +1417,29 @@ echo "<input type=\"hidden\" name=\"flag\" value=\"1\" />  ";
 <div id="order">
    <?php
   $i=1;
+  $period=date("Y/m/d H:i");
   //$id=array();
- $result2= mysql_query("select * from orders where username='".$_SESSION['uname']."' ORDER BY DOO DESC");
+ $result2= mysql_query("select * from orders where username='".$_SESSION['uname']."' and transaction='completed' ORDER BY DOO DESC");
 //$result5=mysql_query("select * from track where username='".$_SESSION['uname']."'");
  
  $count = @mysql_num_rows($result2);
  if($count > 0)
  {
-	echo "<table align=\"left\" border=\"0\" cols=2 cellspacing=\"3\" style=\"position:absolute; left:1%; top:2%;\">";
+	echo "<table align=\"left\" border=\"0\" cols=2 cellspacing=\"1\" style=\"position:absolute; left:1%; top:2%;\">";
   echo "<tr>";
-    echo "<th  width=\"90\"><font color=\"#555\"></font></th>";
-    echo "<th  width=\"90\"><font color=\"#555\">Date Of Order</font></th>";
-    echo "<th  width=\"90\"><font color=\"#555\">Order Id</font></th>";
-	echo "<th  width=\"90\"><font color=\"#555\">Product Id</font></th>";
-  echo "<th width=\"90\"><font color=\"#555\">Name</font></th>";
-  echo "<th  width=\"90\"><font color=\"#555\">Size</font></th>";
-  echo "<th  width=\"90\"><font color=\"#555\">Price</font></th>";
-    echo "<th  width=\"90\"><font color=\"#555\">Quantity</font></th>";
-	    echo "<th  width=\"90\"><font color=\"#555\">Shipping</font></th>";
-  echo "<th  width=\"90\"><font color=\"#555\">Mypoints Disc</font></th>";
-    echo "<th  width=\"90\"><font color=\"#555\">Individual Price</font></th>";
-    echo "<th  width=\"90\"><font color=\"#555\">Credits</font></th>";
- echo "<th  width=\"90\"><font color=\"#555\">Final Price</font></th>";
+    echo "<th  ><font color=\"#555\">Product</font></th>";
+    echo "<th  ><font color=\"#555\">Date Of Order</font></th>";
+    echo "<th  ><font color=\"#555\">Order Id</font></th>";
+	echo "<th  ><font color=\"#555\">Product Id</font></th>";
+  echo "<th ><font color=\"#555\">Name</font></th>";
+  echo "<th  ><font color=\"#555\">Size</font></th>";
+  echo "<th  ><font color=\"#555\">Price</font></th>";
+    echo "<th  ><font color=\"#555\">Quantity</font></th>";
+	    echo "<th  ><font color=\"#555\">Shipping</font></th>";
+  echo "<th  ><font color=\"#555\">Mypoints Disc</font></th>";
+    echo "<th  ><font color=\"#555\">Individual Price</font></th>";
+    echo "<th  ><font color=\"#555\">Credits</font></th>";
+ echo "<th  ><font color=\"#555\">Final Price</font></th>";
   echo "</tr>";
  while($row2 = mysql_fetch_array($result2))
 	{
@@ -1477,13 +1461,20 @@ echo "<input type=\"hidden\" name=\"flag\" value=\"1\" />  ";
 		$shipping=$row2['shipping'];
 		$final=$row2['finalAmt'];
 		$credits=$row2['credits'];
+		$status=$row2['status'];
+		
+		$date_30 = strtotime($date);
+		$date_30 = strtotime("+30 day", $date_30);
+		$date_30 = date("Y/m/d H:i", $date_30);
 		
 	if($flag==0)
 	{
 			echo "<tr>";
 		
 			echo "<td height=\"50\" width=\"50\" align=\"center\">";
-		    echo "<img src='prodimg/$image' width=100% height=100%";
+		  echo "<div id=\"image_container\" style=\"\">";
+	 echo "<center><img src=\"prodimg/$image\" class=\"resize\"></center>";
+	 echo "</div>";
   			echo "</td>";
   
 	        echo "<td height=\"50\" width=\"50\" align=\"center\">";
@@ -1498,7 +1489,7 @@ echo "<input type=\"hidden\" name=\"flag\" value=\"1\" />  ";
   			echo "$pid1";
   			echo "</td>";
   
-  			echo "<td height=\"50\" width=\"50\"align=\"center\" >";
+  			echo "<td height=\"50\" width=\"150%\"align=\"center\" >";
   			echo "$pname1";
   			echo "</td>";
   
@@ -1534,17 +1525,34 @@ echo "<input type=\"hidden\" name=\"flag\" value=\"1\" />  ";
   			echo "$final";
   			echo "</td>";
 			
+			if($status=="Completed")
+			{
 			if($credits==0 || $credits==NULL)
 			{
+				if($period > $date_30)
+				{
+					continue;
+				}
+				else
+				{
 			echo "<td>";
 			echo "<a href=\"#\" id =\"returnsaaa".$i."\" onclick=\"rid('$pid1','$pname1','$size1','$discountprice','$image','$rid','".$_SESSION['uname']."','returnsaaa".$i."','$oid1','$quant','$date')\" style=\"font-size:80%;\">Return</a>";
   			echo "</td>";
+				}
 			}
 			else
 			{
+				if($period > $date_30)
+				{
+					continue;
+				}
+				else
+				{
 				echo "<td>";
-			echo "<a href=\"#\" id =\"returnsaaa".$i."\" onclick=\"rid('$pid1','$pname1','$size1','$final','$image','$rid','".$_SESSION['uname']."','returnsaaa".$i."','$oid1','$quant','$date')\" style=\"font-size:80%;\">Return</a>";
+			echo "<a href=\"#\" id =\"returnsaaa".$i."\" onclick=\"rid('$pid1','$pname1','$size1','$discountprice','$image','$rid','".$_SESSION['uname']."','returnsaaa".$i."','$oid1','$quant','$date')\" style=\"font-size:80%;\">Return</a>";
   			echo "</td>";
+				}
+			}
 			}
   			echo "<tr>";
   			  			
@@ -1554,7 +1562,9 @@ echo "<input type=\"hidden\" name=\"flag\" value=\"1\" />  ";
 		    echo "<tr>";
 		
 			echo "<td height=\"50\" width=\"50\" align=\"center\">";
-		    echo "<img src='prodimg/$image' width=100% height=100%";
+		    echo "<div id=\"image_container\" style=\"\">";
+	 echo "<center><img src=\"prodimg/$image\" class=\"resize\"></center>";
+	 echo "</div>";
   			echo "</td>";
   
 	        echo "<td height=\"50\" width=\"50\" align=\"center\">";
@@ -1654,6 +1664,7 @@ echo "<p style=\"position:absolute; left:20%; top:35%; font-family:'Comic Sans M
 if($mypoints>=15000)
 echo "<p style=\"position:absolute; left:20%; top:35%; font-family:'Comic Sans MS', cursive;\">Congratulations ".$_SESSION['uname'].", You Now Have an Additional Discount of <b>10%</b>.</p>";
  ?>
+ <p style="position:absolute; left:35%; top:50%; font-family:'Comic Sans MS', cursive;">*Note:- Not Applicate for Mobiles & Tablets.*</p>
 <p style="position:absolute; left:15%; top:50%; font-family:'Comic Sans MS', cursive;">Description:-</p>
 <table align="left" border="1" cols=2 cellspacing="0" style="position:absolute; left:15%; top:60%; border:thin border-color:#999;" >
 <tr>
@@ -1674,7 +1685,7 @@ echo "<p style=\"position:absolute; left:20%; top:35%; font-family:'Comic Sans M
 <td  align="center">7%</td>
 </tr>
 <tr>
-<td align="center">15000</td>
+<td align="center">15000 or more</td>
 <td  align="center">10%</td>
 </tr>
 </table>
@@ -1709,7 +1720,7 @@ echo "<center><textarea  name=\"fd\" rows=\"5\" cols=\"37\"></textarea></center>
  {
 	 echo "<table align=\"left\" border=\"0\" cols=2 cellspacing=\"3\" style=\"position:absolute; left:2%; top:2%;\">";
 echo "<tr>";
-echo "<th height=\"30\" width=\"150\" align=\"center\"><font color=\"#555\"></font></th>";
+echo "<th height=\"30\" width=\"150\" align=\"center\"><font color=\"#555\">Product</font></th>";
 
 echo "<th height=\"30\" width=\"150\" align=\"center\"><font color=\"#555\">Date Of Return</font></th>";
 echo "<th height=\"30\" width=\"150\" align=\"center\"><font color=\"#555\">Return Id</font></th>";
@@ -1738,7 +1749,9 @@ echo "</tr>";
 		echo "<tr>";
 		
 		echo "<td height=\"50\" width=\"50\"align=\"center\"  style=\"font-family:'Comic Sans MS', cursive\">";
-  echo "<img src='prodimg/$image' width=100% height=100%>";
+   echo "<div id=\"image_container\" style=\"\">";
+	 echo "<center><img src=\"prodimg/$image\" class=\"resize\"></center>";
+	 echo "</div>";
   echo "</td>";
   
   
@@ -1863,107 +1876,9 @@ echo "</tr>";
 
 
 <div id="apDiv18">
-<p class="shopmanaic"><u>Shopmanaic</u></p>
-<p class="myaccount"><u>My Account</u></p>
-<p class="policies"><u>Policies</u></p>
-<p class="help"><u>Help</u></p>
-<p class="products"><u>Products</u></p><br />
 <?php
-if($_SESSION['uname']=="")
-{
-	echo "<a href=\"index.php\" onmouseover=\"this.style.color = '#DF7000'\"  onmouseout=\"this.style.color = '#999'\" style=\"text-decoration:none; color:#999;height:0px; \" ><p class=\"home\">Home</p></a>";
-}
-else
-{
-	echo "<a href=\"home.php\" onmouseover=\"this.style.color = '#DF7000'\"  onmouseout=\"this.style.color = '#999'\" style=\"text-decoration:none; color:#999;height:0px; \" ><p class=\"home\">Home</p></a>";
-}
+include("footer.php")
 ?>
-<?php
-if($_SESSION['uname']=="")
-{
-
-echo "<a href=\"#\" onclick=\"logtr()\" onmouseover=\"this.style.color = '#DF7000'\"  onmouseout=\"this.style.color = '#999'\" style=\"text-decoration:none; color:#999;height:0px; \"><p class=\"account\">MyAccount</p></a>";
-}
-else
-{
-	echo "<a href=\"myaccount.php\" onmouseover=\"this.style.color = '#DF7000'\"  onmouseout=\"this.style.color = '#999'\" style=\"text-decoration:none; color:#999;height:0px; \"><p class=\"account\">MyAccount</p></a>";
-}
-?>
-
-
-
-<a href="returnpolicy.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px;" ><p class="returnpolicy">Return Policy</p></a>
-
-<a href="placeorder.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="placeorder">Place Order</p></a>
-<a href="formalshirts.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="formal">Formal
-Shirts</p></a>
-<br />
-
-<a href="aboutus.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="aboutus">About Us</p></a>
-<a href="mytrolley2.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="mytrolly">My Trolley</p></a>
-
-<a href="privacypolicy.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="privacypol">Privacy Policy</p></a>
-
-<a href="trackorder.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="trackorder">Track Order</p></a>
-<a href="trousers.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="trousers">Trousers</p></a>
-
-<a href="contactus.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="contactus">Contact Us</p></a>
-
-<a href="shippingpolicy.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="shipping">Shipping Policy</p></a>
-
-<a href="returnproduct.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="returnp">Return Product</p></a>
-<a href="cs.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="casual">Casual Shirt</p></a><br/>
-
-<a href="t&c.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="tc">Terms & Conditions</p></a>
-<a href="jeans.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="jeans">Jeans</p></a>
-<a href="footwear.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="footwear">FootWear</p></a>
-
-<a href="faq.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="faq">FAQ's</p></a>
-
-<br/>
-<a href="homeware.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; " ><p class="kitchen">Homeware</p></a>
-
-<p class="follow"><u>Follow Us<u></p>
-<div id="apDiv21"><a href="www.facebook.com"><img src="prodimg/facebook-logo1.jpg" width="36" height="34" /></a></div>
-<div id="apDiv25"><a href="www.twitter.com"><img src="prodimg/twitter_logo.jpg" width="36" height="34" /></a></div>
-<div id="apDiv23"><a href="www.google.com"><img src="prodimg/google_plus_logo1.jpg" width="36" height="34" /></a></div> 
-<div id="apDiv26"><a href="www.blog.com"><img src="prodimg/blogger_logo.jpg.png" width="36" height="34" /></a></div>
-<p class="stay"><u>Stay Connected for Daily Updates</u></p>
-
-<form id="contactaaa" name="contactaaa" method="post" action="contact.php" >
-<?php 
-echo "<input type=\"text\" name=\"contact1\" id=\"contact1\" style=\"position:absolute; top:59%; left:77%; color:#CCC; width:17%; height:5%; border:#F60\"  value=\"Enter your Email-Id\" onfocus=\"if (this.value == 'search for your favourite brand and products') this.value = 'Enter your Email-Id';\"
-      onkeydown=\"if(this.value=='Enter your Email-Id') this.value=''; this.style.color='#000'\"  onblur=\"if (this.value == '') this.value = 'Enter your Email-Id'; this.style.color='#D6D6D6' \" />";
-
-?>
-</form>
-<a href="#" onClick="contact123()"><img src="prodimg/submit.png" width="10%" height="5%" onMouseDown="this.src='prodimg/submit1.png'" onMouseUp="this.src='prodimg/submit.png'" style="position:absolute; top:58.5%; left:94.5%; color:#CCC; width: 5%; height:6%;"  /></a>
-
-
-<a href="mypoints.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:19%; top:33%; font-family:'Comic Sans MS', cursive" >MyPoints</a>
-<a href="t-shirts.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:61%; top:48%; font-family:'Comic Sans MS', cursive" >T-Shirts</a>
-
-
-<a href="mycredits.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:19%; top:39%; font-family:'Comic Sans MS', cursive" >MyCredits</a>
-<a href="cancelorder.php" onMouseOver="this.style.color = '#DF7000'"  onmouseout="this.style.color = '#999'" style="text-decoration:none; color:#999;height:0px; position:absolute; left:36%; top:53%; font-family:'Comic Sans MS', cursive;" >Cancel Order</a>
-<hr style="position:absolute; left:0%; top:78%; border-style:dotted; width:75%; border-color:#575757;"/>
-<p style="position:absolute; left:3%; top:79%; font-family:'Comic Sans MS', cursive; font-size:100%; font-weight:bold; color:#818181;">Payment Methods</p>
-<img src="prodimg/pm_visa.jpg" width="5%"  style="position:absolute; left:3%; top:90%;" />
-<img src="prodimg/pm_mc.jpg" width="5%"  style="position:absolute; left:8.5%; top:90%;" />
-<img src="prodimg/pm_ae.jpg" width="5%" height="6%"  style="position:absolute; left:14%; top:90%;" />
-<img src="prodimg/pm_a.jpg" width="5%"  style="position:absolute; left:19.5%; top:90%;" />
-<img src="prodimg/cod.jpg" width="5%" height="6%" style="position:absolute; left:25%; top:90%;" />
-<img src="prodimg/nb.gif" width="6%" height="6%" style="position:absolute; left:31%; top:90%;" />
-
-<p style="position:absolute; left:50%; top:79%; font-family:'Comic Sans MS', cursive; font-size:100%; font-weight:bold; color:#818181;">Secured By</p>
-<img src="prodimg/cc_avenue.jpg" width="5%" height="6%"  style="position:absolute; left:50%; top:90%;" />
-<img src="prodimg/verisignsecured.jpg" width="5%" height="6%"  style="position:absolute; left:55.5%; top:90%;" />
-<img src="prodimg/ssl.jpg" width="5%"  height="6%" style="position:absolute; left:61%; top:90%;" />
-<hr width="1" size="500" style="position:absolute; left:75%; top:-2%; height:100%; border-style:dotted; border-color:#575757;"/>
-
-<div id="copyright" style="position:absolute; left:0%; top:100%; width:100%; height:8%;">
-<p style="position:absolute; left:35%; top:-25%; font-family:'Comic Sans MS', cursive; font-size:80%; color:#555;"> Copyright <img src="prodimg/copy.jpg" width="5%" style="position:absolute; left:20%; top:8%;"/>&nbsp;&nbsp;&nbsp; Prodigy Infotech. All Rights Reserved</center>
-</div>
 </div>
 
 <div id="trans">

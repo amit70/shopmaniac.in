@@ -1,12 +1,14 @@
-<?php
+	<?php
 session_start();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" type="image/png" href="prodimg/title123.png" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<link href="navbar.css" rel="stylesheet" type="text/css" />
+<title>Payment & Shipping : Shopmaniac.in</title>
 <script type="text/javascript" language="javascript">
 function website()
 {
@@ -120,6 +122,8 @@ function confirm(b,c)
 	var x12=document.getElementById('pinship').value;
 	var x13=document.getElementById('contact2').value;
 	var x14=document.getElementById('emailship').value;
+	
+	
 	if(x1==null || x1=="")
 		 {
 			 alert("Please Enter Address Of Billing Details");
@@ -164,7 +168,12 @@ function confirm(b,c)
  		{
 	 		alert("Contact Number Must be Numerical");
 	 		return false;
- 		}	 
+ 		}
+		if(x6.length<10)
+		{
+			alert("Please Enter Valid Contact Number");
+			return false;
+		}
 	if(x7==null || x7=="")
 		{
 			alert("Please Enter Full Name Of Shipping details");
@@ -215,12 +224,24 @@ function confirm(b,c)
 			 alert("Contact Number Must be Numerical");
 			 return false;
  		}
+	if(x13.length<10)
+		{
+	 		alert("Please Enter valid Number");
+	 		return false;
+		}
  	if(x14==null || x14=="")
 		{
 			alert("Please Enter E-Mail Address");
 			return false;
 		}
-		
+		var atpos=x14.indexOf("@");
+	var dotpos=x14.lastIndexOf(".");
+	if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x14.length)
+  	{
+  		alert("Not a valid E-Mail address");
+  		return false;
+  	}
+  
 		if(document.getElementById('pay1').checked || document.getElementById('pay2').checked || document.getElementById('pay3').checked || document.getElementById('pay4').checked)
 		 {
 			 
@@ -304,14 +325,26 @@ function confirm(b,c)
 			 alert("Contact Number Must be Numerical");
 			 return false;
  		}
+		if(x13.length<10)
+		{
+	 		alert("Please Enter valid Contact Number Of Shipping Details");
+	 		return false;
+		}
  	if(x14==null || x14=="")
 		{
 			alert("Please Enter E-Mail Address");
 			return false;
 		}
+	var atpos=x14.indexOf("@");
+	var dotpos=x14.lastIndexOf(".");
+	if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x14.length)
+  	{
+  		alert("Not a valid E-Mail address");
+  		return false;
+  	}
+  
 		if(document.getElementById('pay1').checked || document.getElementById('pay2').checked || document.getElementById('pay3').checked || document.getElementById('pay4').checked)
-		 {
-			 
+		 {	
 			var x15=document.getElementById('capt').value
 			if(x15==null || x15=="")
 			{
@@ -326,17 +359,16 @@ function confirm(b,c)
 			{
 				document.forms['confirm1'].submit();
 			}
-		 }
+		}
+
 		 else
 		 {
 			 alert("Select any one payment option");
 		 }	
 	}
 }
-//function send()
-//{
-	//document.forms['confirm1'].submit();
-//}
+
+
 </script>
 <style type="text/css">
 body {
@@ -346,7 +378,14 @@ body {
             background-color: #fff;
             margin: 0;
 			}
-			
+			img {
+   border: 0;
+}
+a { 
+    text-decoration: none; 
+    border:0;
+    color: #248AC9; 
+}
 			#container {
             background-color: #fff;
             width: 420px;
@@ -435,7 +474,7 @@ position:relative;
 #apDiv1 {
 	position:relative;
 	width:66%;
-	height:530px;
+	height:570px;
 	z-index:2;
 	left: -200px;
 	top: -165px;
@@ -446,19 +485,19 @@ position:relative;
 #apDiv2 {
 	position:relative;
 	width:66%;
-	height:530px;
+	height:570px;
 	z-index:2;
 	left: 85px;
-	top: -695px;
+	top: -730px;
 	background-color:#f6f6f6;
 }
 #apDiv3 {
 	position:relative;
 	width:63%;
-	height:530px;
+	height:570px;
 	z-index:2;
 	right:-370px;
-	top: -1225px;
+	top: -1300px;
 	background-color:#f6f6f6;
 }
 #logdiv
@@ -567,58 +606,9 @@ $no=count($arr);
 
 
 
-<div id="apDiv42">
-
 <?php
-if($_SESSION['uname']=="")
-{
-echo "<a href=\"index.php\" ><img src=\"prodimg/Title.png\" width=\"38%\" height=\"100%\" style=\"position:absolute; left:-2%; top:5%;\" /></a>";
-}
-else
-{
-	echo "<a href=\"home.php\"><img src=\"prodimg/Title.png\" width=\"38%\" height=\"100%\" style=\"position:absolute; left:-2%; top:5%;\" /></a>";
-}
+include("header.php");
 ?>
-
- <div style="position:absolute; left:38.8%; top:50%; width:44%; height:49%; background-color:#DCDCDC; "></div>
-<form id="form1" name="src1" method="post" action="search.php">
-   <label>
-      <input type="text" name="srch" id="srch"  value="search for your favourite brand and products" style="position:absolute;  width: 33.3%; height: 33%; color:#D6D6D6; left:39.4%; top:55.2%; font-family:'Comic Sans MS', cursive"  onfocus="if (this.value == 'search for your favourite brand and products') this.value = 'search for your favourite brand and products';"
-      onkeydown="if(this.value=='search for your favourite brand and products') this.value=''; this.style.color='#000'"  onblur="if (this.value == '') this.value = 'search for your favourite brand and products'; this.style.color='#D6D6D6'">
-    </label>
-    
-  </form>
- <img src="prodimg/Search2.png" width="10%" height="54%" style="position:absolute; left:73%; top:51.2%;"  onmousedown="this.src='prodimg/Search1.png'" onmouseup="this.src='prodimg/Search2.png'" onclick="aaa('src1')"/>
-
-
-<a href="mytrolley2.php"><img src="prodimg/Trolley11.png" style="position:absolute; left:83%; top:40%;width:6%;height:60%" onmousedown="this.src='prodimg/Trolley12.png'" onmouseup="this.src='prodimg/Trolley11.png'">
-<?php
-echo "<p style=\"position:absolute; left:85%; top:75%; color:#555; font-size:75%;\">(".($no-1).")</p>";
-?>
-</a>
-
-<span style="float:left; position:absolute; left:45%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive;">Hi,<?php
-$arr=spliti(" ",$_SESSION['uname']);
-echo "<b>$arr[0]</b>";
-?>&nbsp;&nbsp;&nbsp;| </span>
-
-
-
-<span style=" float:left; position:absolute; left:57.5%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive">9773436955(24x7)&nbsp;&nbsp;&nbsp;|
-</span>  
- <img src="prodimg/Fullscreen capture 7182012 14722 PM.gif"  style="position:absolute; left:54.5%; top:5%; height:15%; width:2%;"/>
-
-
-<span style=" float:left; position:absolute; left:77.5%; top:1%; font-size:75%; color:#717171; font-family:'Comic Sans MS', cursive">support@shopmaniac.in |</span>
-<img src="prodimg/Email-Lists-Canada-11.jpg" style="position:absolute; height:18%; width:3%; left:74%; top:3%;"/>
-
-
-<a href="myaccount.php"><img src="prodimg/Account11.png" style="position:absolute; left:94.5%; top:39%;width:6%;height:60%" onmousedown="this.src='prodimg/Account12.png'" onmouseup="this.src='prodimg/Account11.png'"></a>
-
-<p style="position:absolute; left:95.5%; top:-16%; font-size:80%; font-family:'Comic Sans MS', cursive"><a href="index.php" onmouseover="this.style.color = '#DF7000'" onmouseout="this.style.color = '#717171'"  style="text-decoration:none; color:#717171;">SignOut</a></p>
-
-<a href="home.php"><img src="prodimg/Home1.png" style="position:absolute; left:89.5%; top:40%;width:4.5%;height:60%" onmousedown="this.src='prodimg/Home2.png'" onmouseup="this.src='prodimg/Home1.png'"></a>
-</div>
 
 <div id="navigation">
 <a href="mytrolley2.php"><img src="prodimg/trolley.png" width="32%" height="100%" style="position:absolute; left:0%; top:0%" /></a>
@@ -635,7 +625,7 @@ echo "<b>$arr[0]</b>";
 <p style="position:absolute;top:-2%;left:28%; font-family:'Comic Sans MS', cursive; color:#111; font-weight:bold;">Order Details</p>
 <table align="left" border="0" cols=2 cellspacing="3" style="position:absolute; left:2%; top:7%">
   <tr>
-  <th height="40"  width="140"><font color="#666666" face="Comic Sans MS, cursive"></font></th>
+  <th height="40"  width="140"><font color="#666666" face="Comic Sans MS, cursive">Product</font></th>
   <th height="40" width="140" ><font color="#666666" face="Comic Sans MS, cursive">Name</font></th>
   <th height="40" width="140"><font color="#666666" face="Comic Sans MS, cursive">Size</font></th>
   <th height="40" width="140"><font color="#666666" face="Comic Sans MS, cursive">Price</font></th>
@@ -643,9 +633,7 @@ echo "<b>$arr[0]</b>";
   <th height="40" width="140"><font color="#666666" face="Comic Sans MS, cursive">Total</font></th>
   </tr>
   
-  <?php
  
-    ?>
   <?php
   $total=0;
 $aaa=mysql_connect("localhost","root","system");
@@ -686,7 +674,7 @@ $temp=(int)$arr[$i];
   echo "<tr>";
   
  echo "<td width=\"50\" align=\"center\">";
-  echo "<img src=\"prodimg/$img1\" width=\"100%\" height=\"20%\">";
+  echo "<img src=\"prodimg/$img1\" width=\"100%\" height=\"13%\">";
   echo "</td>";
   
   echo "<td align=\"center\"><font face=\"Comic Sans MS, cursive\">";
@@ -740,7 +728,7 @@ $temp=(int)$arr[$i];
   <?php
   $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
-$qry=mysql_query("select * from user where username='".$_SESSION[uname]."'");
+$qry=mysql_query("select * from user where username='".$_SESSION['uname']."'");
 while($row = mysql_fetch_array($qry))
 {
 	$namebill=$row['username'];
@@ -751,7 +739,7 @@ while($row = mysql_fetch_array($qry))
 	
 }
   ?>
-<p style="position:absolute; left:30%; top:-2%; font-family:'Comic Sans MS', cursive; color:#111; font-weight:bold;">Billing Details</p>
+<p style="position:absolute; left:30%; top:-2%; font-family:'Comic Sans MS', cursive; color:#111; font-weight:bold; ">Billing Details</p>
 
 <form method="POST" action="confirmation.php" name="confirm1" id="confirm1" >
 <table border="0"  cellspacing="3" style="position:absolute;left:2%; top:8%;">
@@ -810,6 +798,16 @@ echo "</td>";
 echo "</tr>";
 
 echo "<tr>";
+ echo "<td height=\"50\"><font color=\"#666666\" face=\"Comic Sans MS, cursive\">Country :- </font></td>";
+echo "<td><font face=\"Comic Sans MS, cursive\">";
+echo "<input type=\"text\" name=\"country\" id=\"country\" value=\"India\" disabled=\"disable\">";
+echo "</font>";
+echo "</td>";
+echo "</tr>";
+
+
+
+echo "<tr>";
  echo "<td height=\"50\"><font color=\"#666666\" face=\"Comic Sans MS, cursive\">Contact Number:- </font></td>";
 echo "<td><font face=\"Comic Sans MS, cursive\">";
 echo "<input type=\"text\" name=\"contact1\" id=\"contact1\">";
@@ -835,18 +833,18 @@ echo "</font>";
 echo " </td>";
 echo "</tr>";
 
-echo "<tr>";
-echo "<td height=\"50\"><font color=\"#666666\" face=\"Comic Sans MS, cursive\">Address:- </font></td>";
+echo "<tr> ";
+echo "<td ><font color=\"#666666\" face=\"Comic Sans MS, cursive\">Address:- </font></td>";
 echo "<td><font face=\"Comic Sans MS, cursive\">";
 echo "$address";
 echo "</font>";
-echo " </td>";
+echo "</td>";
 echo "</tr>";
 
 echo "<tr>";
 echo "<td height=\"50\" ><font color=\"#666666\" face=\"Comic Sans MS, cursive\">Contact Number:- </font></td>";
 echo "<td><font face=\"Comic Sans MS, cursive\">";
-echo "$contactbill";
+echo "$contactbill"; 
 echo "</font>";
 echo " </td>";
 echo "</tr>";
@@ -867,7 +865,7 @@ echo "</tr>";
 <?php
   $aaa=mysql_connect("localhost","root","system");
 mysql_select_db("eshop",$aaa);
-$qry=mysql_query("select * from user where username='".$_SESSION[uname]."'");
+$qry=mysql_query("select * from user where username='".$_SESSION['uname']."'");
 while($row = mysql_fetch_array($qry))
 {
 	$nameship=$row['username'];
@@ -929,6 +927,14 @@ echo "</select>";
   <td height="50"><font color="#666666" face="Comic Sans MS, cursive">Pincode:- </font></td>
 <td><font face="Comic Sans MS, cursive"><?php
 echo "<input type=\"text\" name=\"pinship\" id=\"pinship\">";
+?></font>
+ </td>
+  </tr>
+  
+    <tr>
+  <td height="50"><font color="#666666" face="Comic Sans MS, cursive">Country:- </font></td>
+<td><font face="Comic Sans MS, cursive"><?php
+echo "<input type=\"text\" name=\"country\" id=\"country\" value=\"India\" disabled=\"disable\">";
 ?></font>
  </td>
   </tr>
@@ -1199,11 +1205,11 @@ else
 */
 ?>
 
-<div id="captcha" style="position:relative; left:280px; top:-1240px; width:80%; height:140px; border-color:#C1C1C1; border-style:double;">
+<div id="captcha" style="position:relative; left:280px; top:-1240px; width:80%; height:140px; border-color:#C1C1C1; border-style:double; ">
 	
 <form name="captcha" method="post" action="">
 <p style="position:absolute; left:5%; top:-12%; font-family:'Comic Sans MS', cursive">Please Enter the Text shown below.</p> 
-<img src="prodimg/captcha.jpg" width="30%" style="position:absolute; left:30%; top:20%" />
+<img src="prodimg/captcha.jpg" width="30%" style="position:absolute; left:32%; top:20%" />
 <?php
 $capt='';  
 $capt= rand(0, 99999999999);  
@@ -1239,4 +1245,4 @@ echo "<a href=\"#\" onclick=\"confirm($contactbill,$capt)\"> <img src=\"prodimg/
 
 </div>
 </body>
-</html>
+</html>	
